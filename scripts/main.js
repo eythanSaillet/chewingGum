@@ -12,6 +12,9 @@ let smoothScroll =
     contentHeight : null,
     scrollValue : null,
     scrollValueWithLerp : null,
+    actualImage : 0,
+    isAttracted : false,
+    lerpRatio : 0.2,
 
     setup()
     {
@@ -19,6 +22,7 @@ let smoothScroll =
         this.setScrollEvent()
         this.setLerpInterval()
         this.setResizeEvent()
+        this.setScrollMagnetInterval()
     },
 
     setContentSize()
@@ -43,9 +47,31 @@ let smoothScroll =
         // GET THE VALUE OF THE SCROLL
         window.addEventListener('scroll', (_mouse) =>
         {
+            if(window.pageYOffset != this.scrollValue)
+            {
+                this.isAttracted = false
+                this.lerpRatio = 0.2
+            }
             this.scrollValue = window.pageYOffset
-            console.log(this.scrollValue)
+
+            this.actualImage = Math.ceil(this.scrollValue / window.innerHeight - 0.5)
         })
+    },
+
+    setScrollMagnetInterval()
+    {
+        let lastScrollValue
+        setInterval(() =>
+        {
+            this.lerpRatio = 0.05
+            if(lastScrollValue == this.scrollValue && this.isAttracted == false)
+            {
+                this.isAttracted = true
+                this.scrollValue = this.actualImage * window.innerHeight
+                window.scroll(0, this.scrollValue)
+            }
+            lastScrollValue = this.scrollValue
+        }, 200)
     },
 
     setLerpInterval()
@@ -53,7 +79,8 @@ let smoothScroll =
         setInterval(() =>
         {
             // TRANSLATING BY THE SCROLL VALUE AFTER APPLY A LERP EFFECT
-            this.scrollValueWithLerp = lerp(this.scrollValueWithLerp, this.scrollValue, 0.2)
+            console.log(this.lerpRatio)
+            this.scrollValueWithLerp = lerp(this.scrollValueWithLerp, this.scrollValue, this.lerpRatio)
             this.$content.style.transform = `translateY(${-this.scrollValueWithLerp}px)`
         }, 1000 / 60)
     },
