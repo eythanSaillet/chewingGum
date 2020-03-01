@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0F0F0F; }
+
+.imagesContainer {
+  display: flex;
+  background-color: #0F0F0F; }
+  .imagesContainer .leftBorder, .imagesContainer .rightBorder {
+    width: 27.5vw; }
+  .imagesContainer .centerContainer {
+    width: 50vw;
+    height: auto; }
+    .imagesContainer .centerContainer img {
+      width: 100%; }
+    .imagesContainer .centerContainer .blackBloc {
+      width: 100%;
+      height: 100px; }

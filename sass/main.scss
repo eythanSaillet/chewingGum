@@ -1,0 +1,37 @@
+body
+{
+  margin: 0;
+  padding: 0;
+  background-color: #0F0F0F;
+}
+
+.imagesContainer
+{
+  // height: 100vh;
+  // position: fixed;
+  display: flex;
+  // overflow: hidden;
+  background-color: #0F0F0F;
+  .leftBorder, .rightBorder
+  {
+    width: 27.5vw;
+  }
+  .centerContainer
+  {
+    width: 50vw;
+    height: auto;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+    // align-items: center;
+    img
+    {
+      width: 100%;
+    }
+    .blackBloc
+    {
+      width: 100%;
+      height: 100px;
+    }
+  }
+}
