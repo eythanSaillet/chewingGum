@@ -1,19 +1,22 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #0F0F0F; }
+  background-color: #0F0F0F;
+  height: 100vh; }
 
 .menuContainer {
-  position: fixed;
+  height: 100vh;
   display: flex;
-  background-color: #0F0F0F; }
+  background-color: #0F0F0F;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll; }
   .menuContainer .leftBorder, .menuContainer .rightBorder {
     width: 25vw; }
   .menuContainer .centerContainer {
     width: 50vw;
     height: auto; }
-    .menuContainer .centerContainer img {
-      width: 100%; }
-    .menuContainer .centerContainer .blackBloc {
-      width: 100%;
-      height: 100px; }
+    .menuContainer .centerContainer section {
+      height: 100vh;
+      scroll-snap-align: center; }
+      .menuContainer .centerContainer section img {
+        width: 100%; }

@@ -3,13 +3,16 @@ body
   margin: 0;
   padding: 0;
   background-color: #0F0F0F;
+  height: 100vh;
 }
 
 .menuContainer
 {
-  position: fixed;
+  height: 100vh;
   display: flex;
   background-color: #0F0F0F;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
   .leftBorder, .rightBorder
   {
     width: 25vw;
@@ -18,14 +21,14 @@ body
   {
     width: 50vw;
     height: auto;
-    img
+    section
     {
-      width: 100%;
-    }
-    .blackBloc
-    {
-      width: 100%;
-      height: 100px;
+      height: 100vh;
+      scroll-snap-align: center;
+      img
+      {
+        width: 100%;
+      }
     }
   }
 }
