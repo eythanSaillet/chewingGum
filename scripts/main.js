@@ -32,10 +32,10 @@ let smoothScroll =
             _element.style.height = `${window.innerHeight - this.$img.getBoundingClientRect().height}px`
         }
 
-        
+
         // MAKE THE BODY AS LONG AS THE CONTENT TO PERMIT THE SCROLL
         this.contentHeight = this.$content.getBoundingClientRect().height
-        this.$body.style.height = `${this.contentHeight}px`
+        this.$body.style.height = `${this.contentHeight + this.$blackBlocs[0].getBoundingClientRect().height}px`
     },
 
     setScrollEvent()
@@ -44,6 +44,7 @@ let smoothScroll =
         window.addEventListener('scroll', (_mouse) =>
         {
             this.scrollValue = window.pageYOffset
+            console.log(this.scrollValue)
         })
     },
 
