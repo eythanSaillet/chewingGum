@@ -5,7 +5,7 @@ function lerp (start, end, ratio){
 let smoothScroll = 
 {
     $body : document.querySelector('body'),
-    $content : document.querySelector('.imagesContainer .centerContainer'),
+    $content : document.querySelector('.menuContainer'),
     $img : document.querySelector('.centerContainer img'),
     $blackBlocs : document.querySelectorAll('.blackBloc'),
 
@@ -15,29 +15,34 @@ let smoothScroll =
 
     setup()
     {
-        // this.contentHeight = this.$content.getBoundingClientRect().height
-        // this.$body.style.height = `${this.contentHeight}px`
+        this.setContentSize()
+        this.setScrollEvent()
+        this.setLerpInterval()
+        this.setResizeEvent()
+    },
 
-
+    setContentSize()
+    {
         // SETTING MARGINS AND SIZES OF BLACKBLOCS TO PUT IMAGES AT THE CENTER OF THE VIEW
         this.$content.style.marginTop = `${(window.innerHeight - this.$img.getBoundingClientRect().height) * 0.5}px`
         this.$content.style.marginBottom = `${(window.innerHeight - this.$img.getBoundingClientRect().height) * 0.5}px`
-
+        
         for (const _element of this.$blackBlocs)
         {
             _element.style.height = `${window.innerHeight - this.$img.getBoundingClientRect().height}px`
         }
 
-        // this.setScrollEvent()
-        // this.setLerpInterval()
-        // this.setResizeEvent()
+        
+        // MAKE THE BODY AS LONG AS THE CONTENT TO PERMIT THE SCROLL
+        this.contentHeight = this.$content.getBoundingClientRect().height
+        this.$body.style.height = `${this.contentHeight}px`
     },
 
     setScrollEvent()
     {
+        // GET THE VALUE OF THE SCROLL
         window.addEventListener('scroll', (_mouse) =>
         {
-            // console.log(_mouse)
             this.scrollValue = window.pageYOffset
         })
     },
@@ -46,6 +51,7 @@ let smoothScroll =
     {
         setInterval(() =>
         {
+            // TRANSLATING BY THE SCROLL VALUE AFTER APPLY A LERP EFFECT
             this.scrollValueWithLerp = lerp(this.scrollValueWithLerp, this.scrollValue, 0.2)
             this.$content.style.transform = `translateY(${-this.scrollValueWithLerp}px)`
         }, 1000 / 60)
@@ -55,17 +61,7 @@ let smoothScroll =
     {
         window.addEventListener('resize', () =>
         {
-            // this.contentHeight = this.$content.getBoundingClientRect().height
-            // this.$body.style.height = `${this.contentHeight}px`
-
-            // SETTING MARGINS AND SIZES OF BLACKBLOCS TO PUT IMAGES AT THE CENTER OF THE VIEW
-            this.$content.style.marginTop = `${(window.innerHeight - this.$img.getBoundingClientRect().height) * 0.5}px`
-            this.$content.style.marginBottom = `${(window.innerHeight - this.$img.getBoundingClientRect().height) * 0.5}px`
-
-            for (const _element of this.$blackBlocs)
-            {
-                _element.style.height = `${window.innerHeight - this.$img.getBoundingClientRect().height}px`
-            }
+            this.setContentSize()
         })
     }
 }

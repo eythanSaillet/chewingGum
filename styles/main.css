@@ -3,16 +3,17 @@ body {
   padding: 0;
   background-color: #0F0F0F; }
 
-.imagesContainer {
+.menuContainer {
+  position: fixed;
   display: flex;
   background-color: #0F0F0F; }
-  .imagesContainer .leftBorder, .imagesContainer .rightBorder {
+  .menuContainer .leftBorder, .menuContainer .rightBorder {
     width: 27.5vw; }
-  .imagesContainer .centerContainer {
+  .menuContainer .centerContainer {
     width: 50vw;
     height: auto; }
-    .imagesContainer .centerContainer img {
+    .menuContainer .centerContainer img {
       width: 100%; }
-    .imagesContainer .centerContainer .blackBloc {
+    .menuContainer .centerContainer .blackBloc {
       width: 100%;
       height: 100px; }
