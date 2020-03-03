@@ -25,4 +25,8 @@ let menu =
         })
     },
 }
-menu.setup()
+
+menu.$referenceImg.addEventListener('load', () =>
+{
+    menu.setup()
+})
