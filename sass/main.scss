@@ -1,9 +1,13 @@
 body
 {
   margin: 0;
-  padding: 0;
   background-color: #0F0F0F;
   height: 100vh;
+}
+
+.headerContainer
+{
+  position: fixed;
 }
 
 .menuContainer
@@ -15,20 +19,34 @@ body
   overflow-y: scroll;
   .leftBorder, .rightBorder
   {
-    width: 25vw;
+    width: 30vw;
   }
   .centerContainer
   {
-    width: 50vw;
+    width: 40vw;
     height: auto;
     section
     {
-      height: 100vh;
+      height: 60vh;
       scroll-snap-align: center;
+      &:nth-child(1)
+      {
+        margin-top: 20vh;
+      }
+      &:nth-last-child(1)
+      {
+        margin-bottom: 20vh;
+      }
       img
       {
         width: 100%;
       }
     }
   }
+}
+
+@font-face
+{
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat/Montserrat-Medium.ttf')
 }

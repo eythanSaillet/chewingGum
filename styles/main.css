@@ -1,8 +1,10 @@
 body {
   margin: 0;
-  padding: 0;
   background-color: #0F0F0F;
   height: 100vh; }
+
+.headerContainer {
+  position: fixed; }
 
 .menuContainer {
   height: 100vh;
@@ -11,12 +13,20 @@ body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll; }
   .menuContainer .leftBorder, .menuContainer .rightBorder {
-    width: 25vw; }
+    width: 30vw; }
   .menuContainer .centerContainer {
-    width: 50vw;
+    width: 40vw;
     height: auto; }
     .menuContainer .centerContainer section {
-      height: 100vh;
+      height: 60vh;
       scroll-snap-align: center; }
+      .menuContainer .centerContainer section:nth-child(1) {
+        margin-top: 20vh; }
+      .menuContainer .centerContainer section:nth-last-child(1) {
+        margin-bottom: 20vh; }
       .menuContainer .centerContainer section img {
         width: 100%; }
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url("assets/fonts/Montserrat/Montserrat-Medium.ttf"); }
