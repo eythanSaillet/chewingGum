@@ -2,12 +2,14 @@ body
 {
   margin: 0;
   background-color: #0F0F0F;
-  height: 100vh;
+  height: 500vh;
+  position: relative;
 }
 
 .headerContainer
 {
-  position: fixed;
+  position: absolute;
+  display: none;
   pointer-events: none;
 }
 
@@ -15,10 +17,10 @@ body
 {
   width: 100vw;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   background-color: #00000000;
@@ -37,35 +39,21 @@ body
 
 .menuContainer
 {
-  height: 100vh;
+  // height: 100vh;
   display: flex;
+  position: fixed;
   background-color: #0F0F0F;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
   .leftBorder, .rightBorder
   {
-    width: 30vw;
+    width: 27.5vw;
   }
   .centerContainer
   {
-    width: 40vw;
+    width: 45vw;
     height: auto;
-    section
+    img
     {
-      height: 60vh;
-      scroll-snap-align: center;
-      &:nth-child(1)
-      {
-        margin-top: 20vh;
-      }
-      &:nth-last-child(1)
-      {
-        margin-bottom: 20vh;
-      }
-      img
-      {
-        width: 100%;
-      }
+      width: 100%;
     }
   }
 }

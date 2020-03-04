@@ -1,19 +1,21 @@
 body {
   margin: 0;
   background-color: #0F0F0F;
-  height: 100vh; }
+  height: 500vh;
+  position: relative; }
 
 .headerContainer {
-  position: fixed;
+  position: absolute;
+  display: none;
   pointer-events: none; }
 
 .namesContainer {
   width: 100vw;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   background-color: #00000000;
@@ -25,22 +27,13 @@ body {
     font-size: 100px; }
 
 .menuContainer {
-  height: 100vh;
   display: flex;
-  background-color: #0F0F0F;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll; }
+  position: fixed;
+  background-color: #0F0F0F; }
   .menuContainer .leftBorder, .menuContainer .rightBorder {
-    width: 30vw; }
+    width: 27.5vw; }
   .menuContainer .centerContainer {
-    width: 40vw;
+    width: 45vw;
     height: auto; }
-    .menuContainer .centerContainer section {
-      height: 60vh;
-      scroll-snap-align: center; }
-      .menuContainer .centerContainer section:nth-child(1) {
-        margin-top: 20vh; }
-      .menuContainer .centerContainer section:nth-last-child(1) {
-        margin-bottom: 20vh; }
-      .menuContainer .centerContainer section img {
-        width: 100%; }
+    .menuContainer .centerContainer img {
+      width: 100%; }
