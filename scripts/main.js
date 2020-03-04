@@ -15,7 +15,7 @@ let smoothScroll =
     scrollValueWithLerp : null,
 
     sizeBetweenImagesRatio : 0.15,
-    scrollSpeedRatio : 1,
+    scrollSpeedRatio : 5,
 
     setup()
     {
@@ -41,8 +41,8 @@ let smoothScroll =
 
         // MAKE THE BODY AS LONG AS THE CONTENT TO PERMIT THE SCROLL
         this.contentHeight = this.$content.getBoundingClientRect().height
-        console.log(this.$content.getBoundingClientRect())
-        this.$body.style.height = `${(this.contentHeight + marginTop + marginBottom) * this.scrollSpeedRatio}px`
+        // console.log(this.$content.getBoundingClientRect().height, marginTop, marginBottom, (this.$content.getBoundingClientRect().height + marginTop + marginBottom) * this.scrollSpeedRatio)
+        this.$body.style.height = `${(this.contentHeight + marginTop + marginBottom - window.innerHeight) * this.scrollSpeedRatio + window.innerHeight}px`
     },
 
     setScrollEvent()
@@ -51,7 +51,7 @@ let smoothScroll =
         window.addEventListener('scroll', (_mouse) =>
         {
             this.scrollValue = window.pageYOffset
-            // console.log(this.scrollValue)
+            console.log(this.scrollValue)
         })
     },
 
@@ -61,7 +61,7 @@ let smoothScroll =
         {
             // TRANSLATING BY THE SCROLL VALUE AFTER APPLY A LERP EFFECT
             this.scrollValueWithLerp = lerp(this.scrollValueWithLerp, this.scrollValue, 0.2)
-            this.$content.style.transform = `translateY(${(-this.scrollValueWithLerp) / this.scrollSpeedRatio}px)`
+            this.$content.style.transform = `translateY(${-this.scrollValueWithLerp / this.scrollSpeedRatio}px)`
         }, 1000 / 60)
     },
 
