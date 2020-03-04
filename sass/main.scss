@@ -8,6 +8,31 @@ body
 .headerContainer
 {
   position: fixed;
+  pointer-events: none;
+}
+
+.namesContainer
+{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000000;
+  pointer-events: none;
+  .names
+  {
+    span
+    {
+      color: white;
+      font-family: 'Montserrat';
+      font-weight: bold;
+      font-size: 100px;
+    }
+  }
 }
 
 .menuContainer
@@ -45,8 +70,13 @@ body
   }
 }
 
-@font-face
-{
-  font-family: 'Montserrat';
-  src: url('assets/fonts/Montserrat/Montserrat-Medium.ttf')
-}
+// @font-face
+// {
+//   font-family: 'Montserrat Medium';
+//   src: url('assets/fonts/Montserrat/Montserrat-Medium.ttf') format('ttf');
+// }
+// @font-face
+// {
+//   font-family: 'Montserrat Bold';
+//   src: url('assets/fonts/Montserrat/Montserrat-Medium.ttf') format('ttf');
+// }

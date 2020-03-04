@@ -1,7 +1,8 @@
 let menu =
 {
     $blackBlocs : document.querySelectorAll('.blackBloc'),
-    $referenceImg : document.querySelector('.centerContainer img'),
+    $referenceImg : null,
+    $images : document.querySelectorAll('.centerContainer img'),
 
     setup()
     {
@@ -26,7 +27,24 @@ let menu =
     },
 }
 
-menu.$referenceImg.addEventListener('load', () =>
+// menu.$referenceImg.addEventListener('load', () =>
+// {
+//     menu.setup()
+//     console.log('hey')
+// })
+
+// Question BIZARRE
+for (const _image of menu.$images)
 {
-    menu.setup()
-})
+    let counter = 0
+    _image.onload = function()
+    {
+        if(counter == 0)
+        {
+            menu.$referenceImg = _image
+            menu.setup()
+            console.log('counter')
+            counter++
+        }
+    }
+}

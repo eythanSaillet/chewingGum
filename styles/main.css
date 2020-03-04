@@ -4,7 +4,25 @@ body {
   height: 100vh; }
 
 .headerContainer {
-  position: fixed; }
+  position: fixed;
+  pointer-events: none; }
+
+.namesContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000000;
+  pointer-events: none; }
+  .namesContainer .names span {
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 100px; }
 
 .menuContainer {
   height: 100vh;
@@ -26,7 +44,3 @@ body {
         margin-bottom: 20vh; }
       .menuContainer .centerContainer section img {
         width: 100%; }
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url("assets/fonts/Montserrat/Montserrat-Medium.ttf"); }
