@@ -1,6 +1,9 @@
+:root {
+  --backgroundColor: #0F0F0F; }
+
 body {
   margin: 0;
-  background-color: #0F0F0F;
+  background-color: var(--backgroundColor);
   height: 500vh;
   position: relative; }
 
@@ -9,31 +12,46 @@ body {
   display: none;
   pointer-events: none; }
 
-.namesContainer {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background-color: #00000000;
-  pointer-events: none; }
-  .namesContainer .names span {
-    color: white;
-    font-family: 'Montserrat';
-    font-weight: bold;
-    font-size: 100px; }
-
 .menuContainer {
   display: flex;
   position: fixed;
-  background-color: #0F0F0F; }
+  background-color: var(--backgroundColor); }
+  .menuContainer .strokeNamesContainer {
+    z-index: 50; }
+  .menuContainer .fillNamesContainer, .menuContainer .strokeNamesContainer {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000000;
+    pointer-events: none; }
+    .menuContainer .fillNamesContainer .names span, .menuContainer .strokeNamesContainer .names span {
+      font-family: 'Montserrat';
+      font-weight: bold;
+      font-size: 7.7vw;
+      white-space: nowrap; }
+    .menuContainer .fillNamesContainer .names .fill, .menuContainer .strokeNamesContainer .names .fill {
+      color: white;
+      z-index: 10; }
+    .menuContainer .fillNamesContainer .names .stroke, .menuContainer .strokeNamesContainer .names .stroke {
+      color: rgba(0, 0, 0, 0);
+      -webkit-text-stroke: 1.5px white; }
   .menuContainer .leftBorder, .menuContainer .rightBorder {
-    width: 27.5vw; }
+    width: 27.5vw;
+    background-color: var(--backgroundColor);
+    z-index: 40; }
   .menuContainer .centerContainer {
     width: 45vw;
     height: auto; }
     .menuContainer .centerContainer img {
-      width: 100%; }
+      width: 100%;
+      margin-bottom: -5px;
+      z-index: -5; }
+    .menuContainer .centerContainer .blackBloc {
+      position: relative;
+      background-color: var(--backgroundColor);
+      z-index: 40; }
