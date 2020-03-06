@@ -29,6 +29,8 @@ let smoothScroll =
 		this.setScrollEvent()
 		this.setLerpInterval()
 		this.setResizeEvent()
+
+		let names = [new Name('Yannick Saillet', (smoothScroll.$img.getBoundingClientRect().height + smoothScroll.$blackBlocs[0].getBoundingClientRect().height * 2) * smoothScroll.scrollSpeedRatio)]
 	},
 
 	setContentSize()
