@@ -45,8 +45,13 @@ body
 		pointer-events: none;
 		.names
 		{
+			position: relative;
 			span.nameSpanContainer
 			{
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translate(-50%, -50%);
 				font-family: 'Montserrat';
 				font-weight: bold;
 				font-size: 7.7vw;

@@ -21,7 +21,7 @@ let smoothScroll =
 
 	// PARAMETERS
 	sizeBetweenImagesRatio : 0.20,
-	scrollSpeedRatio : 5,
+	scrollSpeedRatio : 2,
 
 	setup()
 	{
@@ -30,7 +30,7 @@ let smoothScroll =
 		this.setLerpInterval()
 		this.setResizeEvent()
 
-		let names = [new Name('Yannick Saillet', (smoothScroll.$img.getBoundingClientRect().height + smoothScroll.$blackBlocs[0].getBoundingClientRect().height * 2) * smoothScroll.scrollSpeedRatio)]
+		let names = [new Name('Yannick Saillet', 0), new Name('Christophe Rihet', 1), new Name('Eleonore Wismes', 2), new Name('Mathieu Juric', 3), new Name('Odieux Boby', 4)]
 	},
 
 	setContentSize()

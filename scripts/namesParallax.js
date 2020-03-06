@@ -1,22 +1,58 @@
 class Name
 {
-    constructor(name, yOrigin)
+    constructor(name, rank)
     {
         this.name = name
+        this.yOrigin = (smoothScroll.$img.getBoundingClientRect().height + smoothScroll.$blackBlocs[0].getBoundingClientRect().height * 2) * smoothScroll.scrollSpeedRatio * rank
 
-        this.strokeSpanList = document.querySelectorAll('.strokeNamesContainer .nameSpanContainer span')
-        this.fillSpanList = document.querySelectorAll('.fillNamesContainer .nameSpanContainer span')
-        console.log(this.strokeSpanList, this.fillSpanList)
+        // DOM
+        this.$strokeNamesContainer = document.querySelector('.strokeNamesContainer .names')
+        this.$fillNamesContainer = document.querySelector('.fillNamesContainer .names')
+        
+        this.strokeSpanList = []
+        this.fillSpanList = []
 
-        this.yOrigin = yOrigin
         this.randomGapList = []
         this.vanishDistance = smoothScroll.$img.getBoundingClientRect().height / 3
 
+        this.createDom()
         this.setScrollEvent()
     }
 
     createDom()
     {
+        // STROKE
+        let $strokeDiv = document.createElement('div')
+        $strokeDiv.classList.add(this.name.replace(/\s+/g, ''))
+        let $strokeSpanContainer = document.createElement('span')
+        $strokeSpanContainer.classList.add('stroke')
+        $strokeSpanContainer.classList.add('nameSpanContainer')
+        for (const _letter of this.name)
+        {
+            let $spanLetter = document.createElement('span')
+            $spanLetter.innerHTML = _letter.toUpperCase()
+            $strokeSpanContainer.appendChild($spanLetter)
+            this.strokeSpanList.push($spanLetter)
+        }
+        $strokeDiv.appendChild($strokeSpanContainer)
+        this.$strokeNamesContainer.appendChild($strokeDiv)
+
+
+        // FILL
+        let $fillDiv = document.createElement('div')
+        $fillDiv.classList.add(this.name.replace(/\s+/g, ''))
+        let $fillSpanContainer = document.createElement('span')
+        $fillSpanContainer.classList.add('fill')
+        $fillSpanContainer.classList.add('nameSpanContainer')
+        for (const _letter of this.name)
+        {
+            let $spanLetter = document.createElement('span')
+            $spanLetter.innerHTML = _letter.toUpperCase()
+            $fillSpanContainer.appendChild($spanLetter)
+            this.fillSpanList.push($spanLetter)
+        }
+        $fillDiv.appendChild($fillSpanContainer)
+        this.$fillNamesContainer.appendChild($fillDiv)
 
     }
 
@@ -31,15 +67,16 @@ class Name
 
         window.addEventListener('scroll', () =>
         {
+            // TRANSLATE EACH LETTER ACCORDING TO THE SCROLL BUT WITH OUR LITTLE RANDOM GAP
             for (let i = 0; i < this.strokeSpanList.length; i++)
             {
                 this.strokeSpanList[i].style.transform = `translateY(${(window.pageYOffset - this.yOrigin) * this.randomGapList[i] / smoothScroll.scrollSpeedRatio}px)`
-                console.log(this.vanishDistance / (window.pageYOffset - this.yOrigin))
                 this.strokeSpanList[i].style.opacity = Math.abs(this.vanishDistance / (window.pageYOffset - this.yOrigin))
             }
             for (let i = 0; i < this.fillSpanList.length; i++)
             {
                 this.fillSpanList[i].style.transform = `translateY(${(window.pageYOffset - this.yOrigin) * this.randomGapList[i] / smoothScroll.scrollSpeedRatio}px)`
+                // this.fillSpanList[i].style.opacity = Math.abs(this.vanishDistance / (window.pageYOffset - this.yOrigin))
             }
         })
     }

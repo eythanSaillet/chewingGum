@@ -29,21 +29,27 @@ body {
     align-items: center;
     background-color: #00000000;
     pointer-events: none; }
-    .menuContainer .fillNamesContainer .names span.nameSpanContainer, .menuContainer .strokeNamesContainer .names span.nameSpanContainer {
-      font-family: 'Montserrat';
-      font-weight: bold;
-      font-size: 7.7vw;
-      white-space: nowrap;
-      display: flex; }
-      .menuContainer .fillNamesContainer .names span.nameSpanContainer span, .menuContainer .strokeNamesContainer .names span.nameSpanContainer span {
-        margin: 2px;
-        white-space: pre; }
-    .menuContainer .fillNamesContainer .names .fill, .menuContainer .strokeNamesContainer .names .fill {
-      color: white;
-      z-index: 10; }
-    .menuContainer .fillNamesContainer .names .stroke, .menuContainer .strokeNamesContainer .names .stroke {
-      color: rgba(0, 0, 0, 0);
-      -webkit-text-stroke: 1.5px white; }
+    .menuContainer .fillNamesContainer .names, .menuContainer .strokeNamesContainer .names {
+      position: relative; }
+      .menuContainer .fillNamesContainer .names span.nameSpanContainer, .menuContainer .strokeNamesContainer .names span.nameSpanContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        font-family: 'Montserrat';
+        font-weight: bold;
+        font-size: 7.7vw;
+        white-space: nowrap;
+        display: flex; }
+        .menuContainer .fillNamesContainer .names span.nameSpanContainer span, .menuContainer .strokeNamesContainer .names span.nameSpanContainer span {
+          margin: 2px;
+          white-space: pre; }
+      .menuContainer .fillNamesContainer .names .fill, .menuContainer .strokeNamesContainer .names .fill {
+        color: white;
+        z-index: 10; }
+      .menuContainer .fillNamesContainer .names .stroke, .menuContainer .strokeNamesContainer .names .stroke {
+        color: rgba(0, 0, 0, 0);
+        -webkit-text-stroke: 1.5px white; }
   .menuContainer .leftBorder, .menuContainer .rightBorder {
     width: 27.5vw;
     background-color: var(--backgroundColor);
