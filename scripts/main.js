@@ -3,6 +3,8 @@ function lerp (start, end, ratio)
 	return start * (1 - ratio) + ratio * end
 }
 
+let names
+
 let smoothScroll = 
 {
 	// DOM
@@ -30,7 +32,8 @@ let smoothScroll =
 		this.setLerpInterval()
 		this.setResizeEvent()
 
-		let names = [new Name('Yannick Saillet', 0), new Name('Christophe Rihet', 1), new Name('Eleonore Wismes', 2), new Name('Mathieu Juric', 3), new Name('Odieux Boby', 4)]
+		names = [new Name('Yannick Saillet', 0), new Name('Christophe Rihet', 1), new Name('Eleonore Wismes', 2), new Name('Mathieu Juric', 3), new Name('Odieux Boby', 4)]
+		setNamesScrollEvent()
 	},
 
 	setContentSize()
@@ -85,3 +88,28 @@ let smoothScroll =
 	}
 }
 smoothScroll.setup()
+
+function setNamesScrollEvent()
+{
+	window.addEventListener('scroll', () =>
+	{
+		for (const _element of names)
+		{
+			if(_element.yOrigin < window.pageYOffset + window.innerHeight * 1.5 && _element.yOrigin > window.pageYOffset - window.innerHeight * 1.5)
+			{
+				// console.log(_element)
+				// TRANSLATE EACH LETTER ACCORDING TO THE SCROLL BUT WITH OUR LITTLE RANDOM GAP
+				for (let i = 0; i < _element.strokeSpanList.length; i++)
+				{
+					_element.strokeSpanList[i].style.transform = `translateY(${(window.pageYOffset - _element.yOrigin) * _element.randomGapList[i] / smoothScroll.scrollSpeedRatio}px)`
+					_element.strokeSpanList[i].style.opacity = Math.abs(_element.vanishDistance / (window.pageYOffset - _element.yOrigin))
+				}
+				for (let i = 0; i < _element.fillSpanList.length; i++)
+				{
+					_element.fillSpanList[i].style.transform = `translateY(${(window.pageYOffset - _element.yOrigin) * _element.randomGapList[i] / smoothScroll.scrollSpeedRatio}px)`
+					// _element.fillSpanList[i].style.opacity = Math.abs(_element.vanishDistance / (window.pageYOffset - _element.yOrigin))
+				}
+			}
+		}
+	})
+}
