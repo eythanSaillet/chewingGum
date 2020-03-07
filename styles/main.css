@@ -10,7 +10,8 @@ body {
 .headerContainer {
   position: absolute;
   display: none;
-  pointer-events: none; }
+  pointer-events: none;
+  font-family: 'Montserrat Regular'; }
 
 .menuContainer {
   display: flex;
@@ -36,8 +37,7 @@ body {
         top: 0;
         left: 0;
         transform: translate(-50%, -50%);
-        font-family: 'Montserrat';
-        font-weight: bold;
+        font-family: 'Montserrat Bold';
         font-size: 7.7vw;
         white-space: nowrap;
         display: flex; }
@@ -65,3 +65,11 @@ body {
       position: relative;
       background-color: var(--backgroundColor);
       z-index: 40; }
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url("../assets/fonts/montserrat/Montserrat-Bold.woff") format("woff"), url("../assets/fonts/montserrat/Montserrat-Bold.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Montserrat Regular';
+  src: url("../assets/fonts/montserrat/Montserrat-Regular.woff") format("woff"), url("../assets/fonts/montserrat/Montserrat-Regular.woff2") format("woff2"); }

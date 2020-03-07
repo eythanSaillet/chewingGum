@@ -17,6 +17,7 @@ body
 	position: absolute;
 	display: none;
 	pointer-events: none;
+	font-family: 'Montserrat Regular';
 }
 
 // SCROLL MENU
@@ -52,8 +53,7 @@ body
 				top: 0;
 				left: 0;
 				transform: translate(-50%, -50%);
-				font-family: 'Montserrat';
-				font-weight: bold;
+				font-family: 'Montserrat Bold';
 				font-size: 7.7vw;
 				white-space: nowrap;
 				display: flex;
@@ -79,9 +79,9 @@ body
 	// BORDER TO HIDE FILL TEXTE
 	.leftBorder, .rightBorder
 	{
-	width: 27.5vw;
-	background-color: var(--backgroundColor);
-	z-index: 40;
+		width: 27.5vw;
+		background-color: var(--backgroundColor);
+		z-index: 40;
 	}
 	
 	// CENTER CONTAINER THAT CONTAINS IMAGES AND BLACKBLOCS
@@ -91,26 +91,26 @@ body
 		height: auto;
 		img
 		{
-		width: 100%;
-		margin-bottom: -5px;
-		z-index: -5;
-	}
-	.blackBloc
-	{
-		position: relative;
-		background-color: var(--backgroundColor);
-		z-index: 40;
-	}
+			width: 100%;
+			margin-bottom: -5px;
+			z-index: -5;
+		}
+		.blackBloc
+		{
+			position: relative;
+			background-color: var(--backgroundColor);
+			z-index: 40;
+		}
 	}
 }
 
-// @font-face
-// {
-//	 font-family: 'Montserrat Medium';
-//	 src: url('assets/fonts/Montserrat/Montserrat-Medium.ttf') format('ttf');
-// }
-// @font-face
-// {
-//	 font-family: 'Montserrat Bold';
-//	 src: url('assets/fonts/Montserrat/Montserrat-Medium.ttf') format('ttf');
-// }
+@font-face
+{
+	font-family: 'Montserrat Bold';
+	src: url('../assets/fonts/montserrat/Montserrat-Bold.woff') format('woff'), url('../assets/fonts/montserrat/Montserrat-Bold.woff2') format('woff2');
+}
+@font-face
+{
+	font-family: 'Montserrat Regular';
+	src: url('../assets/fonts/montserrat/Montserrat-Regular.woff') format('woff'), url('../assets/fonts/montserrat/Montserrat-Regular.woff2') format('woff2');
+}

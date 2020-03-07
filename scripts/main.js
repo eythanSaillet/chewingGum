@@ -62,6 +62,12 @@ let smoothScroll =
 		{
 			this.scrollValue = window.pageYOffset
 		})
+
+		// SCROLL TOP WHEN REFRESHING
+		window.onbeforeunload = function ()
+		{
+			window.scrollTo(0, 0)
+		}
 	},
 
 	setLerpInterval()
