@@ -8,15 +8,17 @@ class Name
         // DOM
         this.$strokeNamesContainer = document.querySelector('.strokeNamesContainer .names')
         this.$fillNamesContainer = document.querySelector('.fillNamesContainer .names')
+        this.$correspondingImage = document.querySelectorAll('.centerContainer img')[rank]
         
         this.strokeSpanList = []
         this.fillSpanList = []
+        this.letterReferenceHeight = null,
 
         this.randomGapList = []
-        this.vanishDistance = smoothScroll.$img.getBoundingClientRect().height / 3
+        this.vanishDistance = smoothScroll.$img.getBoundingClientRect().height / 4
 
         this.createDom()
-        this.setScrollEvent()
+        this.createRandomGap()
         this.initPosition()
     }
 
@@ -55,6 +57,7 @@ class Name
         $fillDiv.appendChild($fillSpanContainer)
         this.$fillNamesContainer.appendChild($fillDiv)
 
+        this.letterReferenceHeight = this.fillSpanList[0].getBoundingClientRect().height
     }
 
     initPosition()
@@ -69,28 +72,12 @@ class Name
         }
     }
 
-    setScrollEvent()
+    createRandomGap()
     {
         // CREATE RANDOM GAP FOR EACH LETTERS
         for (let i = 0; i < this.name.length; i++)
         {
             this.randomGapList.push(Math.random() + 1)
         }
-
-
-        // window.addEventListener('scroll', () =>
-        // {
-        //     // TRANSLATE EACH LETTER ACCORDING TO THE SCROLL BUT WITH OUR LITTLE RANDOM GAP
-        //     for (let i = 0; i < this.strokeSpanList.length; i++)
-        //     {
-        //         this.strokeSpanList[i].style.transform = `translateY(${(window.pageYOffset - this.yOrigin) * this.randomGapList[i] / smoothScroll.scrollSpeedRatio}px)`
-        //         this.strokeSpanList[i].style.opacity = Math.abs(this.vanishDistance / (window.pageYOffset - this.yOrigin))
-        //     }
-        //     for (let i = 0; i < this.fillSpanList.length; i++)
-        //     {
-        //         this.fillSpanList[i].style.transform = `translateY(${(window.pageYOffset - this.yOrigin) * this.randomGapList[i] / smoothScroll.scrollSpeedRatio}px)`
-        //         // this.fillSpanList[i].style.opacity = Math.abs(this.vanishDistance / (window.pageYOffset - this.yOrigin))
-        //     }
-        // })
     }
 }
