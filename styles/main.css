@@ -4,14 +4,24 @@
 body {
   margin: 0;
   background-color: var(--backgroundColor);
-  height: 500vh;
   position: relative; }
 
 .headerContainer {
-  position: absolute;
-  display: none;
-  pointer-events: none;
+  width: 91.4vw;
+  height: 20vh;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding: 3vh 4.3vw 3vh 4.3vw;
+  align-items: center;
+  z-index: 100;
   font-family: 'Montserrat Regular'; }
+  .headerContainer .logo img {
+    width: 130px; }
+  .headerContainer .contactButton {
+    color: white;
+    text-decoration: none;
+    padding: 10px; }
 
 .menuContainer {
   display: flex;
@@ -38,7 +48,7 @@ body {
         left: 0;
         transform: translate(-50%, -50%);
         font-family: 'Montserrat Bold';
-        font-size: 7.7vw;
+        font-size: 7.5vw;
         white-space: nowrap;
         display: flex; }
         .menuContainer .fillNamesContainer .names span.nameSpanContainer span, .menuContainer .strokeNamesContainer .names span.nameSpanContainer span {
