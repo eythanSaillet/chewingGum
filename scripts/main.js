@@ -15,6 +15,7 @@ let smoothScroll =
 	$fillNamesContainer : document.querySelector('.fillNamesContainer'),
 	$strokeNamesContainer : document.querySelector('.strokeNamesContainer'),
 
+	// VALUES
 	imgHeight : document.querySelector('.centerContainer img').getBoundingClientRect().height,
 	contentHeight : null,
 	contentMarginTop : null,
@@ -105,6 +106,7 @@ function setNamesScrollEvent()
 			if(_name.yOrigin < window.pageYOffset + window.innerHeight * 1.5 && _name.yOrigin > window.pageYOffset - window.innerHeight * 1.5)
 			{
 				// TRANSLATE EACH LETTER ACCORDING TO THE SCROLL BUT WITH OUR LITTLE RANDOM GAP
+
 				// STROKE LETTERS
 				for (let i = 0; i < _name.strokeSpanList.length; i++)
 				{
@@ -116,8 +118,7 @@ function setNamesScrollEvent()
 				{
 					let translateValue = (window.pageYOffset - _name.yOrigin) * _name.randomGapList[i] / smoothScroll.scrollSpeedRatio
 					_name.fillSpanList[i].style.transform = `translateY(${translateValue}px)`
-					// _name.fillSpanList[i].style.opacity = Math.abs(_name.vanishDistance / (window.pageYOffset - _name.yOrigin))
-					if(translateValue > smoothScroll.imgHeight / 2 - smoothScroll.scrollValue + _name.yOrigin + _name.letterReferenceHeight || translateValue < - smoothScroll.imgHeight / 2 - smoothScroll.scrollValue + _name.yOrigin - _name.letterReferenceHeight)
+					if(translateValue > smoothScroll.imgHeight / 2 - smoothScroll.scrollValue + _name.yOrigin + _name.letterReferenceHeight + _name.randomGapList[i] * _name.letterReferenceHeight * 0.2 || translateValue < - smoothScroll.imgHeight / 2 - smoothScroll.scrollValue + _name.yOrigin - _name.letterReferenceHeight - _name.randomGapList[i] * _name.letterReferenceHeight * 0.2)
 					{
 						_name.fillSpanList[i].style.opacity = 0
 					}
