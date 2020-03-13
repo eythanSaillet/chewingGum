@@ -42,7 +42,7 @@ let smoothScroll =
 
 	setContentSize()
 	{
-		// SETTING MARGINS AND SIZES OF BLACKBLOCS TO PUT IMAGES AT THE CENTER OF THE VIEW
+		// SETTING MARGINS, AND SIZES OF BLACKBLOCS TO PUT IMAGES AT THE CENTER OF THE VIEW
 		this.contentMarginTop = (window.innerHeight - this.imgHeight) * 0.5
 		this.contentMarginBottom = (window.innerHeight - this.imgHeight) * 0.5
 		this.$content.style.marginTop = `${this.contentMarginTop}px`
@@ -99,15 +99,52 @@ let smoothScroll =
 }
 // window.onload = smoothScroll.setup()
 
-if(smoothScroll.$img.complete)
-{
-	smoothScroll.setup()
-}
-else
-{
-	smoothScroll.$img.addEventListener('load', () =>
-	{
-		smoothScroll.setup()
-	})
-}
+// if(smoothScroll.$img.complete)
+// {
+// 	smoothScroll.setup()
+// }
+// else
+// {
+// 	// smoothScroll.$img.addEventListener('load', () =>
+// 	// {
+// 	// 	smoothScroll.setup()
+// 	// })
+// 	window.onload = smoothScroll.setup()
+// }
 
+let imagesLoader =
+{
+	$images : document.querySelectorAll('.centerContainer img'),
+
+	imagesUrl :
+	[
+		'assets/images/print_3_min-min.jpeg',
+		'assets/images/print_4_min-min.jpeg',
+		'assets/images/print_2_min-min.jpeg',
+		'assets/images/print_1_min-min.jpeg',
+		'assets/images/print_5_min-min.jpeg'
+	],
+
+	counter : 0,
+
+	load()
+	{
+		for (const _key in this.imagesUrl)
+		{
+			let imageObject = new Image()
+			imageObject.onload = () =>
+			{
+				console.log('image loaded')
+				this.counter++
+				this.$images[_key].src = imageObject.src
+				if (this.counter == this.imagesUrl.length)
+				{
+					console.log('everything is loaded')
+					smoothScroll.setup()
+				}
+			}
+			imageObject.src = this.imagesUrl[_key]
+		}
+	}
+}
+imagesLoader.load()
