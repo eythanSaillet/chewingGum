@@ -8,6 +8,55 @@ body
 	margin: 0;
 	background-color: var(--backgroundColor);
 	position: relative;
+	cursor: none;
+	user-select: none;
+}
+
+// CURSOR
+
+.cursorContainer
+{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+	mix-blend-mode: difference;
+	pointer-events: none;
+	opacity: 0;
+	.dot
+	{
+		width: 10px;
+		height: 10px;
+		position: absolute;
+		top: -150px;
+		left: -150px;
+		border-radius: 50%;
+		background-color: white;
+		border: solid white 2px;
+		transform: translate(-50%, -50%);
+	}
+	.circle
+	{
+		width: 50px;
+		height: 50px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		border-radius: 50%;
+		border: solid white 1px;
+		transform: translate(-50%, -50%);
+	}
+	.text
+	{
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		transform: translate(-50%, -50%);
+		font-size: 17px;
+		font-family: 'Montserrat Bold';
+		color: white;
+	}
 }
 
 // HEADER

@@ -36,7 +36,7 @@ let smoothScroll =
 		this.setLerpInterval()
 		this.setResizeEvent()
 
-		names = [new Name('Yannick Saillet', 0), new Name('Christophe Rihet', 1), new Name('Eleonore Wismes', 2), new Name('Mathieu Juric', 3), new Name('Odieux Boby', 4)]
+		names = [new Name('Yannick Saillet', 0), new Name('Christophe Rihet', 1), new Name('Eleonore Wismes', 2), new Name('Mathieu Juric', 3), new Name('Odieuy Boby', 4)]
 		setNamesScrollEvent()
 	},
 
@@ -78,6 +78,7 @@ let smoothScroll =
 	{
 		setInterval(() =>
 		{
+			// SCROLL
 			// TRANSLATING BY THE SCROLL VALUE AFTER APPLY A LERP EFFECT
 			this.scrollValueWithLerp = lerp(this.scrollValueWithLerp, this.scrollValue, 0.2)
 			this.$content.style.transform = `translateY(${-this.scrollValueWithLerp / this.scrollSpeedRatio}px)`
@@ -85,6 +86,14 @@ let smoothScroll =
 			// TRANSLATING NAMES TO SIMULATE A POSITION FIXED
 			this.$fillNamesContainer.style.transform = `translateY(${this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop}px)`
 			this.$strokeNamesContainer.style.transform = `translateY(${this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop}px)`
+
+			// CURSOR
+			// APPLY LERP ON CURSOR POS
+			cursor.mousePosWithLerp.x = lerp(cursor.mousePosWithLerp.x, cursor.mousePos.x, 0.15)
+			cursor.mousePosWithLerp.y = lerp(cursor.mousePosWithLerp.y, cursor.mousePos.y, 0.15)
+			// UPDATE CIRCLE CURSOR POS
+            cursor.$circle.style.left = `${cursor.mousePosWithLerp.x}px`
+            cursor.$circle.style.top = `${cursor.mousePosWithLerp.y}px`
 		}, 1000 / 60)
 	},
 
