@@ -88,7 +88,7 @@ function setNamesScrollEvent()
 	{
 		for (const _name of names)
 		{
-			if(_name.yOrigin < window.pageYOffset + window.innerHeight * 1.5 && _name.yOrigin > window.pageYOffset - window.innerHeight * 1.5)
+			if(_name.yOrigin < window.pageYOffset + window.innerHeight * 1.3 && _name.yOrigin > window.pageYOffset - window.innerHeight * 1.3)
 			{
 				// TRANSLATE EACH LETTER ACCORDING TO THE SCROLL BUT WITH OUR LITTLE RANDOM GAP
 
@@ -96,7 +96,7 @@ function setNamesScrollEvent()
 				for (let i = 0; i < _name.strokeSpanList.length; i++)
 				{
 					_name.strokeSpanList[i].style.transform = `translateY(${(window.pageYOffset - _name.yOrigin) * _name.randomGapList[i] / smoothScroll.scrollSpeedRatio}px)`
-					_name.strokeSpanList[i].style.opacity = Math.abs(_name.vanishDistance / (window.pageYOffset - _name.yOrigin))
+					_name.strokeSpanList[i].style.opacity = Math.pow(Math.abs(_name.vanishDistance / (window.pageYOffset - _name.yOrigin)), 1.7)
 				}
 				// FILLED LETTERS
 				for (let i = 0; i < _name.fillSpanList.length; i++)

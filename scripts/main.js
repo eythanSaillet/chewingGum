@@ -97,20 +97,6 @@ let smoothScroll =
 		})
 	}
 }
-// window.onload = smoothScroll.setup()
-
-// if(smoothScroll.$img.complete)
-// {
-// 	smoothScroll.setup()
-// }
-// else
-// {
-// 	// smoothScroll.$img.addEventListener('load', () =>
-// 	// {
-// 	// 	smoothScroll.setup()
-// 	// })
-// 	window.onload = smoothScroll.setup()
-// }
 
 let imagesLoader =
 {
