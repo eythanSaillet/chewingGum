@@ -29,8 +29,6 @@ let smoothScroll =
 
 	setup()
 	{
-		this.imgHeight = document.querySelector('.centerContainer img').getBoundingClientRect().height
-
 		this.setContentSize()
 		this.setScrollEvent()
 		this.setLerpInterval()
@@ -42,6 +40,8 @@ let smoothScroll =
 
 	setContentSize()
 	{
+		this.imgHeight = document.querySelector('.centerContainer img').getBoundingClientRect().height
+
 		// SETTING MARGINS, AND SIZES OF BLACKBLOCS TO PUT IMAGES AT THE CENTER OF THE VIEW
 		this.contentMarginTop = (window.innerHeight - this.imgHeight) * 0.5
 		this.contentMarginBottom = (window.innerHeight - this.imgHeight) * 0.5
@@ -99,14 +99,21 @@ let smoothScroll =
 
 	setResizeEvent()
 	{
-		// UPDATE CONTENT SIZE WHEN WINDOW RESIZE FOR RESPONSIVE
+		// UPDATE SYSTEM WHEN WINDOW RESIZE FOR RESPONSIVE
 		window.addEventListener('resize', () =>
 		{
+			// SETUP PAGE CONTENT SIZE
 			this.setContentSize()
+			// SETUP NAMES POS
+			for (const _name of names)
+			{
+				_name.resizeAdapt()
+			}
 		})
 	}
 }
 
+// LAUCH THE BUILD OF THE PAGE WHEN THE IMAGES ARE LOADED
 let imagesLoader =
 {
 	$images : document.querySelectorAll('.centerContainer img'),
@@ -129,12 +136,10 @@ let imagesLoader =
 			let imageObject = new Image()
 			imageObject.onload = () =>
 			{
-				console.log('image loaded')
 				this.counter++
 				this.$images[_key].src = imageObject.src
 				if (this.counter == this.imagesUrl.length)
 				{
-					console.log('everything is loaded')
 					smoothScroll.setup()
 				}
 			}

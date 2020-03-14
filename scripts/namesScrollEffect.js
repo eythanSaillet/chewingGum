@@ -3,7 +3,8 @@ class Name
     constructor(name, rank)
     {
         this.name = name
-        this.yOrigin = (smoothScroll.$img.getBoundingClientRect().height + smoothScroll.$blackBlocs[0].getBoundingClientRect().height * 2) * smoothScroll.scrollSpeedRatio * rank
+        this.rank = rank
+        this.yOrigin = (smoothScroll.$img.getBoundingClientRect().height + smoothScroll.$blackBlocs[0].getBoundingClientRect().height * 2) * smoothScroll.scrollSpeedRatio * this.rank
 
         // DOM
         this.$strokeNamesContainer = document.querySelector('.strokeNamesContainer .names')
@@ -79,6 +80,14 @@ class Name
         {
             this.randomGapList.push(Math.random() + 1)
         }
+    }
+
+    resizeAdapt()
+    {
+        this.initPosition()
+        this.yOrigin = (smoothScroll.$img.getBoundingClientRect().height + smoothScroll.$blackBlocs[0].getBoundingClientRect().height * 2) * smoothScroll.scrollSpeedRatio * this.rank
+        this.letterReferenceHeight = this.fillSpanList[0].getBoundingClientRect().height
+        this.vanishDistance = smoothScroll.$img.getBoundingClientRect().height / 4
     }
 }
 

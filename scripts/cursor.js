@@ -40,12 +40,10 @@ let cursor =
         {
             _image.addEventListener('mouseover', () =>
             {
-                console.log('on')
                 this.linkHoverTimeLine.restart()
             })
             _image.addEventListener('mouseleave', () =>
             {
-                console.log('leave')
                 this.linkHoverTimeLine.reverse(0.3)
             })
         }
