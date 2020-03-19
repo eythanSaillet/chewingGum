@@ -1,3 +1,8 @@
+function lerp (start, end, ratio)
+{
+	return start * (1 - ratio) + ratio * end
+}
+
 let cursor =
 {
     // DOM
@@ -17,7 +22,8 @@ let cursor =
     setup()
     {
         this.setMouseEvent()
-        this.setLinkHoverTimeline()
+        this.setLerpInterval()
+        this.setLinkHoverEffect()
     },
 
     setMouseEvent()
@@ -28,14 +34,13 @@ let cursor =
             this.mousePos = {x: _event.clientX, y: _event.clientY}
 
             // UPDATE DOT CURSOR POS
-            this.$dot.style.left = `${this.mousePos.x}px`
-            this.$dot.style.top = `${this.mousePos.y}px`
+            this.$dot.style.transform = `translate(calc(-50% + ${this.mousePos.x}px), calc(-50% + ${this.mousePos.y}px))`
 
             // UPDATE TEXT CURSOR POS
-            this.$text.style.left = `${this.mousePos.x}px`
-            this.$text.style.top = `${this.mousePos.y}px`
+            this.$text.style.transform = `translate(calc(-50% + ${this.mousePos.x}px), calc(-50% + ${this.mousePos.y}px))`
         })
 
+        // ADD EVENT ON IMAGES TO TRIGGER THE CURSOR ANIMATION
         for (const _image of this.$images)
         {
             _image.addEventListener('mouseover', () =>
@@ -48,6 +53,7 @@ let cursor =
             })
         }
 
+        // MAKE CURSOR INVISIBLE WHEN HE LEAVE THE WINDOW
         window.addEventListener('mouseout', () =>
         {
             gsap.to(this.$cursor, 0.5, {opacity: 0})
@@ -58,7 +64,20 @@ let cursor =
         })
     },
 
-    setLinkHoverTimeline()
+    setLerpInterval()
+    {
+        window.setInterval(() =>
+        {
+            // APPLY LERP ON CURSOR POS
+            this.mousePosWithLerp.x = lerp(this.mousePosWithLerp.x, this.mousePos.x, 0.15)
+            this.mousePosWithLerp.y = lerp(this.mousePosWithLerp.y, this.mousePos.y, 0.15)
+            // UPDATE CIRCLE CURSOR POS
+            this.$circle.style.transform = `translate(calc(-50% + ${this.mousePosWithLerp.x}px), calc(-50% + ${this.mousePosWithLerp.y}px))`
+        }, 1000 / 60)
+    },
+
+    // DEFINE THE GSAP CURSOR ANIMATION
+    setLinkHoverEffect()
     {
         this.linkHoverTimeLine.to(this.$circle, 0.3, {opacity: 0, width: 100, height: 100})
             .to(this.$dot, 0.3, { width: 80, height: 80, backgroundColor: 'rgba(255, 255, 255, 0)', delay: -0.3})

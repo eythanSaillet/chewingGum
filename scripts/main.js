@@ -86,14 +86,6 @@ let smoothScroll =
 			// TRANSLATING NAMES TO SIMULATE A POSITION FIXED
 			this.$fillNamesContainer.style.transform = `translateY(${this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop}px)`
 			this.$strokeNamesContainer.style.transform = `translateY(${this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop}px)`
-
-			// CURSOR
-			// APPLY LERP ON CURSOR POS
-			cursor.mousePosWithLerp.x = lerp(cursor.mousePosWithLerp.x, cursor.mousePos.x, 0.15)
-			cursor.mousePosWithLerp.y = lerp(cursor.mousePosWithLerp.y, cursor.mousePos.y, 0.15)
-			// UPDATE CIRCLE CURSOR POS
-            cursor.$circle.style.left = `${cursor.mousePosWithLerp.x}px`
-            cursor.$circle.style.top = `${cursor.mousePosWithLerp.y}px`
 		}, 1000 / 60)
 	},
 

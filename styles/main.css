@@ -1,6 +1,3 @@
-:root {
-  --backgroundColor: #0F0F0F; }
-
 body {
   margin: 0;
   background-color: var(--backgroundColor);
@@ -60,11 +57,3 @@ body {
       position: relative;
       background-color: var(--backgroundColor);
       z-index: 40; }
-
-@font-face {
-  font-family: 'Montserrat Bold';
-  src: url("../assets/fonts/montserrat/Montserrat-Bold.woff") format("woff"), url("../assets/fonts/montserrat/Montserrat-Bold.woff2") format("woff2"); }
-
-@font-face {
-  font-family: 'Montserrat Regular';
-  src: url("../assets/fonts/montserrat/Montserrat-Regular.woff") format("woff"), url("../assets/fonts/montserrat/Montserrat-Regular.woff2") format("woff2"); }
