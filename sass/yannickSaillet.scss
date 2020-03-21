@@ -1,8 +1,28 @@
 body
 {
+	position: relative;
 	margin: 0;
 	background-color: var(--backgroundColor);
-	position: relative;
 	cursor: none;
 	// user-select: none;
+
+}
+
+.nameContainer
+{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	h1
+	{
+		font-family: 'Montserrat Bold';
+		font-size: 8vw;
+		color: transparent;
+		background-image: radial-gradient(circle, white 20%, #1a1a1a 20%, #1a1a1a 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		background-position: -200px;
+	}
 }

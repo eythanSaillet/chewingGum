@@ -63,10 +63,10 @@
 	z-index: 100;
     font-family: 'Montserrat Regular';
     pointer-events: none;
-
     a
     {
-        pointer-events: auto;
+		pointer-events: auto;
+		cursor: none;
     }
 	
 	.logo

@@ -48,7 +48,8 @@
   font-family: 'Montserrat Regular';
   pointer-events: none; }
   .headerContainer a {
-    pointer-events: auto; }
+    pointer-events: auto;
+    cursor: none; }
   .headerContainer .logo img {
     width: 130px; }
   .headerContainer .contactButton {

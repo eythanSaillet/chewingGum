@@ -10,20 +10,23 @@ let cursor =
     $dot : document.querySelector('.cursorContainer .dot'),
     $circle : document.querySelector('.cursorContainer .circle'),
     $text : document.querySelector('.cursorContainer .text'),
+
     $images : document.querySelectorAll('.centerContainer img'),
+    $links : document.querySelectorAll(('.headerContainer a')),
 
     // VALUES
     mousePos : {x: -150, y: -150},
     mousePosWithLerp : {x: -150, y: -150},
 
-    // TIMELINE ANIMATION
-    linkHoverTimeLine : gsap.timeline({paused: true}),
+    // ANIMATIONS TIMELINES
+    imagesHoverTimeLine : gsap.timeline({paused: true}),
+    linksHoverTimeLine : gsap.timeline({paused: true}),
 
     setup()
     {
         this.setMouseEvent()
         this.setLerpInterval()
-        this.setLinkHoverEffect()
+        this.setHoverEffect()
     },
 
     setMouseEvent()
@@ -45,11 +48,26 @@ let cursor =
         {
             _image.addEventListener('mouseover', () =>
             {
-                this.linkHoverTimeLine.restart()
+                this.imagesHoverTimeLine.restart()
             })
             _image.addEventListener('mouseleave', () =>
             {
-                this.linkHoverTimeLine.reverse(0.3)
+                this.imagesHoverTimeLine.reverse(0.3)
+            })
+        }
+
+        // ADD EVENT ON LINKS TO TRIGGER THE CURSOR ANIMATION
+        for (const _link of this.$links)
+        {
+            _link.addEventListener('mouseover', () =>
+            {
+                this.linksHoverTimeLine.restart()
+                // this.$cursor.style.mixBlendMode = 'difference'
+            })
+            _link.addEventListener('mouseleave', () =>
+            {
+                this.linksHoverTimeLine.reverse(0.3)
+                // this.$cursor.style.mixBlendMode = 'normal'
             })
         }
 
@@ -77,11 +95,15 @@ let cursor =
     },
 
     // DEFINE THE GSAP CURSOR ANIMATION
-    setLinkHoverEffect()
+    setHoverEffect()
     {
-        this.linkHoverTimeLine.to(this.$circle, 0.3, {opacity: 0, width: 100, height: 100})
+        // ON IMAGES
+        this.imagesHoverTimeLine.to(this.$circle, 0.3, {opacity: 0, width: 100, height: 100})
             .to(this.$dot, 0.3, { width: 80, height: 80, backgroundColor: 'rgba(255, 255, 255, 0)', delay: -0.3})
             .to(this.$text, 0.3, { opacity: 1, delay: -0.2})
+        // ON LINKS
+        this.linksHoverTimeLine.to(this.$circle, 0.3, {opacity: 0, width: 100, height: 100})
+            .to(this.$dot, 0.3, { width: 50, height: 50, backgroundColor: 'rgba(255, 255, 255, 0)', borderWidth: 1, delay: -0.3})
     }
 }
 cursor.setup()
