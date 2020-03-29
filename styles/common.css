@@ -10,31 +10,16 @@
   left: 0px;
   z-index: 100;
   pointer-events: none;
-  opacity: 0; }
+  opacity: 0;
+  mix-blend-mode: difference; }
   .cursorContainer .dot {
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     position: absolute;
     border-radius: 50%;
     background-color: white;
-    border: solid white 2px;
-    transform: translate(calc(-50% - 150px), calc(-50% - 150px)); }
-  .cursorContainer .circle {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    border-radius: 50%;
     border: solid white 1px;
     transform: translate(calc(-50% - 150px), calc(-50% - 150px)); }
-  .cursorContainer .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    font-size: 17px;
-    font-family: 'Montserrat Bold';
-    color: white; }
 
 .headerContainer {
   width: 91.4vw;

@@ -17,10 +17,12 @@ body
 	justify-content: center;
 	h1
 	{
+		padding: 10vh 7vw 10vh 7vw;
 		font-family: 'Montserrat Bold';
 		font-size: 8vw;
 		color: transparent;
-		background-image: radial-gradient(circle, white 20%, #1a1a1a 20%, #1a1a1a 100%);
+		background: radial-gradient(circle, white 15%, black 15%, black 0), black;
+		background-repeat: no-repeat;
 		background-clip: text;
 		-webkit-background-clip: text;
 		background-position: -200px;

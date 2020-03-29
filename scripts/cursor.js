@@ -8,11 +8,10 @@ let cursor =
     // DOM
     $cursor : document.querySelector('.cursorContainer'),
     $dot : document.querySelector('.cursorContainer .dot'),
-    $circle : document.querySelector('.cursorContainer .circle'),
-    $text : document.querySelector('.cursorContainer .text'),
 
     $images : document.querySelectorAll('.centerContainer img'),
     $links : document.querySelectorAll(('.headerContainer a')),
+    $vanishOnHover : [],
 
     // VALUES
     mousePos : {x: -150, y: -150},
@@ -25,7 +24,6 @@ let cursor =
     setup()
     {
         this.setMouseEvent()
-        this.setLerpInterval()
         this.setHoverEffect()
     },
 
@@ -38,9 +36,6 @@ let cursor =
 
             // UPDATE DOT CURSOR POS
             this.$dot.style.transform = `translate(calc(-50% + ${this.mousePos.x}px), calc(-50% + ${this.mousePos.y}px))`
-
-            // UPDATE TEXT CURSOR POS
-            this.$text.style.transform = `translate(calc(-50% + ${this.mousePos.x}px), calc(-50% + ${this.mousePos.y}px))`
         })
 
         // ADD EVENT ON IMAGES TO TRIGGER THE CURSOR ANIMATION
@@ -52,7 +47,7 @@ let cursor =
             })
             _image.addEventListener('mouseleave', () =>
             {
-                this.imagesHoverTimeLine.reverse(0.3)
+                this.imagesHoverTimeLine.reverse()
             })
         }
 
@@ -62,12 +57,10 @@ let cursor =
             _link.addEventListener('mouseover', () =>
             {
                 this.linksHoverTimeLine.restart()
-                // this.$cursor.style.mixBlendMode = 'difference'
             })
             _link.addEventListener('mouseleave', () =>
             {
-                this.linksHoverTimeLine.reverse(0.3)
-                // this.$cursor.style.mixBlendMode = 'normal'
+                this.linksHoverTimeLine.reverse()
             })
         }
 
@@ -82,15 +75,16 @@ let cursor =
         })
     },
 
-    setLerpInterval()
+    setFlashLightLerpInterval()
     {
         window.setInterval(() =>
         {
             // APPLY LERP ON CURSOR POS
             this.mousePosWithLerp.x = lerp(this.mousePosWithLerp.x, this.mousePos.x, 0.15)
             this.mousePosWithLerp.y = lerp(this.mousePosWithLerp.y, this.mousePos.y, 0.15)
-            // UPDATE CIRCLE CURSOR POS
-            this.$circle.style.transform = `translate(calc(-50% + ${this.mousePosWithLerp.x}px), calc(-50% + ${this.mousePosWithLerp.y}px))`
+
+            // UPDATE FLASHLIGHT EFFECT ON DIRECTORS PAGES
+            flashLightEffect.posUpdate()
         }, 1000 / 60)
     },
 
@@ -98,12 +92,9 @@ let cursor =
     setHoverEffect()
     {
         // ON IMAGES
-        this.imagesHoverTimeLine.to(this.$circle, 0.3, {opacity: 0, width: 100, height: 100})
-            .to(this.$dot, 0.3, { width: 80, height: 80, backgroundColor: 'rgba(255, 255, 255, 0)', delay: -0.3})
-            .to(this.$text, 0.3, { opacity: 1, delay: -0.2})
+        this.imagesHoverTimeLine.to(this.$dot, 0.3, { width: 30, height: 30})
         // ON LINKS
-        this.linksHoverTimeLine.to(this.$circle, 0.3, {opacity: 0, width: 100, height: 100})
-            .to(this.$dot, 0.3, { width: 50, height: 50, backgroundColor: 'rgba(255, 255, 255, 0)', borderWidth: 1, delay: -0.3})
+        this.linksHoverTimeLine.to(this.$dot, 0.3, { width: 30, height: 30, backgroundColor: 'rgba(255, 255, 255, 0)'})
     }
 }
 cursor.setup()
