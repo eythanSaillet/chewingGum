@@ -14,6 +14,7 @@ body
 	display: flex;
 	position: fixed;
 	background-color: var(--backgroundColor);
+	will-change: transform;
 
 	// NAMES STROKE/FILL EFFECT
 	.strokeNamesContainer
@@ -49,6 +50,7 @@ body
 				{
 					margin: 2px;
 					white-space: pre;
+					will-change: transform opacity;
 				}
 			}
 			.fill

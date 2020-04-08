@@ -24,7 +24,7 @@ let smoothScroll =
 	scrollValueWithLerp : null,
 
 	// PARAMETERS
-	sizeBetweenImagesRatio : 0.20,
+	sizeBetweenImagesRatio : 0.2,
 	scrollSpeedRatio : 2,
 
 	setup()
@@ -81,11 +81,11 @@ let smoothScroll =
 			// SCROLL
 			// TRANSLATING BY THE SCROLL VALUE AFTER APPLY A LERP EFFECT
 			this.scrollValueWithLerp = lerp(this.scrollValueWithLerp, this.scrollValue, 0.2)
-			this.$content.style.transform = `translateY(${-this.scrollValueWithLerp / this.scrollSpeedRatio}px)`
+			this.$content.style.transform = `translateY(${Math.round(-this.scrollValueWithLerp / this.scrollSpeedRatio)}px)`
 			
 			// TRANSLATING NAMES TO SIMULATE A POSITION FIXED
-			this.$fillNamesContainer.style.transform = `translateY(${this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop}px)`
-			this.$strokeNamesContainer.style.transform = `translateY(${this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop}px)`
+			this.$fillNamesContainer.style.transform = `translateY(${Math.round(this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop)}px)`
+			this.$strokeNamesContainer.style.transform = `translateY(${Math.round(this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop)}px)`
 		}, 1000 / 60)
 	},
 

@@ -65,11 +65,11 @@ class Name
     {
         for (let i = 0; i < this.strokeSpanList.length; i++)
         {
-            this.strokeSpanList[i].style.transform = `translateY(${this.yOrigin}px)`
+            this.strokeSpanList[i].style.transform = `translateY(${Math.round(this.yOrigin)}px)`
         }
         for (let i = 0; i < this.fillSpanList.length; i++)
         {
-            this.fillSpanList[i].style.transform = `translateY(${this.yOrigin}px)`
+            this.fillSpanList[i].style.transform = `translateY(${Math.round(this.yOrigin)}px)`
         }
     }
 
@@ -99,19 +99,20 @@ function setNamesScrollEvent()
 		{
 			if(_name.yOrigin < window.pageYOffset + window.innerHeight * 1.3 && _name.yOrigin > window.pageYOffset - window.innerHeight * 1.3)
 			{
+                // console.log(window.pageYOffset - _name.yOrigin)
 				// TRANSLATE EACH LETTER ACCORDING TO THE SCROLL BUT WITH OUR LITTLE RANDOM GAP
 
 				// STROKE LETTERS
 				for (let i = 0; i < _name.strokeSpanList.length; i++)
 				{
-					_name.strokeSpanList[i].style.transform = `translateY(${(window.pageYOffset - _name.yOrigin) * _name.randomGapList[i] / smoothScroll.scrollSpeedRatio}px)`
-					_name.strokeSpanList[i].style.opacity = Math.pow(Math.abs(_name.vanishDistance / (window.pageYOffset - _name.yOrigin)), 1.7)
+                    _name.strokeSpanList[i].style.transform = `translateY(${Math.round((window.pageYOffset - _name.yOrigin) * _name.randomGapList[i] / smoothScroll.scrollSpeedRatio)}px)`
+					// _name.strokeSpanList[i].style.opacity = Math.round(Math.abs(_name.vanishDistance / (window.pageYOffset - _name.yOrigin), 1.7) * 100) / 100
 				}
 				// FILLED LETTERS
 				for (let i = 0; i < _name.fillSpanList.length; i++)
 				{
 					let translateValue = (window.pageYOffset - _name.yOrigin) * _name.randomGapList[i] / smoothScroll.scrollSpeedRatio
-					_name.fillSpanList[i].style.transform = `translateY(${translateValue}px)`
+					_name.fillSpanList[i].style.transform = `translateY(${Math.round(translateValue)}px)`
 					if(translateValue > smoothScroll.imgHeight / 2 - smoothScroll.scrollValue + _name.yOrigin + _name.letterReferenceHeight + _name.randomGapList[i] * _name.letterReferenceHeight * 0.2 || translateValue < - smoothScroll.imgHeight / 2 - smoothScroll.scrollValue + _name.yOrigin - _name.letterReferenceHeight - _name.randomGapList[i] * _name.letterReferenceHeight * 0.2)
 					{
 						_name.fillSpanList[i].style.opacity = 0
