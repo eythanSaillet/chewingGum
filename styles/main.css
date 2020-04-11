@@ -8,7 +8,8 @@ body {
 .menuContainer {
   display: flex;
   position: fixed;
-  background-color: var(--backgroundColor); }
+  background-color: var(--backgroundColor);
+  will-change: transform; }
   .menuContainer .strokeNamesContainer {
     z-index: 50; }
   .menuContainer .fillNamesContainer, .menuContainer .strokeNamesContainer {
@@ -35,7 +36,8 @@ body {
         display: flex; }
         .menuContainer .fillNamesContainer .names span.nameSpanContainer span, .menuContainer .strokeNamesContainer .names span.nameSpanContainer span {
           margin: 2px;
-          white-space: pre; }
+          white-space: pre;
+          will-change: transform opacity; }
       .menuContainer .fillNamesContainer .names .fill, .menuContainer .strokeNamesContainer .names .fill {
         color: white;
         z-index: 10; }
@@ -49,10 +51,12 @@ body {
   .menuContainer .centerContainer {
     width: 45vw;
     height: auto; }
-    .menuContainer .centerContainer img {
-      width: 100%;
-      margin-bottom: -5px;
-      z-index: -5; }
+    .menuContainer .centerContainer a {
+      cursor: none; }
+      .menuContainer .centerContainer a img {
+        width: 100%;
+        margin-bottom: -5px;
+        z-index: -5; }
     .menuContainer .centerContainer .blackBloc {
       position: relative;
       background-color: var(--backgroundColor);

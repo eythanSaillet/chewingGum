@@ -79,11 +79,15 @@ body
 	{
 		width: 45vw;
 		height: auto;
-		img
+		a
 		{
-			width: 100%;
-			margin-bottom: -5px;
-			z-index: -5;
+			cursor: none;
+			img
+			{
+				width: 100%;
+				margin-bottom: -5px;
+				z-index: -5;
+			}
 		}
 		.blackBloc
 		{

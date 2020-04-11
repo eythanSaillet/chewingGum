@@ -34,7 +34,7 @@ let smoothScroll =
 		this.setLerpInterval()
 		this.setResizeEvent()
 
-		names = [new Name('Yannick Saillet', 0), new Name('Christophe Rihet', 1), new Name('Eleonore Wismes', 2), new Name('Mathieu Juric', 3), new Name('Odieuy Boby', 4)]
+		names = [new Name('Yannick Saillet', 0), new Name('Christophe Rihet', 1), new Name('Eleonore Wismes', 2), new Name('Mathieu Juric', 3), new Name('Odieux Boby', 4)]
 		setNamesScrollEvent()
 	},
 

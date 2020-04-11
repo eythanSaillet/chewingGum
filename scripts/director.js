@@ -1,4 +1,33 @@
-cursor.setFlashLightLerpInterval()
+let director = null
+
+// Get config.sjon
+window
+    .fetch('../scripts/config.json')
+    .then(_response => _response.json()) 
+    .then(_config => 
+    {
+        console.log(_config)
+
+        // Get url index
+        const splitUrl = window.location.href.split('#')
+        const urlIndex = splitUrl[splitUrl.length - 1]
+        console.log(urlIndex)
+
+        // Get the object in the config that correspond to the index
+        for (const _director of _config)
+        {
+            if (_director.index == urlIndex)
+            {
+                // Define the director from the config
+                director = _director
+                console.log(director)
+
+                // Setup flashlight effect with the director's name
+                flashLightEffect.setup()
+            }
+        }
+    })
+
 
 let flashLightEffect =
 {
@@ -9,13 +38,22 @@ let flashLightEffect =
 
     setup()
     {
+        cursor.setFlashLightLerpInterval()
+
+        this.setupName()
         this.windowSizes = {width: window.innerWidth, height: window.innerHeight}
         this.resizeEvent()
     },
 
+    setupName()
+    {
+        console.log(director.name.toUpperCase())
+        document.querySelector('.nameContainer h1').innerHTML = director.name.toUpperCase()
+    },
+
     posUpdate()
     {
-        // Update flashlight only if it his in the view
+        // Update flashlight only if it his in the viewport
         if (window.pageYOffset < this.windowSizes.height)
         {
             this.mousePosRatio = {x: cursor.mousePosWithLerp.x / window.innerWidth - 0.5, y: (cursor.mousePosWithLerp.y + window.pageYOffset) / window.innerHeight - 0.5}
@@ -31,7 +69,6 @@ let flashLightEffect =
         })
     },
 }
-flashLightEffect.setup()
 
 let scroller =
 {
