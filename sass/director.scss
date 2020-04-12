@@ -65,26 +65,35 @@ body
 {
 	section.alignLeft
 	{
+		padding-right: 17.5vw;
 		.info
 		{
-			left: 15vw;
+			left: 16.5vw;
+		}
+		.video
+		{
+			transform: translateX(10vw);
 		}
 	}
 	section.alignRight
 	{
 		flex-flow: row-reverse;
+		padding-left: 16.5vw;
 		.info
 		{
-			right: 15vw;
+			right: 17.5vw;
 			text-align: right;
+		}
+		.video
+		{
+			transform: translateX(-10vw);
 		}
 	}
 	section
 	{
-		height: 80vh;
+		height: 100vh;
 		display: flex;
 		align-items: center;
-		padding: 0 15vw 0 15vw;
 		position: relative;
 		.info
 		{
@@ -117,12 +126,14 @@ body
 		.blackBloc
 		{
 			width: 100%;
-			height: 100%;
+			height: calc(100% - 30vw);
 			background-color: var(--backgroundColor);
 			z-index: 10;
 		}
 		.video
 		{
+			opacity: 0;
+			will-change: opacity transform;
 			img
 			{
 				width: 42vw;

@@ -6,12 +6,9 @@ window
     .then(_response => _response.json()) 
     .then(_config => 
     {
-        console.log(_config)
-
         // Get url index
         const splitUrl = window.location.href.split('#')
         const urlIndex = splitUrl[splitUrl.length - 1]
-        console.log(urlIndex)
 
         // Get the object in the config that correspond to the index
         for (const _director of _config)
@@ -28,12 +25,28 @@ window
         }
     })
 
+// Object that contains sizes of the window and actualize on window resize
+let windowSizes =
+{
+    width: window.innerWidth,
+    height: window.innerHeight,
+
+    setResizeEvent()
+    {
+        window.addEventListener('resize', () =>
+        {
+            this.width = window.innerWidth,
+            this.height = window.innerHeight
+        })
+    }
+}
+windowSizes.setResizeEvent()
+
 
 let flashLightEffect =
 {
     $flashLight : document.querySelector('.nameContainer h1'),
 
-    windowSizes : {},
     mousePosRatio : {},
 
     setup()
@@ -41,34 +54,82 @@ let flashLightEffect =
         cursor.setFlashLightLerpInterval()
 
         this.setupName()
-        this.windowSizes = {width: window.innerWidth, height: window.innerHeight}
-        this.resizeEvent()
     },
 
     setupName()
     {
-        console.log(director.name.toUpperCase())
         document.querySelector('.nameContainer h1').innerHTML = director.name.toUpperCase()
     },
 
     posUpdate()
     {
         // Update flashlight only if it his in the viewport
-        if (window.pageYOffset < this.windowSizes.height)
+        if (window.pageYOffset < windowSizes.height)
         {
             this.mousePosRatio = {x: cursor.mousePosWithLerp.x / window.innerWidth - 0.5, y: (cursor.mousePosWithLerp.y + window.pageYOffset) / window.innerHeight - 0.5}
-            this.$flashLight.style.backgroundPosition = `${this.mousePosRatio.x * this.windowSizes.width}px ${this.mousePosRatio.y * this.windowSizes.height}px`
+            this.$flashLight.style.backgroundPosition = `${this.mousePosRatio.x * windowSizes.width}px ${this.mousePosRatio.y * windowSizes.height}px`
+        }
+    }
+}
+
+let scrollDisplay =
+{
+    sections: [],
+
+    setup()
+    {
+        this.setupSectionsArray()
+        this.setupScrollEvent()
+    },
+
+    setupSectionsArray()
+    {
+        let $sections = document.querySelectorAll('.works section')
+        for (const _$section of $sections)
+        {
+            let section = {}
+            section.dom = _$section
+            section.state = false
+            this.sections.push(section)
         }
     },
 
-    resizeEvent()
+    setupScrollEvent()
     {
-        window.addEventListener('resize', () =>
+        window.addEventListener('scroll', () =>
         {
-            this.windowSizes = {width: window.innerWidth, height: window.innerHeight}
+            for (_section of this.sections)
+            {
+                // Test if the section is in view and if this is the first time
+                if (_section.dom.getBoundingClientRect().top - window.innerHeight * 0.70 < 0 && _section.state == false)
+                {
+                    // Update its state
+                    _section.state = true
+
+                    // Animate opacity and translate of the video
+                    gsap.to(_section.dom.querySelector('.video'), 0.7, {x: '0vw', opacity: 1})
+
+                    // Animate opacity of infos
+                    gsap.from([_section.dom.querySelector('.infoStroke .title'), _section.dom.querySelector('.infoFill .title')], 0.2, {opacity: 0, delay: 0.5})
+                    gsap.from([_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoStroke .artistName')], 0.2, {opacity: 0, delay: 0.7})
+
+                    // Animate translate of the infos according to alignement
+                    if (_section.dom.classList.contains('alignRight'))
+                    {
+                        gsap.from([_section.dom.querySelector('.infoStroke .title'), _section.dom.querySelector('.infoFill .title')], 0.5, {x:'10vw', delay: 0.5})
+                        gsap.from([_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoFill .artistName')], 0.5, {x:'10vw', delay: 0.7})
+                    }
+                    else if(_section.dom.classList.contains('alignLeft'))
+                    {
+                        gsap.from([_section.dom.querySelector('.infoStroke .title'), _section.dom.querySelector('.infoFill .title')], 0.5, {x:'-10vw', delay: 0.5})
+                        gsap.from([_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoFill .artistName')], 0.5, {x:'-10vw', delay: 0.7})
+                    }
+                }
+            }
         })
-    },
+    }
 }
+scrollDisplay.setup()
 
 let scroller =
 {
@@ -77,11 +138,11 @@ let scroller =
 
     setup()
     {
-        this.setupTimeline()
+        this.setupAnimation()
         this.setupVanishEffect()
     },
 
-    setupTimeline()
+    setupAnimation()
     {
         let timeline = new gsap.timeline({repeat: -1, repeatDelay: 0.5})
         timeline.to(this.$scrollerBar, 0.5, {y: '-100%', ease: Power2.easeIn})
