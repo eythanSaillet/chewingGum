@@ -5,9 +5,22 @@
         "films":
         [
             {
-                "name":"Nom du film",
-                "artist":"Nom de l'artiste",
-                "url":"qsqsdqdsqsdqsd"
+                "title":"Nom du film",
+                "artistName":"Nom de l'artistNamee",
+                "imageUrl":"../assets/images/print_3_min-min.jpeg",
+                "filmUrl":"qsqsdqdsqsdqsd"
+            },
+            {
+                "title":"Bonjour",
+                "artistName":"mesh",
+                "imageUrl":"../assets/images/print_2_min-min.jpeg",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
+            },
+            {
+                "title":"hello",
+                "artistName":"mesh",
+                "imageUrl":"../assets/images/print_4_min-min.jpeg",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
             }
         ]
     },
@@ -17,9 +30,22 @@
         "films":
         [
             {
-                "name":"Nom du film",
-                "artist":"Nom de l'artiste",
-                "url":"qsqsdqdsqsdqsd"
+                "title":"Nom du film",
+                "artistName":"Nom de l'artistNamee",
+                "imageUrl":"qsqsdqdsqsdqsd",
+                "filmUrl":"qsqsdqdsqsdqsd"
+            },
+            {
+                "title":"Bonjour",
+                "artistName":"mesh",
+                "imageUrl":"ssss",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
+            },
+            {
+                "title":"hello",
+                "artistName":"mesh",
+                "imageUrl":"ssss",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
             }
         ]
     },
@@ -29,9 +55,22 @@
         "films":
         [
             {
-                "name":"Nom du film",
-                "artist":"Nom de l'artiste",
-                "url":"qsqsdqdsqsdqsd"
+                "title":"Nom du film",
+                "artistName":"Nom de l'artistNamee",
+                "imageUrl":"qsqsdqdsqsdqsd",
+                "filmUrl":"qsqsdqdsqsdqsd"
+            },
+            {
+                "title":"Bonjour",
+                "artistName":"mesh",
+                "imageUrl":"ssss",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
+            },
+            {
+                "title":"hello",
+                "artistName":"mesh",
+                "imageUrl":"ssss",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
             }
         ]
     },
@@ -41,9 +80,22 @@
         "films":
         [
             {
-                "name":"Nom du film",
-                "artist":"Nom de l'artiste",
-                "url":"qsqsdqdsqsdqsd"
+                "title":"Nom du film",
+                "artistName":"Nom de l'artistNamee",
+                "imageUrl":"qsqsdqdsqsdqsd",
+                "filmUrl":"qsqsdqdsqsdqsd"
+            },
+            {
+                "title":"Bonjour",
+                "artistName":"mesh",
+                "imageUrl":"ssss",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
+            },
+            {
+                "title":"hello",
+                "artistName":"mesh",
+                "imageUrl":"ssss",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
             }
         ]
     },
@@ -53,9 +105,22 @@
         "films":
         [
             {
-                "name":"Nom du film",
-                "artist":"Nom de l'artiste",
-                "url":"qsqsdqdsqsdqsd"
+                "title":"Nom du film",
+                "artistName":"Nom de l'artistNamee",
+                "imageUrl":"qsqsdqdsqsdqsd",
+                "filmUrl":"qsqsdqdsqsdqsd"
+            },
+            {
+                "title":"Bonjour",
+                "artistName":"mesh",
+                "imageUrl":"ssss",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
+            },
+            {
+                "title":"hello",
+                "artistName":"mesh",
+                "imageUrl":"ssss",
+                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
             }
         ]
     }

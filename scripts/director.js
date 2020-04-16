@@ -21,6 +21,9 @@ window
 
                 // Setup flashlight effect with the director's name
                 flashLightEffect.setup()
+
+                // Setup film display
+                filmsDisplay.setup()
             }
         }
     })
@@ -72,14 +75,76 @@ let flashLightEffect =
     }
 }
 
-let scrollDisplay =
+let filmsDisplay =
 {
     sections: [],
 
     setup()
     {
+        this.setupSectionDom()
         this.setupSectionsArray()
         this.setupScrollEvent()
+    },
+
+    setupSectionDom()
+    {
+        function creatingInfo(div, i)
+        {
+            // Creating title div
+            const $title = document.createElement('div')
+            $title.classList.add('title')
+            $title.innerHTML = director.films[i].title
+
+            // Create artistName div
+            const $artistName = document.createElement('div')
+            $artistName.classList.add('artistName')
+            $artistName.innerHTML = director.films[i].artistName
+
+            div.appendChild($title)
+            div.appendChild($artistName)
+        }
+
+        for (let i = 0; i < director.films.length; i++)
+        {
+            // Creating section and add align class
+            const $section = document.createElement('section')
+            $section.classList.add(i % 2 > 0 ? 'alignRight' : 'alignLeft')
+
+            // Creating stroke info div then fill it with title and artistName
+            const $strokeInfo = document.createElement('div')
+            $strokeInfo.classList.add('info', 'infoStroke')
+
+            creatingInfo($strokeInfo, i)
+
+            // Creating fill info div then fill it with title and artistName
+            const $fillInfo = document.createElement('div')
+            $fillInfo.classList.add('info', 'infoFill')
+
+            creatingInfo($fillInfo, i)
+
+            // Add infos to the section
+            $section.appendChild($fillInfo)
+            $section.appendChild($strokeInfo)
+
+            // Create blackbloc then adding it to the scene
+            let $blackBloc = document.createElement('div')
+            $blackBloc.classList.add('blackBloc')
+
+            $section.appendChild($blackBloc)
+
+            // Creating video thumbnail and fill it with the corresponding image
+            const $videoThumbnail = document.createElement('div')
+            $videoThumbnail.classList.add('videoThumbnail')
+            const $image = document.createElement('img')
+            $image.setAttribute('src', director.films[i].imageUrl)
+            $videoThumbnail.appendChild($image)
+
+            $section.appendChild($videoThumbnail)
+
+            // Fill works with the section
+            document.querySelector('.works').appendChild($section)
+
+        }
     },
 
     setupSectionsArray()
@@ -107,7 +172,7 @@ let scrollDisplay =
                     _section.state = true
 
                     // Animate opacity and translate of the video
-                    gsap.to(_section.dom.querySelector('.video'), 0.7, {x: '0vw', opacity: 1})
+                    gsap.to(_section.dom.querySelector('.videoThumbnail'), 0.7, {x: '0vw', opacity: 1})
 
                     // Animate opacity of infos
                     gsap.from([_section.dom.querySelector('.infoStroke .title'), _section.dom.querySelector('.infoFill .title')], 0.2, {opacity: 0, delay: 0.5})
@@ -129,7 +194,6 @@ let scrollDisplay =
         })
     }
 }
-scrollDisplay.setup()
 
 let scroller =
 {
@@ -159,3 +223,14 @@ let scroller =
     }
 }
 scroller.setup()
+
+// let videoSupport =
+// {
+//     $video : document.querySelector('.videoOverlay video'),
+
+//     setup()
+//     {
+//         console.log(this.$video)
+//     }
+// }
+// videoSupport.setup()

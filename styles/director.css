@@ -2,7 +2,8 @@ body {
   position: relative;
   margin: 0;
   background-color: var(--backgroundColor);
-  cursor: none; }
+  cursor: none;
+  overflow-x: hidden; }
 
 .nameContainer {
   width: 100vw;
@@ -49,7 +50,7 @@ body {
   padding-right: 17.5vw; }
   .works section.alignLeft .info {
     left: 16.5vw; }
-  .works section.alignLeft .video {
+  .works section.alignLeft .videoThumbnail {
     transform: translateX(10vw); }
 
 .works section.alignRight {
@@ -58,7 +59,7 @@ body {
   .works section.alignRight .info {
     right: 17.5vw;
     text-align: right; }
-  .works section.alignRight .video {
+  .works section.alignRight .videoThumbnail {
     transform: translateX(-10vw); }
 
 .works section {
@@ -89,9 +90,11 @@ body {
     height: calc(100% - 30vw);
     background-color: var(--backgroundColor);
     z-index: 10; }
-  .works section .video {
+  .works section .videoThumbnail {
     opacity: 0;
-    will-change: opacity transform;
+    background-color: red;
+    will-change: opacity translate;
     z-index: 0; }
-    .works section .video img {
-      width: 42vw; }
+    .works section .videoThumbnail img {
+      width: 42vw;
+      margin-bottom: -4px; }
