@@ -137,7 +137,6 @@ let imagesLoader =
 				{
 					smoothScroll.setup()
 				}
-				console.log(Math.round(this.counter / this.imagesUrl.length * 100))
 			}
 			imageObject.src = this.imagesUrl[_key]
 		}

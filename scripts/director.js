@@ -234,7 +234,6 @@ let videoSupport =
 {
     $videoOverlay: document.querySelector('.videoOverlay'),
     $video : document.querySelector('.videoOverlay video'),
-
     $videoThumbnails : null,
 
     setup()
@@ -257,10 +256,13 @@ let videoSupport =
                 this.$video.src = director.films[_image.getAttribute('data')].filmUrl
 
                 // Display the overlay
-                gsap.to(this.$videoOverlay, 1, {opacity: 1, pointerEvents: 'auto'})
+                gsap.to(this.$videoOverlay, 0.5, {opacity: 1, pointerEvents: 'auto'})
 
                 // Play the video
+                this.$video.volume = 0
                 this.$video.play()
+                gsap.to(this.$video, 1, {volume: 1})
+                console.log(this.$video.paused)
             })
         }
     },
@@ -270,10 +272,11 @@ let videoSupport =
         this.$videoOverlay.addEventListener('click', () =>
         {
             // Remove the overlay
-            gsap.to(this.$videoOverlay, 1, {opacity: 0, pointerEvents: 'none'})
+            gsap.to(this.$videoOverlay, 0.5, {opacity: 0, pointerEvents: 'none'})
 
             // Pause the video
-            this.$video.pause()
+            gsap.to(this.$video, 0.5, {volume: 0, onComplete: () => {this.$video.pause()}})
+            // this.$video.pause()
         })
     }
 }

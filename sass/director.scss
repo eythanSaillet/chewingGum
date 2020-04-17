@@ -104,12 +104,12 @@ body
 			pointer-events: none;
 			.title
 			{
-				font-size: 5vw;
+				font-size: 4.7vw;
 				font-family: 'Montserrat Bold';
 			}
 			.artistName
 			{
-				font-size: 1vw;
+				font-size: 1.2vw;
 				font-family: 'Montserrat Regular';
 			}
 		}
@@ -126,7 +126,7 @@ body
 		}
 		.blackBloc
 		{
-			width: 100%;
+			width: 50%;
 			height: calc(100% - 30vw);
 			background-color: var(--backgroundColor);
 			z-index: 10;
@@ -136,10 +136,13 @@ body
 			opacity: 0;
 			background-color: red;
 			will-change: opacity translate;
+			width: 50%;
+			overflow: hidden;
 			img
 			{
-				width: 42vw;
+				width: 100%;
 				margin-bottom: -4px;
+				transition: transform 0.3s ease-in-out;
 			}
 			z-index: 0;
 		}

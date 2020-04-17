@@ -74,10 +74,10 @@ body {
     transform: translate(0, -50%);
     pointer-events: none; }
     .works section .info .title {
-      font-size: 5vw;
+      font-size: 4.7vw;
       font-family: 'Montserrat Bold'; }
     .works section .info .artistName {
-      font-size: 1vw;
+      font-size: 1.2vw;
       font-family: 'Montserrat Regular'; }
   .works section .infoFill {
     color: white;
@@ -87,7 +87,7 @@ body {
     color: rgba(255, 255, 255, 0);
     -webkit-text-stroke: 1.3px white; }
   .works section .blackBloc {
-    width: 100%;
+    width: 50%;
     height: calc(100% - 30vw);
     background-color: var(--backgroundColor);
     z-index: 10; }
@@ -95,10 +95,13 @@ body {
     opacity: 0;
     background-color: red;
     will-change: opacity translate;
+    width: 50%;
+    overflow: hidden;
     z-index: 0; }
     .works section .videoThumbnail img {
-      width: 42vw;
-      margin-bottom: -4px; }
+      width: 100%;
+      margin-bottom: -4px;
+      transition: transform 0.3s ease-in-out; }
 
 .videoOverlay {
   width: 100vw;
