@@ -8,19 +8,19 @@
                 "title":"Nom du film",
                 "artistName":"Nom de l'artistNamee",
                 "imageUrl":"../assets/images/print_3_min-min.jpeg",
-                "filmUrl":"qsqsdqdsqsdqsd"
+                "filmUrl":"../assets/video/tournentlesviolonsJeanjacquesgoldman.mp4"
             },
             {
                 "title":"Bonjour",
                 "artistName":"mesh",
                 "imageUrl":"../assets/images/print_2_min-min.jpeg",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
+                "filmUrl":"../assets/video/tournentlesviolonsJeanjacquesgoldman.mp4"
             },
             {
                 "title":"hello",
                 "artistName":"mesh",
                 "imageUrl":"../assets/images/print_4_min-min.jpeg",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
+                "filmUrl":"../assets/video/tournentlesviolonsJeanjacquesgoldman.mp4"
             }
         ]
     },

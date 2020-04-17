@@ -9,8 +9,8 @@ let cursor =
     $cursor : document.querySelector('.cursorContainer'),
     $dot : document.querySelector('.cursorContainer .dot'),
 
-    $images : document.querySelectorAll('.centerContainer img'),
-    $links : document.querySelectorAll(('.headerContainer a')),
+    $images : null,
+    $links : null,
     $vanishOnHover : [],
 
     // VALUES
@@ -23,11 +23,19 @@ let cursor =
 
     setup()
     {
-        this.setMouseEvent()
+        this.setGlobalMouseEvent()
+    },
+
+    setTarget(_image, _link)
+    {
+        this.$images = _image
+        this.$links = _link
+
+        this.setTargetMouseEvent()
         this.setHoverEffect()
     },
 
-    setMouseEvent()
+    setGlobalMouseEvent()
     {
         window.addEventListener('mousemove', (_event) =>
         {
@@ -37,6 +45,20 @@ let cursor =
             // UPDATE DOT CURSOR POS
             this.$dot.style.transform = `translate(calc(-50% + ${this.mousePos.x}px), calc(-50% + ${this.mousePos.y}px))`
         })
+
+        // MAKE CURSOR INVISIBLE WHEN HE LEAVE THE WINDOW
+        window.addEventListener('mouseout', () =>
+        {
+            gsap.to(this.$cursor, 0.5, {opacity: 0})
+        })
+        window.addEventListener('mouseover', () =>
+        {
+            gsap.to(this.$cursor, 0.5, {opacity: 1})
+        })
+    },
+
+    setTargetMouseEvent()
+    {
 
         // ADD EVENT ON IMAGES TO TRIGGER THE CURSOR ANIMATION
         for (const _image of this.$images)
@@ -63,16 +85,6 @@ let cursor =
                 this.linksHoverTimeLine.reverse()
             })
         }
-
-        // MAKE CURSOR INVISIBLE WHEN HE LEAVE THE WINDOW
-        window.addEventListener('mouseout', () =>
-        {
-            gsap.to(this.$cursor, 0.5, {opacity: 0})
-        })
-        window.addEventListener('mouseover', () =>
-        {
-            gsap.to(this.$cursor, 0.5, {opacity: 1})
-        })
     },
 
     setFlashLightLerpInterval()

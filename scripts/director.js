@@ -24,6 +24,12 @@ window
 
                 // Setup film display
                 filmsDisplay.setup()
+
+                // Setup cursor style event
+                cursor.setTarget(document.querySelectorAll('.works .videoThumbnail img'), document.querySelectorAll(('.headerContainer a')))
+
+                // Setup video support
+                videoSupport.setup()
             }
         }
     })
@@ -137,13 +143,13 @@ let filmsDisplay =
             $videoThumbnail.classList.add('videoThumbnail')
             const $image = document.createElement('img')
             $image.setAttribute('src', director.films[i].imageUrl)
+            $image.setAttribute('data', i)
             $videoThumbnail.appendChild($image)
 
             $section.appendChild($videoThumbnail)
 
             // Fill works with the section
             document.querySelector('.works').appendChild($section)
-
         }
     },
 
@@ -224,13 +230,50 @@ let scroller =
 }
 scroller.setup()
 
-// let videoSupport =
-// {
-//     $video : document.querySelector('.videoOverlay video'),
+let videoSupport =
+{
+    $videoOverlay: document.querySelector('.videoOverlay'),
+    $video : document.querySelector('.videoOverlay video'),
 
-//     setup()
-//     {
-//         console.log(this.$video)
-//     }
-// }
-// videoSupport.setup()
+    $videoThumbnails : null,
+
+    setup()
+    {
+        // Get video thumbnails after there creations
+        this.$videoThumbnails = document.querySelectorAll('.works .videoThumbnail img')
+
+        this.setupEnterEvent()
+        this.setupQuitEvent()
+    },
+
+    setupEnterEvent()
+    {
+        // For each video thumbnail lauch the corresponding video
+        for (const _image of this.$videoThumbnails)
+        {
+            _image.addEventListener('click', () =>
+            {
+                // Set the correct film's src
+                this.$video.src = director.films[_image.getAttribute('data')].filmUrl
+
+                // Display the overlay
+                gsap.to(this.$videoOverlay, 1, {opacity: 1, pointerEvents: 'auto'})
+
+                // Play the video
+                this.$video.play()
+            })
+        }
+    },
+
+    setupQuitEvent()
+    {
+        this.$videoOverlay.addEventListener('click', () =>
+        {
+            // Remove the overlay
+            gsap.to(this.$videoOverlay, 1, {opacity: 0, pointerEvents: 'none'})
+
+            // Pause the video
+            this.$video.pause()
+        })
+    }
+}
