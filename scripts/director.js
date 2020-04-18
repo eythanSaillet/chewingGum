@@ -235,6 +235,9 @@ let videoSupport =
     $videoOverlay: document.querySelector('.videoOverlay'),
     $video : document.querySelector('.videoOverlay video'),
     $videoThumbnails : null,
+    $controlBar : document.querySelector('.videoOverlay .controlBar .bar'),
+
+    controlBarUpdateInterval : null,
 
     setup()
     {
@@ -257,12 +260,12 @@ let videoSupport =
 
                 // Display the overlay
                 gsap.to(this.$videoOverlay, 0.5, {opacity: 1, pointerEvents: 'auto'})
+                this.setupControlBarUpdate()
 
                 // Play the video
                 this.$video.volume = 0
                 this.$video.play()
                 gsap.to(this.$video, 1, {volume: 1})
-                console.log(this.$video.paused)
             })
         }
     },
@@ -273,10 +276,24 @@ let videoSupport =
         {
             // Remove the overlay
             gsap.to(this.$videoOverlay, 0.5, {opacity: 0, pointerEvents: 'none'})
+            this.clearControlBarUpdate()
 
             // Pause the video
             gsap.to(this.$video, 0.5, {volume: 0, onComplete: () => {this.$video.pause()}})
-            // this.$video.pause()
         })
+    },
+
+    setupControlBarUpdate()
+    {
+        this.controlBarUpdateInterval = setInterval(() =>
+        {
+            let videoState = this.$video.currentTime / this.$video.duration * 100
+            this.$controlBar.style.transform = `translateX(${-100 + videoState}%)`
+        }, 100)
+    },
+
+    clearControlBarUpdate()
+    {
+        clearInterval(this.controlBarUpdateInterval)
     }
 }
