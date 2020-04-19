@@ -30,6 +30,9 @@ window
 
                 // Setup video support
                 videoSupport.setup()
+
+                // Setup cursor effect on video
+                cursor.setupCursorEffectOnVideo()
             }
         }
     })
@@ -56,7 +59,7 @@ let flashLightEffect =
 {
     $flashLight : document.querySelector('.nameContainer h1'),
 
-    mousePosRatio : {},
+    positionRatio : {},
 
     setup()
     {
@@ -75,8 +78,8 @@ let flashLightEffect =
         // Update flashlight only if it his in the viewport
         if (window.pageYOffset < windowSizes.height)
         {
-            this.mousePosRatio = {x: cursor.mousePosWithLerp.x / window.innerWidth - 0.5, y: (cursor.mousePosWithLerp.y + window.pageYOffset) / window.innerHeight - 0.5}
-            this.$flashLight.style.backgroundPosition = `${this.mousePosRatio.x * windowSizes.width}px ${this.mousePosRatio.y * windowSizes.height}px`
+            this.positionRatio = {x: cursor.positionWithLerp.x / window.innerWidth - 0.5, y: (cursor.positionWithLerp.y + window.pageYOffset) / window.innerHeight - 0.5}
+            this.$flashLight.style.backgroundPosition = `${this.positionRatio.x * windowSizes.width}px ${this.positionRatio.y * windowSizes.height}px`
         }
     }
 }
@@ -235,9 +238,11 @@ let videoSupport =
     $videoOverlay: document.querySelector('.videoOverlay'),
     $video : document.querySelector('.videoOverlay video'),
     $videoThumbnails : null,
-    $controlBar : document.querySelector('.videoOverlay .controlBar .bar'),
+    $timeBar : document.querySelector('.videoOverlay .timeBar'),
+    $timeBarIndex : document.querySelector('.videoOverlay .timeBar .index'),
 
-    controlBarUpdateInterval : null,
+    overlayIsOpen : false,
+    timeBarIndexUpdateInterval : null,
 
     setup()
     {
@@ -259,6 +264,7 @@ let videoSupport =
                 this.$video.src = director.films[_image.getAttribute('data')].filmUrl
 
                 // Display the overlay
+                this.overlayIsOpen = true
                 gsap.to(this.$videoOverlay, 0.5, {opacity: 1, pointerEvents: 'auto'})
                 this.setupControlBarUpdate()
 
@@ -275,8 +281,12 @@ let videoSupport =
         this.$videoOverlay.addEventListener('click', () =>
         {
             // Remove the overlay
+            this.overlayIsOpen = false
             gsap.to(this.$videoOverlay, 0.5, {opacity: 0, pointerEvents: 'none'})
             this.clearControlBarUpdate()
+
+            // Redisplay the cursor in case it was invisible
+            gsap.to(this.$cursor, 0.7, {opacity: 1})
 
             // Pause the video
             gsap.to(this.$video, 0.5, {volume: 0, onComplete: () => {this.$video.pause()}})
@@ -285,15 +295,17 @@ let videoSupport =
 
     setupControlBarUpdate()
     {
-        this.controlBarUpdateInterval = setInterval(() =>
+        // Setup an interval that update the time bar
+        this.timeBarIndexUpdateInterval = setInterval(() =>
         {
             let videoState = this.$video.currentTime / this.$video.duration * 100
-            this.$controlBar.style.transform = `translateX(${-100 + videoState}%)`
+            this.$timeBarIndex.style.transform = `translateX(${-100 + videoState}%)`
         }, 100)
     },
 
+    // Clear the interval when the user quit the video overlay
     clearControlBarUpdate()
     {
-        clearInterval(this.controlBarUpdateInterval)
+        clearInterval(this.timeBarIndexUpdateInterval)
     }
 }

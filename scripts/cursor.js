@@ -14,8 +14,8 @@ let cursor =
     $vanishOnHover : [],
 
     // VALUES
-    mousePos : {x: -150, y: -150},
-    mousePosWithLerp : {x: -150, y: -150},
+    position : {x: -150, y: -150},
+    positionWithLerp : {x: -150, y: -150},
 
     // ANIMATIONS TIMELINES
     imagesHoverTimeLine : gsap.timeline({paused: true}),
@@ -40,10 +40,10 @@ let cursor =
         window.addEventListener('mousemove', (_event) =>
         {
             // UPDATE MOUSE POS VALUE
-            this.mousePos = {x: _event.clientX, y: _event.clientY}
+            this.position = {x: _event.clientX, y: _event.clientY}
 
             // UPDATE DOT CURSOR POS
-            this.$dot.style.transform = `translate(calc(-50% + ${this.mousePos.x}px), calc(-50% + ${this.mousePos.y}px))`
+            this.$dot.style.transform = `translate(calc(-50% + ${this.position.x}px), calc(-50% + ${this.position.y}px))`
         })
 
         // MAKE CURSOR INVISIBLE WHEN HE LEAVE THE WINDOW
@@ -92,8 +92,8 @@ let cursor =
         window.setInterval(() =>
         {
             // APPLY LERP ON CURSOR POS
-            this.mousePosWithLerp.x = lerp(this.mousePosWithLerp.x, this.mousePos.x, 0.15)
-            this.mousePosWithLerp.y = lerp(this.mousePosWithLerp.y, this.mousePos.y, 0.15)
+            this.positionWithLerp.x = lerp(this.positionWithLerp.x, this.position.x, 0.15)
+            this.positionWithLerp.y = lerp(this.positionWithLerp.y, this.position.y, 0.15)
 
             // UPDATE FLASHLIGHT EFFECT ON DIRECTORS PAGES
             flashLightEffect.posUpdate()
@@ -107,6 +107,37 @@ let cursor =
         this.imagesHoverTimeLine.to(this.$dot, 0.3, { width: 30, height: 30})
         // ON LINKS
         this.linksHoverTimeLine.to(this.$dot, 0.3, { width: 30, height: 30, backgroundColor: 'rgba(255, 255, 255, 0)'})
+    },
+
+    setupCursorEffectOnVideo()
+    {
+        let cursorIsAfk = false
+        let cursorTempPos = {x: null, y: null}
+
+        // Test with an interval if the user move the cursor
+        window.setInterval(() =>
+        {
+            // Make time bar and the cursor disappear if the cusor is afk
+            if (cursorTempPos.x == this.position.x && cursorTempPos.y == this.position.y && cursorIsAfk == false && videoSupport.overlayIsOpen == true)
+            {
+                cursorIsAfk = true
+                gsap.to(videoSupport.$timeBar, 0.7, {opacity: 0})
+                gsap.to(this.$cursor, 0.7, {opacity: 0})
+            }
+            cursorTempPos.x = this.position.x
+            cursorTempPos.y = this.position.y
+        }, 1000)
+
+        // Make appear the time bar and the cursor if it is moving
+        window.addEventListener('mousemove', () =>
+        {
+            if (cursorIsAfk == true)
+            {
+                cursorIsAfk = false
+                gsap.to(videoSupport.$timeBar, 0.7, {opacity: 1})
+                gsap.to(this.$cursor, 0.7, {opacity: 1})
+            }
+        })
     }
 }
 cursor.setup()
