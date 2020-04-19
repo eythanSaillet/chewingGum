@@ -116,6 +116,11 @@ let cursor =
     {
         let cursorIsAfk = false
         let cursorTempPos = {x: null, y: null}
+        let cursorIsOnTimeBar = false
+
+        const $quitZone = document.querySelector('.videoOverlay .controls .quit')
+        const $timeBarContainerZone = document.querySelector('.videoOverlay .controls .timeBarContainer')
+        const $timeBarCircleIndex = document.querySelector('.videoOverlay .controls .timeBarContainer .indexCircle')
 
         // Test with an interval if the user move the cursor
         window.setInterval(() =>
@@ -131,7 +136,7 @@ let cursor =
             cursorTempPos.y = this.position.y
         }, 1000)
 
-        window.addEventListener('mousemove', () =>
+        window.addEventListener('mousemove', (_event) =>
         {
             // Make appear the time bar and the cursor if it is moving
             if (cursorIsAfk == true)
@@ -142,20 +147,44 @@ let cursor =
             }
 
             // Update cross cursor position
-            this.$cross.style.transform = `translate(calc(${this.position.x}px), calc(${this.position.y}px))`
+            this.$cross.style.transform = `translate(calc(-50% + ${this.position.x}px), calc(-50% + ${this.position.y}px))`
+
+            if (cursorIsOnTimeBar)
+            {
+                // $timeBarCircleIndex.style.transform = `translate(-50%, calc(1px - 50% + ${this.position.x}px))`
+                $timeBarCircleIndex.style.left = `calc(${this.position.x}px - 10vw)`
+            }
         })
+
+        $quitZone.addEventListener('mouseenter', () =>
+        {
+            this.displayCross()
+            gsap.to($timeBarCircleIndex, 0.4, {scale: 0.01, opacity: 0})
+            cursorIsOnTimeBar = false
+        })
+
+        $timeBarContainerZone.addEventListener('mouseenter', () =>
+        {
+            this.vanishCross()
+            gsap.to($timeBarCircleIndex, 0.4, {scale: 1, opacity: 1})
+            cursorIsOnTimeBar = true
+        })
+
+        console.log(document.querySelector('.videoOverlay .controls .timeBarContainer .timeBar').getBoundingClientRect())
     },
 
     displayCross()
     {
+        gsap.to(this.$cross, 0, {opacity: 1})
         gsap.to(this.$crossA, 0.4, {scaleX: 1})
         gsap.to(this.$crossB, 0.4, {scaleX: 1})
     },
 
     vanishCross()
     {
-        gsap.to(this.$crossA, 0.2, {scaleX: 0.01, ease: Power2.easeIn})
-        gsap.to(this.$crossB, 0.2, {scaleX: 0.01, ease: Power2.easeIn})
+        gsap.to(this.$crossA, 0.4, {scaleX: 0.01, ease: Power2.easeIn})
+        gsap.to(this.$crossB, 0.4, {scaleX: 0.01, ease: Power2.easeIn})
+        gsap.to(this.$cross, 0, {opacity: 0, delay: 0.4})
     }
 }
 cursor.setup()

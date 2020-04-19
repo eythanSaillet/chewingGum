@@ -21,7 +21,8 @@
     border: solid white 1px;
     transform: translate(calc(-50% - 150px), calc(-50% - 150px)); }
   .cursorContainer .cross {
-    position: relative; }
+    position: relative;
+    opacity: 0; }
     .cursorContainer .cross div {
       width: 35px;
       height: 7px;

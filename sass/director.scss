@@ -168,25 +168,63 @@ body
 		width: 100%;
 		height: 100%;
 	}
-	.timeBar
+	.controls
 	{
-		width: 80vw;
-		height: 3px;
+		width: 100vw;
+		height: 100vh;
 		position: absolute;
-		bottom: 50px;
-		left: 50%;
-		transform: translateX(-50%);
-		background-color: grey;
 		display: flex;
-		justify-content: start;
-		overflow: hidden;
-		border-radius: 3px;
-		.index
+		flex-direction: column;
+		.quit
 		{
-			height: 100%;
-			width: 100%;
-			transform: translateX(-100%);
-			background-color: white;
+			width: 100vw;
+			height: 85vh;
+		}
+		.timeBarContainer
+		{
+			width: 100vw;
+			height: 15vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.test
+			{
+				width: 80vw;
+				height: 3px;
+				position: relative;
+				.timeBar
+				{
+					width: 100%;
+					height: 100%;
+					background-color: grey;
+					display: flex;
+					justify-content: start;
+					overflow: hidden;
+					border-radius: 3px;
+					pointer-events: none;
+					position: absolute;
+					top: 0;
+					left: 0;
+					.indexBar
+					{
+						height: 100%;
+						width: 100%;
+						transform: translateX(-100%);
+						background-color: white;
+					}
+				}
+				.indexCircle
+				{
+					width: 25px;
+					height: 25px;
+					background-color: red;
+					position: absolute;
+					top: 0;
+					left: 0;
+					border-radius: 50%;
+					transform: translate(-50%, calc(1px - 50%));
+				}
+			}
 		}
 	}
 }

@@ -119,20 +119,48 @@ body {
   .videoOverlay video {
     width: 100%;
     height: 100%; }
-  .videoOverlay .timeBar {
-    width: 80vw;
-    height: 3px;
+  .videoOverlay .controls {
+    width: 100vw;
+    height: 100vh;
     position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: grey;
     display: flex;
-    justify-content: start;
-    overflow: hidden;
-    border-radius: 3px; }
-    .videoOverlay .timeBar .index {
-      height: 100%;
-      width: 100%;
-      transform: translateX(-100%);
-      background-color: white; }
+    flex-direction: column; }
+    .videoOverlay .controls .quit {
+      width: 100vw;
+      height: 85vh; }
+    .videoOverlay .controls .timeBarContainer {
+      width: 100vw;
+      height: 15vh;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .videoOverlay .controls .timeBarContainer .test {
+        width: 80vw;
+        height: 3px;
+        position: relative; }
+        .videoOverlay .controls .timeBarContainer .test .timeBar {
+          width: 100%;
+          height: 100%;
+          background-color: grey;
+          display: flex;
+          justify-content: start;
+          overflow: hidden;
+          border-radius: 3px;
+          pointer-events: none;
+          position: absolute;
+          top: 0;
+          left: 0; }
+          .videoOverlay .controls .timeBarContainer .test .timeBar .indexBar {
+            height: 100%;
+            width: 100%;
+            transform: translateX(-100%);
+            background-color: white; }
+        .videoOverlay .controls .timeBarContainer .test .indexCircle {
+          width: 25px;
+          height: 25px;
+          background-color: red;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+          transform: translate(-50%, calc(1px - 50%)); }

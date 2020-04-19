@@ -238,7 +238,7 @@ let videoSupport =
     $video : document.querySelector('.videoOverlay video'),
     $videoThumbnails : null,
     $timeBar : document.querySelector('.videoOverlay .timeBar'),
-    $timeBarIndex : document.querySelector('.videoOverlay .timeBar .index'),
+    $timeBarIndex : document.querySelector('.videoOverlay .timeBar .indexBar'),
     $crossCursor : document.querySelector('.cursorContainer .cross'),
 
     overlayIsOpen : false,
@@ -268,9 +268,9 @@ let videoSupport =
                 gsap.to(this.$videoOverlay, 0.5, {opacity: 1, pointerEvents: 'auto'})
                 this.setupControlBarUpdate()
 
-                // Display the cross cursor
-                // gsap.to(this.$crossCursor, 0.2, {opacity: 1})
+                // Display the cross cursor and hide basic cursor
                 cursor.displayCross()
+                gsap.to(cursor.$dot, 0.2, {opacity: 0})
 
                 // Play the video
                 this.$video.volume = 0
@@ -289,7 +289,8 @@ let videoSupport =
             gsap.to(this.$videoOverlay, 0.5, {opacity: 0, pointerEvents: 'none'})
             this.clearControlBarUpdate()
 
-            // Redisplay the cursor in case it was invisible and hide cross cursor
+            // Redisplay the dot cursor + the cursor in case it was invisible and hide cross cursor
+            gsap.to(cursor.$dot, 0.2, {opacity: 1})
             gsap.to(this.$cursor, 0.7, {opacity: 1})
             cursor.vanishCross()
 
