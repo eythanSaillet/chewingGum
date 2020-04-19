@@ -17,7 +17,6 @@ window
             {
                 // Define the director from the config
                 director = _director
-                console.log(director)
 
                 // Setup flashlight effect with the director's name
                 flashLightEffect.setup()
@@ -240,6 +239,7 @@ let videoSupport =
     $videoThumbnails : null,
     $timeBar : document.querySelector('.videoOverlay .timeBar'),
     $timeBarIndex : document.querySelector('.videoOverlay .timeBar .index'),
+    $crossCursor : document.querySelector('.cursorContainer .cross'),
 
     overlayIsOpen : false,
     timeBarIndexUpdateInterval : null,
@@ -268,6 +268,10 @@ let videoSupport =
                 gsap.to(this.$videoOverlay, 0.5, {opacity: 1, pointerEvents: 'auto'})
                 this.setupControlBarUpdate()
 
+                // Display the cross cursor
+                // gsap.to(this.$crossCursor, 0.2, {opacity: 1})
+                cursor.displayCross()
+
                 // Play the video
                 this.$video.volume = 0
                 this.$video.play()
@@ -285,8 +289,9 @@ let videoSupport =
             gsap.to(this.$videoOverlay, 0.5, {opacity: 0, pointerEvents: 'none'})
             this.clearControlBarUpdate()
 
-            // Redisplay the cursor in case it was invisible
+            // Redisplay the cursor in case it was invisible and hide cross cursor
             gsap.to(this.$cursor, 0.7, {opacity: 1})
+            cursor.vanishCross()
 
             // Pause the video
             gsap.to(this.$video, 0.5, {volume: 0, onComplete: () => {this.$video.pause()}})

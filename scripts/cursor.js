@@ -8,6 +8,9 @@ let cursor =
     // DOM
     $cursor : document.querySelector('.cursorContainer'),
     $dot : document.querySelector('.cursorContainer .dot'),
+    $cross : document.querySelector('.cursorContainer .cross'),
+    $crossA : document.querySelector('.cursorContainer .cross .a'),
+    $crossB : document.querySelector('.cursorContainer .cross .b'),
 
     $images : null,
     $links : null,
@@ -49,7 +52,7 @@ let cursor =
         // MAKE CURSOR INVISIBLE WHEN HE LEAVE THE WINDOW
         window.addEventListener('mouseout', () =>
         {
-            gsap.to(this.$cursor, 0.5, {opacity: 0})
+            // gsap.to(this.$cursor, 0.5, {opacity: 0})
         })
         window.addEventListener('mouseover', () =>
         {
@@ -128,16 +131,31 @@ let cursor =
             cursorTempPos.y = this.position.y
         }, 1000)
 
-        // Make appear the time bar and the cursor if it is moving
         window.addEventListener('mousemove', () =>
         {
+            // Make appear the time bar and the cursor if it is moving
             if (cursorIsAfk == true)
             {
                 cursorIsAfk = false
                 gsap.to(videoSupport.$timeBar, 0.7, {opacity: 1})
                 gsap.to(this.$cursor, 0.7, {opacity: 1})
             }
+
+            // Update cross cursor position
+            this.$cross.style.transform = `translate(calc(${this.position.x}px), calc(${this.position.y}px))`
         })
+    },
+
+    displayCross()
+    {
+        gsap.to(this.$crossA, 0.4, {scaleX: 1})
+        gsap.to(this.$crossB, 0.4, {scaleX: 1})
+    },
+
+    vanishCross()
+    {
+        gsap.to(this.$crossA, 0.2, {scaleX: 0.01, ease: Power2.easeIn})
+        gsap.to(this.$crossB, 0.2, {scaleX: 0.01, ease: Power2.easeIn})
     }
 }
 cursor.setup()

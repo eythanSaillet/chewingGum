@@ -28,6 +28,28 @@
 		border: solid white 1px;
 		transform: translate(calc(-50% - 150px), calc(-50% - 150px));
 	}
+	.cross
+	{
+		position: relative;
+		// opacity: 0;
+		div
+		{
+			width: 35px;
+			height: 7px;
+			background-color: white;
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		.a
+		{
+			transform: translate(50%, -50%) rotate(-45deg) scaleX(0.01);
+		}
+		.b
+		{
+			transform: translate(50%, -50%) rotate(45deg) scaleX(0.01);
+		}
+	}
 }
 
 // HEADER
