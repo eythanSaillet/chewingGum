@@ -24,8 +24,8 @@ window
                 // Setup film display
                 filmsDisplay.setup()
 
-                // Setup cursor style event
-                cursor.setTarget(document.querySelectorAll('.works .videoThumbnail img'), document.querySelectorAll(('.headerContainer a')))
+                // Setup cursor style event on video thumbnails and header
+                cursor.setTarget([...document.querySelectorAll('.works .videoThumbnail img'), ...document.querySelectorAll(('.headerContainer a'))])
 
                 // Setup video support
                 videoSupport.setup()

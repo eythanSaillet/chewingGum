@@ -12,8 +12,7 @@ let cursor =
     $crossA : document.querySelector('.cursorContainer .cross .a'),
     $crossB : document.querySelector('.cursorContainer .cross .b'),
 
-    $images : null,
-    $links : null,
+    $target : null,
     $vanishOnHover : [],
 
     // VALUES
@@ -21,18 +20,16 @@ let cursor =
     positionWithLerp : {x: -150, y: -150},
 
     // ANIMATIONS TIMELINES
-    imagesHoverTimeLine : gsap.timeline({paused: true}),
-    linksHoverTimeLine : gsap.timeline({paused: true}),
+    targetHoverTimeLine : gsap.timeline({paused: true}),
 
     setup()
     {
         this.setGlobalMouseEvent()
     },
 
-    setTarget(_image, _link)
+    setTarget(_target)
     {
-        this.$images = _image
-        this.$links = _link
+        this.$target = _target
 
         this.setTargetMouseEvent()
         this.setHoverEffect()
@@ -52,7 +49,7 @@ let cursor =
         // MAKE CURSOR INVISIBLE WHEN HE LEAVE THE WINDOW
         window.addEventListener('mouseout', () =>
         {
-            // gsap.to(this.$cursor, 0.5, {opacity: 0})
+            gsap.to(this.$cursor, 0.5, {opacity: 0})
         })
         window.addEventListener('mouseover', () =>
         {
@@ -64,28 +61,15 @@ let cursor =
     {
 
         // ADD EVENT ON IMAGES TO TRIGGER THE CURSOR ANIMATION
-        for (const _image of this.$images)
+        for (const _target of this.$target)
         {
-            _image.addEventListener('mouseover', () =>
+            _target.addEventListener('mouseover', () =>
             {
-                this.imagesHoverTimeLine.restart()
+                this.targetHoverTimeLine.restart()
             })
-            _image.addEventListener('mouseleave', () =>
+            _target.addEventListener('mouseleave', () =>
             {
-                this.imagesHoverTimeLine.reverse()
-            })
-        }
-
-        // ADD EVENT ON LINKS TO TRIGGER THE CURSOR ANIMATION
-        for (const _link of this.$links)
-        {
-            _link.addEventListener('mouseover', () =>
-            {
-                this.linksHoverTimeLine.restart()
-            })
-            _link.addEventListener('mouseleave', () =>
-            {
-                this.linksHoverTimeLine.reverse()
+                this.targetHoverTimeLine.reverse()
             })
         }
     },
@@ -103,13 +87,10 @@ let cursor =
         }, 1000 / 60)
     },
 
-    // DEFINE THE GSAP CURSOR ANIMATION
+    // DEFINE THE GSAP CURSOR ANIMATION ON TARGET
     setHoverEffect()
     {
-        // ON IMAGES
-        this.imagesHoverTimeLine.to(this.$dot, 0.3, { width: 30, height: 30})
-        // ON LINKS
-        this.linksHoverTimeLine.to(this.$dot, 0.3, { width: 30, height: 30, backgroundColor: 'rgba(255, 255, 255, 0)'})
+        this.targetHoverTimeLine.to(this.$dot, 0.3, { width: 30, height: 30})
     },
 
     setupCursorEffectOnVideo()

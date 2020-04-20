@@ -21,7 +21,7 @@ body {
     background-repeat: no-repeat;
     background-clip: text;
     -webkit-background-clip: text;
-    background-position: -200px; }
+    background-position: -100vw, -100vh; }
   .nameContainer .scrollerContainer {
     position: absolute;
     left: 50%;

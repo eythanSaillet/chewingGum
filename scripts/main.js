@@ -37,8 +37,8 @@ let smoothScroll =
 		names = [new Name('Yannick Saillet', 0), new Name('Christophe Rihet', 1), new Name('Eleonore Wismes', 2), new Name('Mathieu Juric', 3), new Name('Odieux Boby', 4)]
 		setNamesScrollEvent()
 
-		// Setup cursor style event
-		cursor.setTarget(document.querySelectorAll('.centerContainer img'), this.$links = document.querySelectorAll(('.headerContainer a')))
+		// Setup cursor style event on director images and header
+		cursor.setTarget([...document.querySelectorAll('.centerContainer img'), ...document.querySelectorAll(('.headerContainer a'))])
 	},
 
 	setContentSize()
