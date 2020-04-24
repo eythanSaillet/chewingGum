@@ -1,127 +1,122 @@
 [
-    {
-        "index":"yannickSaillet",
-        "name":"Yannick Saillet",
-        "films":
-        [
-            {
-                "title":"TOURNENT LES VIOLONS",
-                "artistName":"JEAN-JACQUES GOLDMAN",
-                "imageUrl":"../assets/images/print_3_min-min.jpeg",
-                "filmUrl":"../assets/video/tournentlesviolonsJeanjacquesgoldman.mp4"
-            },
-            {
-                "title":"À COTÉ DE TOI",
-                "artistName":"LES ENFOIRÉE",
-                "imageUrl":"../assets/images/print_2_min-min.jpeg",
-                "filmUrl":"../assets/video/acotedetoiLesenfoiree.mp4"
-            },
-            {
-                "title":"TOUT L'OR DES HOMMES",
-                "artistName":"CELINE DION",
-                "imageUrl":"../assets/images/print_4_min-min.jpeg",
-                "filmUrl":"../assets/video/toutlordeshommesCelinedion.mp4"
-            }
-        ]
-    },
-    {
-        "index":"christopheRihet",
-        "name":"Christophe Rihet",
-        "films":
-        [
-            {
-                "title":"Nom du film",
-                "artistName":"Nom de l'artistNamee",
-                "imageUrl":"qsqsdqdsqsdqsd",
-                "filmUrl":"qsqsdqdsqsdqsd"
-            },
-            {
-                "title":"Bonjour",
-                "artistName":"mesh",
-                "imageUrl":"ssss",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
-            },
-            {
-                "title":"hello",
-                "artistName":"mesh",
-                "imageUrl":"ssss",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
-            }
-        ]
-    },
-    {
-        "index":"eleonoreWismes",
-        "name":"Eleonore Wismes",
-        "films":
-        [
-            {
-                "title":"Nom du film",
-                "artistName":"Nom de l'artistNamee",
-                "imageUrl":"qsqsdqdsqsdqsd",
-                "filmUrl":"qsqsdqdsqsdqsd"
-            },
-            {
-                "title":"Bonjour",
-                "artistName":"mesh",
-                "imageUrl":"ssss",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
-            },
-            {
-                "title":"hello",
-                "artistName":"mesh",
-                "imageUrl":"ssss",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
-            }
-        ]
-    },
-    {
-        "index":"mathieuJuric",
-        "name":"Mathieu Juric",
-        "films":
-        [
-            {
-                "title":"Nom du film",
-                "artistName":"Nom de l'artistNamee",
-                "imageUrl":"qsqsdqdsqsdqsd",
-                "filmUrl":"qsqsdqdsqsdqsd"
-            },
-            {
-                "title":"Bonjour",
-                "artistName":"mesh",
-                "imageUrl":"ssss",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
-            },
-            {
-                "title":"hello",
-                "artistName":"mesh",
-                "imageUrl":"ssss",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
-            }
-        ]
-    },
-    {
-        "index":"odieuxBoby",
-        "name":"Odieux Boby",
-        "films":
-        [
-            {
-                "title":"Nom du film",
-                "artistName":"Nom de l'artistNamee",
-                "imageUrl":"qsqsdqdsqsdqsd",
-                "filmUrl":"qsqsdqdsqsdqsd"
-            },
-            {
-                "title":"Bonjour",
-                "artistName":"mesh",
-                "imageUrl":"ssss",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
-            },
-            {
-                "title":"hello",
-                "artistName":"mesh",
-                "imageUrl":"ssss",
-                "filmUrl":"qsqsdxxxxxqdsqsdqsd"
-            }
-        ]
-    }
+	{
+		"index": "yannickSaillet",
+		"name": "Yannick Saillet",
+		"films": [
+			{
+				"title": "TOURNENT LES VIOLONS",
+				"artistName": "JEAN-JACQUES GOLDMAN",
+				"imageUrl": "../assets/images/print_3_min-min.jpeg",
+				"filmUrl": "../assets/video/tournentlesviolonsJeanjacquesgoldman.mp4"
+			},
+			{
+				"title": "À COTÉ DE TOI",
+				"artistName": "LES ENFOIRÉE",
+				"imageUrl": "../assets/images/print_2_min-min.jpeg",
+				"filmUrl": "../assets/video/acotedetoiLesenfoiree.mp4"
+			},
+			{
+				"title": "TOUT L'OR DES HOMMES",
+				"artistName": "CELINE DION",
+				"imageUrl": "../assets/images/print_4_min-min.jpeg",
+				"filmUrl": "../assets/video/toutlordeshommesCelinedion.mp4"
+			}
+		]
+	},
+	{
+		"index": "christopheRihet",
+		"name": "Christophe Rihet",
+		"films": [
+			{
+				"title": "Nom du film",
+				"artistName": "Nom de l'artistNamee",
+				"imageUrl": "qsqsdqdsqsdqsd",
+				"filmUrl": "qsqsdqdsqsdqsd"
+			},
+			{
+				"title": "Bonjour",
+				"artistName": "mesh",
+				"imageUrl": "ssss",
+				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+			},
+			{
+				"title": "hello",
+				"artistName": "mesh",
+				"imageUrl": "ssss",
+				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+			}
+		]
+	},
+	{
+		"index": "eleonoreWismes",
+		"name": "Eleonore Wismes",
+		"films": [
+			{
+				"title": "Nom du film",
+				"artistName": "Nom de l'artistNamee",
+				"imageUrl": "qsqsdqdsqsdqsd",
+				"filmUrl": "qsqsdqdsqsdqsd"
+			},
+			{
+				"title": "Bonjour",
+				"artistName": "mesh",
+				"imageUrl": "ssss",
+				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+			},
+			{
+				"title": "hello",
+				"artistName": "mesh",
+				"imageUrl": "ssss",
+				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+			}
+		]
+	},
+	{
+		"index": "mathieuJuric",
+		"name": "Mathieu Juric",
+		"films": [
+			{
+				"title": "Nom du film",
+				"artistName": "Nom de l'artistNamee",
+				"imageUrl": "qsqsdqdsqsdqsd",
+				"filmUrl": "qsqsdqdsqsdqsd"
+			},
+			{
+				"title": "Bonjour",
+				"artistName": "mesh",
+				"imageUrl": "ssss",
+				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+			},
+			{
+				"title": "hello",
+				"artistName": "mesh",
+				"imageUrl": "ssss",
+				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+			}
+		]
+	},
+	{
+		"index": "odieuxBoby",
+		"name": "Odieux Boby",
+		"films": [
+			{
+				"title": "Nom du film",
+				"artistName": "Nom de l'artistNamee",
+				"imageUrl": "qsqsdqdsqsdqsd",
+				"filmUrl": "qsqsdqdsqsdqsd"
+			},
+			{
+				"title": "Bonjour",
+				"artistName": "mesh",
+				"imageUrl": "ssss",
+				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+			},
+			{
+				"title": "hello",
+				"artistName": "mesh",
+				"imageUrl": "ssss",
+				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+			}
+		]
+	}
 ]

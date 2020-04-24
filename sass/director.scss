@@ -1,5 +1,4 @@
-body
-{
+body {
 	position: relative;
 	margin: 0;
 	background-color: var(--backgroundColor);
@@ -8,16 +7,14 @@ body
 	overflow-x: hidden;
 }
 
-.nameContainer
-{
+.nameContainer {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	h1
-	{
+	h1 {
 		padding: 10vh 7vw 10vh 7vw;
 		font-family: 'Montserrat Bold';
 		font-size: 8vw;
@@ -28,8 +25,7 @@ body
 		-webkit-background-clip: text;
 		background-position: -100vw, -100vh;
 	}
-	.scrollerContainer
-	{
+	.scrollerContainer {
 		position: absolute;
 		left: 50%;
 		bottom: 0px;
@@ -38,21 +34,18 @@ body
 		justify-content: center;
 		align-items: center;
 		transform: translate(-50%, -50%);
-		.scroller
-		{
+		.scroller {
 			width: 1px;
 			height: 30px;
 			margin: 5px;
 			overflow: hidden;
-			.scrollerBar
-			{
+			.scrollerBar {
 				width: 100%;
 				height: 100%;
 				background-color: white;
 			}
 		}
-		.text
-		{
+		.text {
 			color: white;
 			font-size: 10px;
 			font-family: 'Montserrat Regular';
@@ -61,85 +54,68 @@ body
 	}
 }
 
-.works
-{
-	section.alignLeft
-	{
+.works {
+	section.alignLeft {
 		padding-right: 17.5vw;
-		.info
-		{
+		.info {
 			left: 16.5vw;
 		}
-		.videoThumbnail
-		{
+		.videoThumbnail {
 			transform: translateX(10vw);
 		}
 	}
-	section.alignRight
-	{
+	section.alignRight {
 		flex-flow: row-reverse;
 		padding-left: 16.5vw;
-		.info
-		{
+		.info {
 			right: 17.5vw;
 			text-align: right;
 		}
-		.videoThumbnail
-		{
+		.videoThumbnail {
 			transform: translateX(-10vw);
 		}
 	}
-	section
-	{
+	section {
 		height: 100vh;
 		display: flex;
 		align-items: center;
 		position: relative;
-		.info
-		{
+		.info {
 			position: absolute;
 			top: 50%;
 			letter-spacing: 2px;
 			transform: translate(0, -50%);
 			pointer-events: none;
-			.title
-			{
+			.title {
 				font-size: 4.7vw;
 				font-family: 'Montserrat Bold';
 			}
-			.artistName
-			{
+			.artistName {
 				font-size: 1.2vw;
 				font-family: 'Montserrat Regular';
 			}
 		}
-		.infoFill
-		{
+		.infoFill {
 			color: white;
 			z-index: 5;
 		}
-		.infoStroke
-		{
+		.infoStroke {
 			z-index: 15;
 			color: rgba($color: white, $alpha: 0);
 			-webkit-text-stroke: 1.3px white;
 		}
-		.blackBloc
-		{
+		.blackBloc {
 			width: 50%;
 			height: calc(100% - 30vw);
 			background-color: var(--backgroundColor);
 			z-index: 10;
 		}
-		.videoThumbnail
-		{
+		.videoThumbnail {
 			opacity: 0;
-			background-color: red;
 			will-change: opacity translate;
 			width: 50%;
 			overflow: hidden;
-			img
-			{
+			img {
 				width: 100%;
 				margin-bottom: -4px;
 				transition: transform 0.3s ease-in-out;
@@ -149,8 +125,7 @@ body
 	}
 }
 
-.videoOverlay
-{
+.videoOverlay {
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
@@ -163,66 +138,63 @@ body
 	opacity: 0;
 	pointer-events: none;
 	background-color: #000;
-	video
-	{
+	video {
 		width: 100%;
 		height: 100%;
 	}
-	.controls
-	{
+	.controls {
 		width: 100vw;
 		height: 100vh;
 		position: absolute;
 		display: flex;
 		flex-direction: column;
-		.quit
-		{
+		.zones {
 			width: 100vw;
-			height: 85vh;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			.left {
+				width: 30vw;
+				height: 100%;
+			}
+			.center {
+				width: 40vw;
+				height: 100%;
+			}
+			.right {
+				width: 30vw;
+				height: 100%;
+			}
 		}
-		.timeBarContainer
-		{
+		.timeBarContainer {
 			width: 100vw;
 			height: 15vh;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			.test
-			{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			.timeBar {
 				width: 80vw;
 				height: 3px;
-				position: relative;
-				.timeBar
-				{
-					width: 100%;
+				background-color: grey;
+				display: flex;
+				justify-content: start;
+				overflow: hidden;
+				border-radius: 3px;
+				pointer-events: none;
+				top: 0;
+				left: 0;
+				.indexBar {
 					height: 100%;
-					background-color: grey;
-					display: flex;
-					justify-content: start;
-					overflow: hidden;
-					border-radius: 3px;
-					pointer-events: none;
-					position: absolute;
-					top: 0;
-					left: 0;
-					.indexBar
-					{
-						height: 100%;
-						width: 100%;
-						transform: translateX(-100%);
-						background-color: white;
-					}
-				}
-				.indexCircle
-				{
-					width: 25px;
-					height: 25px;
-					background-color: red;
-					position: absolute;
-					top: 0;
-					left: 0;
-					border-radius: 50%;
-					transform: translate(-50%, calc(1px - 50%));
+					width: 100%;
+					transform: translateX(-100%);
+					background-color: white;
 				}
 			}
 		}

@@ -2,15 +2,13 @@
 * COMMON CSS
 */
 
-:root
-{
-	--backgroundColor: #0F0F0F;
+:root {
+	--backgroundColor: #0f0f0f;
 }
 
 // CURSOR
 
-.cursorContainer
-{
+.cursorContainer {
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -18,22 +16,21 @@
 	pointer-events: none;
 	opacity: 0;
 	mix-blend-mode: difference;
-	.dot
-	{
+	.dot {
 		width: 5px;
 		height: 5px;
-        position: absolute;
-		border-radius: 50%;
+		position: absolute;
 		background-color: white;
+		border-radius: 50%;
 		border: solid white 1px;
-		transform: translate(calc(-50% - 150px), calc(-50% - 150px));
+		transform: translate(calc(-50%), calc(-50%));
 	}
-	.cross
-	{
+	.cross,
+	.leftArrow,
+	.rightArrow {
 		position: relative;
-		opacity: 0;
-		div
-		{
+		opacity: 1;
+		div {
 			width: 35px;
 			height: 7px;
 			background-color: white;
@@ -41,46 +38,61 @@
 			top: 0;
 			right: 0;
 		}
-		.a
-		{
-			transform: translate(50%, -50%) rotate(-45deg) scaleX(0.01);
+	}
+	.cross {
+		.a {
+			transform: translate(50%, -50%) rotate(-45deg) scaleX(0.001);
 		}
-		.b
-		{
-			transform: translate(50%, -50%) rotate(45deg) scaleX(0.01);
+		.b {
+			transform: translate(50%, -50%) rotate(45deg) scaleX(0.001);
+		}
+	}
+	.leftArrow {
+		.a {
+			transform-origin: left;
+			transform: translate(calc(50% + 15px), calc(-50% - 2px)) rotate(45deg) scaleX(0.001);
+		}
+		.b {
+			transform-origin: left;
+			transform: translate(calc(50% + 15px), calc(-50% + 2px)) rotate(-45deg) scaleX(0.001);
+		}
+	}
+	.rightArrow {
+		.a {
+			transform-origin: right;
+			transform: translate(calc(50% - 15px), calc(-50% + 2px)) rotate(45deg) scaleX(0.001);
+		}
+		.b {
+			transform-origin: right;
+			transform: translate(calc(50% - 15px), calc(-50% - 2px)) rotate(-45deg) scaleX(0.001);
 		}
 	}
 }
 
 // HEADER
 
-.headerContainer
-{
+.headerContainer {
 	width: 91.4vw;
 	height: 20vh;
 	position: fixed;
 	display: flex;
 	justify-content: space-between;
-	padding:  3vh 4.3vw 3vh 4.3vw;
+	padding: 3vh 4.3vw 3vh 4.3vw;
 	align-items: center;
 	z-index: 80;
-    font-family: 'Montserrat Regular';
-    pointer-events: none;
-    a
-    {
+	font-family: 'Montserrat Regular';
+	pointer-events: none;
+	a {
 		pointer-events: auto;
 		cursor: none;
-    }
-	
-	.logo
-	{
-		img
-		{
+	}
+
+	.logo {
+		img {
 			width: 130px;
 		}
 	}
-	.contactButton
-	{
+	.contactButton {
 		color: white;
 		text-decoration: none;
 		padding: 10px;
@@ -89,13 +101,13 @@
 
 // FONTS
 
-@font-face
-{
+@font-face {
 	font-family: 'Montserrat Bold';
-	src: url('../assets/fonts/montserrat/Montserrat-Bold.woff') format('woff'), url('../assets/fonts/montserrat/Montserrat-Bold.woff2') format('woff2');
+	src: url('../assets/fonts/montserrat/Montserrat-Bold.woff') format('woff'),
+		url('../assets/fonts/montserrat/Montserrat-Bold.woff2') format('woff2');
 }
-@font-face
-{
+@font-face {
 	font-family: 'Montserrat Regular';
-	src: url('../assets/fonts/montserrat/Montserrat-Regular.woff') format('woff'), url('../assets/fonts/montserrat/Montserrat-Regular.woff2') format('woff2');
+	src: url('../assets/fonts/montserrat/Montserrat-Regular.woff') format('woff'),
+		url('../assets/fonts/montserrat/Montserrat-Regular.woff2') format('woff2');
 }

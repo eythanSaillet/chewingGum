@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-	<meta charset="utf-8">
-	<title>Chewing Gum</title>
-	<meta name="description" content="">
-	<link rel="stylesheet" href="../styles/common.css">
-	<link rel="stylesheet" href="../styles/director.css">
+		<meta charset="utf-8" />
+		<title>Chewing Gum</title>
+		<meta name="description" content="" />
+		<link rel="stylesheet" href="../styles/common.css" />
+		<link rel="stylesheet" href="../styles/director.css" />
 	</head>
 	<body>
 		<div class="cursorContainer">
@@ -14,10 +14,18 @@
 				<div class="a"></div>
 				<div class="b"></div>
 			</div>
+			<div class="leftArrow">
+				<div class="a"></div>
+				<div class="b"></div>
+			</div>
+			<div class="rightArrow">
+				<div class="a"></div>
+				<div class="b"></div>
+			</div>
 		</div>
 		<div class="headerContainer">
 			<a href="../index.html" class="logo">
-				<img src="../assets/images/chewingGumLogo.svg" alt="">
+				<img src="../assets/images/chewingGumLogo.svg" alt="" />
 			</a>
 			<a href="mailto:ysaillet@gmail.com" class="contactButton">CONTACT</a>
 		</div>
@@ -34,13 +42,14 @@
 		<div class="videoOverlay">
 			<video src="../assets/video/tournentlesviolonsJeanjacquesgoldman.mp4"></video>
 			<div class="controls">
-				<div class="quit"></div>
+				<div class="zones">
+					<div class="left" data="-1"></div>
+					<div class="center"></div>
+					<div class="right" data="1"></div>
+				</div>
 				<div class="timeBarContainer">
-					<div class="test">
-						<div class="timeBar">
-							<div class="indexBar"></div>
-						</div>
-						<div class="indexCircle"></div>
+					<div class="timeBar">
+						<div class="indexBar"></div>
 					</div>
 				</div>
 			</div>

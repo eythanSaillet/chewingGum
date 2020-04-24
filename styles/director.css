@@ -93,7 +93,6 @@ body {
     z-index: 10; }
   .works section .videoThumbnail {
     opacity: 0;
-    background-color: red;
     will-change: opacity translate;
     width: 50%;
     overflow: hidden;
@@ -125,42 +124,46 @@ body {
     position: absolute;
     display: flex;
     flex-direction: column; }
-    .videoOverlay .controls .quit {
+    .videoOverlay .controls .zones {
       width: 100vw;
-      height: 85vh; }
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0; }
+      .videoOverlay .controls .zones .left {
+        width: 30vw;
+        height: 100%; }
+      .videoOverlay .controls .zones .center {
+        width: 40vw;
+        height: 100%; }
+      .videoOverlay .controls .zones .right {
+        width: 30vw;
+        height: 100%; }
     .videoOverlay .controls .timeBarContainer {
       width: 100vw;
       height: 15vh;
       display: flex;
       justify-content: center;
-      align-items: center; }
-      .videoOverlay .controls .timeBarContainer .test {
+      align-items: center;
+      position: absolute;
+      left: 0;
+      bottom: 0; }
+      .videoOverlay .controls .timeBarContainer .timeBar {
         width: 80vw;
         height: 3px;
-        position: relative; }
-        .videoOverlay .controls .timeBarContainer .test .timeBar {
-          width: 100%;
+        background-color: grey;
+        display: flex;
+        justify-content: start;
+        overflow: hidden;
+        border-radius: 3px;
+        pointer-events: none;
+        top: 0;
+        left: 0; }
+        .videoOverlay .controls .timeBarContainer .timeBar .indexBar {
           height: 100%;
-          background-color: grey;
-          display: flex;
-          justify-content: start;
-          overflow: hidden;
-          border-radius: 3px;
-          pointer-events: none;
-          position: absolute;
-          top: 0;
-          left: 0; }
-          .videoOverlay .controls .timeBarContainer .test .timeBar .indexBar {
-            height: 100%;
-            width: 100%;
-            transform: translateX(-100%);
-            background-color: white; }
-        .videoOverlay .controls .timeBarContainer .test .indexCircle {
-          width: 25px;
-          height: 25px;
-          background-color: red;
-          position: absolute;
-          top: 0;
-          left: 0;
-          border-radius: 50%;
-          transform: translate(-50%, calc(1px - 50%)); }
+          width: 100%;
+          transform: translateX(-100%);
+          background-color: white; }
