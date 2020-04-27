@@ -1,99 +1,97 @@
-
-body
-{
+body {
 	margin: 0;
 	background-color: var(--backgroundColor);
 	position: relative;
-	cursor: none;
 	user-select: none;
 }
 
-// SCROLL MENU
-.menuContainer
-{
-	display: flex;
-	position: fixed;
-	background-color: var(--backgroundColor);
-	will-change: transform;
+* {
+	cursor: none;
+}
 
-	// NAMES STROKE/FILL EFFECT
-	.strokeNamesContainer
-	{
-		z-index: 50;
-	}
-	.fillNamesContainer, .strokeNamesContainer
-	{
+.menuContainer {
+	width: 100vw;
+	display: flex;
+	.contentContainer {
 		width: 100vw;
-		height: 100vh;
+		display: flex;
+		z-index: 10;
+		.leftStepBloc {
+			width: 27.5vw;
+			background: red;
+		}
+		.rightStepBloc {
+			width: 27.5vw;
+			background: red;
+		}
+		.imagesContainer {
+			width: 45vw;
+			background: blue;
+			padding: calc((100vh - (45vw / 1.78)) / 2) 0 calc((100vh - (45vw / 1.78)) / 2) 0;
+			.image {
+				img {
+					width: 45vw;
+					height: calc(45vw / 1.78);
+					object-fit: cover;
+				}
+			}
+			.stepBloc {
+				width: 100%;
+				height: 100px;
+			}
+		}
+	}
+	.blackBlocs {
+		width: 100vw;
+		height: 100%;
+		display: flex;
 		position: absolute;
 		top: 0;
-		right: 0;
+		left: 0;
+		z-index: 30;
+		.borderColumn {
+			width: 27.5vw;
+			background: green;
+		}
+		.centerColumn {
+			width: 45vw;
+			padding: calc((100vh - (45vw / 1.78)) / 2) 0 calc((100vh - (45vw / 1.78)) / 2) 0;
+			.imageSpot {
+				width: 45vw;
+				height: calc(45vw / 1.78);
+			}
+			.stepBloc {
+				width: 100%;
+				height: 100px;
+				background: green;
+			}
+		}
+	}
+	.nameContainer {
+		width: 100vw;
+		height: 100vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: #00000000;
-		pointer-events: none;
-		.names
-		{
-			position: relative;
-			span.nameSpanContainer
-			{
-				position: absolute;
-				top: 0;
-				left: 0;
-				transform: translate(-50%, -50%);
-				font-family: 'Montserrat Bold';
-				font-size: 7.5vw;
-				white-space: nowrap;
-				display: flex;
-				span
-				{
-					margin: 2px;
-					white-space: pre;
-					will-change: transform opacity;
-				}
-			}
-			.fill
-			{
-				color: white;
-				z-index: 10;
-			}
-			.stroke
-			{
-				color: rgba($color: #000000, $alpha: 0);
-				-webkit-text-stroke: 1.5px white;
-			}
+		position: fixed;
+		top: 0;
+		left: 0;
+		span {
+			font-family: 'Montserrat Bold';
+			font-size: 7.5vw;
 		}
 	}
-
-	// BORDER TO HIDE FILL TEXTE
-	.leftBorder, .rightBorder
-	{
-		width: 27.5vw;
-		background-color: var(--backgroundColor);
+	.fillNameContainer {
+		z-index: 20;
+		span {
+			color: white;
+		}
+	}
+	.strokeNameContainer {
 		z-index: 40;
-	}
-	
-	// CENTER CONTAINER THAT CONTAINS IMAGES AND BLACKBLOCS
-	.centerContainer
-	{
-		width: 45vw;
-		height: auto;
-		a
-		{
-			cursor: none;
-			img
-			{
-				width: 100%;
-				margin-bottom: -5px;
-				z-index: -5;
-			}
-		}
-		.blackBloc
-		{
-			position: relative;
-			background-color: var(--backgroundColor);
-			z-index: 40;
+		span {
+			color: rgba($color: #000000, $alpha: 0);
+			-webkit-text-stroke: 2px white;
 		}
 	}
 }
