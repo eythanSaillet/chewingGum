@@ -9,25 +9,26 @@ body {
 
 .menuContainer {
   width: 100vw;
-  display: flex; }
+  display: flex;
+  pointer-events: none; }
   .menuContainer .contentContainer {
     width: 100vw;
     display: flex;
     z-index: 10; }
-    .menuContainer .contentContainer .leftStepBloc {
-      width: 27.5vw;
-      background: red; }
-    .menuContainer .contentContainer .rightStepBloc {
-      width: 27.5vw;
-      background: red; }
+    .menuContainer .contentContainer .columnStepBloc {
+      width: 25vw; }
     .menuContainer .contentContainer .imagesContainer {
-      width: 45vw;
-      background: blue;
-      padding: calc((100vh - (45vw / 1.78)) / 2) 0 calc((100vh - (45vw / 1.78)) / 2) 0; }
-      .menuContainer .contentContainer .imagesContainer .image img {
-        width: 45vw;
-        height: calc(45vw / 1.78);
-        object-fit: cover; }
+      width: 50vw;
+      padding: calc((100vh - (50vw / 1.78)) / 2) 0 calc((100vh - (50vw / 1.78)) / 2) 0; }
+      .menuContainer .contentContainer .imagesContainer .image {
+        height: calc(50vw / 1.78);
+        width: 100%; }
+        .menuContainer .contentContainer .imagesContainer .image a {
+          pointer-events: auto; }
+          .menuContainer .contentContainer .imagesContainer .image a img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; }
       .menuContainer .contentContainer .imagesContainer .stepBloc {
         width: 100%;
         height: 100px; }
@@ -40,18 +41,18 @@ body {
     left: 0;
     z-index: 30; }
     .menuContainer .blackBlocs .borderColumn {
-      width: 27.5vw;
-      background: green; }
+      width: 25vw;
+      background: var(--backgroundColor); }
     .menuContainer .blackBlocs .centerColumn {
-      width: 45vw;
-      padding: calc((100vh - (45vw / 1.78)) / 2) 0 calc((100vh - (45vw / 1.78)) / 2) 0; }
+      width: 50vw;
+      padding: calc((100vh - (50vw / 1.78)) / 2) 0 calc((100vh - (50vw / 1.78)) / 2) 0; }
       .menuContainer .blackBlocs .centerColumn .imageSpot {
-        width: 45vw;
-        height: calc(45vw / 1.78); }
+        width: 50vw;
+        height: calc(50vw / 1.78); }
       .menuContainer .blackBlocs .centerColumn .stepBloc {
         width: 100%;
         height: 100px;
-        background: green; }
+        background: var(--backgroundColor); }
   .menuContainer .nameContainer {
     width: 100vw;
     height: 100vh;
@@ -63,7 +64,7 @@ body {
     left: 0; }
     .menuContainer .nameContainer span {
       font-family: 'Montserrat Bold';
-      font-size: 7.5vw; }
+      font-size: 7.65vw; }
   .menuContainer .fillNameContainer {
     z-index: 20; }
     .menuContainer .fillNameContainer span {

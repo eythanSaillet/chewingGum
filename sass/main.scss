@@ -12,27 +12,27 @@ body {
 .menuContainer {
 	width: 100vw;
 	display: flex;
+	pointer-events: none;
 	.contentContainer {
 		width: 100vw;
 		display: flex;
 		z-index: 10;
-		.leftStepBloc {
-			width: 27.5vw;
-			background: red;
-		}
-		.rightStepBloc {
-			width: 27.5vw;
-			background: red;
+		.columnStepBloc {
+			width: 25vw;
 		}
 		.imagesContainer {
-			width: 45vw;
-			background: blue;
-			padding: calc((100vh - (45vw / 1.78)) / 2) 0 calc((100vh - (45vw / 1.78)) / 2) 0;
+			width: 50vw;
+			padding: calc((100vh - (50vw / 1.78)) / 2) 0 calc((100vh - (50vw / 1.78)) / 2) 0;
 			.image {
-				img {
-					width: 45vw;
-					height: calc(45vw / 1.78);
-					object-fit: cover;
+				height: calc(50vw / 1.78);
+				width: 100%;
+				a {
+					pointer-events: auto;
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
 				}
 			}
 			.stepBloc {
@@ -50,20 +50,20 @@ body {
 		left: 0;
 		z-index: 30;
 		.borderColumn {
-			width: 27.5vw;
-			background: green;
+			width: 25vw;
+			background: var(--backgroundColor);
 		}
 		.centerColumn {
-			width: 45vw;
-			padding: calc((100vh - (45vw / 1.78)) / 2) 0 calc((100vh - (45vw / 1.78)) / 2) 0;
+			width: 50vw;
+			padding: calc((100vh - (50vw / 1.78)) / 2) 0 calc((100vh - (50vw / 1.78)) / 2) 0;
 			.imageSpot {
-				width: 45vw;
-				height: calc(45vw / 1.78);
+				width: 50vw;
+				height: calc(50vw / 1.78);
 			}
 			.stepBloc {
 				width: 100%;
 				height: 100px;
-				background: green;
+				background: var(--backgroundColor);
 			}
 		}
 	}
@@ -78,7 +78,7 @@ body {
 		left: 0;
 		span {
 			font-family: 'Montserrat Bold';
-			font-size: 7.5vw;
+			font-size: 7.65vw;
 		}
 	}
 	.fillNameContainer {
