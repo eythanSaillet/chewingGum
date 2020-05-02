@@ -64,7 +64,8 @@ body {
     left: 0; }
     .menuContainer .nameContainer span {
       font-family: 'Montserrat Bold';
-      font-size: 7.65vw; }
+      font-size: 7.65vw;
+      letter-spacing: 3px; }
   .menuContainer .fillNameContainer {
     z-index: 20; }
     .menuContainer .fillNameContainer span {

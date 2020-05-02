@@ -1,6 +1,6 @@
 let director = null
 
-// Get config.sjon
+// Get config.json
 window
 	.fetch('../scripts/config.json')
 	.then((_response) => _response.json())
