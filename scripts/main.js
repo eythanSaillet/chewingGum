@@ -1,12 +1,10 @@
-function lerp(start, end, ratio) {
-	return start * (1 - ratio) + ratio * end
-}
-
 // Set cursor target
-cursor.setTarget([
-	...document.querySelectorAll('.menuContainer .imagesContainer .image'),
-	...document.querySelectorAll('.headerContainer a'),
-])
+let target = []
+for (const _element of document.querySelectorAll('.headerContainer a')) {
+	target.push(_element)
+}
+target.push(document.querySelector('.menuContainer .strokeNameContainer span'))
+cursor.setTarget(target)
 
 // Get config.json
 let config = null
@@ -37,18 +35,36 @@ let menu = {
 	$fillName: document.querySelector('.menuContainer .fillNameContainer span'),
 	$strokeName: document.querySelector('.menuContainer .strokeNameContainer span'),
 
-	actualName: Math.ceil(window.scrollY / (menuImageHeight + this.stepBlocSize) - 0.5),
+	actualName: null,
 	stepBlocSize: document.querySelector('.contentContainer .imagesContainer .stepBloc').getBoundingClientRect().height,
 
 	setup() {
-		// On scroll : choose the correct name from config and display it
+		// Display the correct name on the loading of the page
+		this.displayCorrectName()
+
+		// On scroll : actualize the name
 		window.addEventListener('scroll', () => {
-			let name = Math.ceil(window.scrollY / (menuImageHeight + this.stepBlocSize) - 0.5)
-			if (name != this.actualName) {
-				this.actualName = name
-				this.$fillName.innerHTML = config[this.actualName].name.toUpperCase()
-				this.$strokeName.innerHTML = config[this.actualName].name.toUpperCase()
-			}
+			this.displayCorrectName()
+		})
+
+		this.setupRedirectEvent()
+	},
+
+	displayCorrectName() {
+		// Display the correct name according to the scroll and from the config and
+		let name = Math.ceil(window.scrollY / (menuImageHeight + this.stepBlocSize) - 0.5)
+		if (name != this.actualName) {
+			this.actualName = name
+			this.$fillName.innerHTML = config[this.actualName].name
+			this.$strokeName.innerHTML = config[this.actualName].name
+		}
+	},
+
+	setupRedirectEvent() {
+		// Redirect to the correct director page when clicking on the name
+		this.$strokeName.addEventListener('click', () => {
+			console.log(config[this.actualName], this.actualName)
+			window.location.href = `pages/director.html#${config[this.actualName].index}`
 		})
 	},
 }

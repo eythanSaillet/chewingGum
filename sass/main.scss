@@ -26,13 +26,10 @@ body {
 			.image {
 				height: calc(50vw / 1.78);
 				width: 100%;
-				a {
-					pointer-events: auto;
-					img {
-						width: 100%;
-						height: 100%;
-						object-fit: cover;
-					}
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
 				}
 			}
 			.stepBloc {
@@ -93,6 +90,7 @@ body {
 		span {
 			color: rgba($color: #000000, $alpha: 0);
 			-webkit-text-stroke: 2px white;
+			pointer-events: auto;
 		}
 	}
 }

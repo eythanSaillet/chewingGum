@@ -23,12 +23,10 @@ body {
       .menuContainer .contentContainer .imagesContainer .image {
         height: calc(50vw / 1.78);
         width: 100%; }
-        .menuContainer .contentContainer .imagesContainer .image a {
-          pointer-events: auto; }
-          .menuContainer .contentContainer .imagesContainer .image a img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; }
+        .menuContainer .contentContainer .imagesContainer .image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; }
       .menuContainer .contentContainer .imagesContainer .stepBloc {
         width: 100%;
         height: 100px; }
@@ -74,4 +72,5 @@ body {
     z-index: 40; }
     .menuContainer .strokeNameContainer span {
       color: rgba(0, 0, 0, 0);
-      -webkit-text-stroke: 2px white; }
+      -webkit-text-stroke: 2px white;
+      pointer-events: auto; }
