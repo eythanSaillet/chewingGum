@@ -1,6 +1,6 @@
 let director = null
 
-// Get config.sjon
+// Get config.json
 window
 	.fetch('../scripts/config.json')
 	.then((_response) => _response.json())
@@ -61,7 +61,7 @@ let flashLightEffect = {
 	},
 
 	setupName() {
-		document.querySelector('.nameContainer h1').innerHTML = director.name.toUpperCase()
+		document.querySelector('.nameContainer h1').innerHTML = director.name
 	},
 
 	posUpdate() {
@@ -159,10 +159,7 @@ let filmsDisplay = {
 		window.addEventListener('scroll', () => {
 			for (_section of this.sections) {
 				// Test if the section is in view and if this is the first time
-				if (
-					_section.dom.getBoundingClientRect().top - window.innerHeight * 0.7 < 0 &&
-					_section.state == false
-				) {
+				if (_section.dom.getBoundingClientRect().top - window.innerHeight * 0.7 < 0 && _section.state == false) {
 					// Update its state
 					_section.state = true
 
@@ -170,55 +167,34 @@ let filmsDisplay = {
 					gsap.to(_section.dom.querySelector('.videoThumbnail'), 0.7, { x: '0vw', opacity: 1 })
 
 					// Animate opacity of infos
+					gsap.from([_section.dom.querySelector('.infoStroke .title'), _section.dom.querySelector('.infoFill .title')], 0.2, {
+						opacity: 0,
+						delay: 0.5,
+					})
 					gsap.from(
-						[
-							_section.dom.querySelector('.infoStroke .title'),
-							_section.dom.querySelector('.infoFill .title'),
-						],
-						0.2,
-						{ opacity: 0, delay: 0.5 }
-					)
-					gsap.from(
-						[
-							_section.dom.querySelector('.infoStroke .artistName'),
-							_section.dom.querySelector('.infoStroke .artistName'),
-						],
+						[_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoStroke .artistName')],
 						0.2,
 						{ opacity: 0, delay: 0.7 }
 					)
 
 					// Animate translate of the infos according to alignement
 					if (_section.dom.classList.contains('alignRight')) {
+						gsap.from([_section.dom.querySelector('.infoStroke .title'), _section.dom.querySelector('.infoFill .title')], 0.5, {
+							x: '10vw',
+							delay: 0.5,
+						})
 						gsap.from(
-							[
-								_section.dom.querySelector('.infoStroke .title'),
-								_section.dom.querySelector('.infoFill .title'),
-							],
-							0.5,
-							{ x: '10vw', delay: 0.5 }
-						)
-						gsap.from(
-							[
-								_section.dom.querySelector('.infoStroke .artistName'),
-								_section.dom.querySelector('.infoFill .artistName'),
-							],
+							[_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoFill .artistName')],
 							0.5,
 							{ x: '10vw', delay: 0.7 }
 						)
 					} else if (_section.dom.classList.contains('alignLeft')) {
+						gsap.from([_section.dom.querySelector('.infoStroke .title'), _section.dom.querySelector('.infoFill .title')], 0.5, {
+							x: '-10vw',
+							delay: 0.5,
+						})
 						gsap.from(
-							[
-								_section.dom.querySelector('.infoStroke .title'),
-								_section.dom.querySelector('.infoFill .title'),
-							],
-							0.5,
-							{ x: '-10vw', delay: 0.5 }
-						)
-						gsap.from(
-							[
-								_section.dom.querySelector('.infoStroke .artistName'),
-								_section.dom.querySelector('.infoFill .artistName'),
-							],
+							[_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoFill .artistName')],
 							0.5,
 							{ x: '-10vw', delay: 0.7 }
 						)

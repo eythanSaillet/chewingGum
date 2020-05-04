@@ -2,62 +2,75 @@ body {
   margin: 0;
   background-color: var(--backgroundColor);
   position: relative;
-  cursor: none;
   user-select: none; }
 
+* {
+  cursor: none; }
+
 .menuContainer {
+  width: 100vw;
   display: flex;
-  position: fixed;
-  background-color: var(--backgroundColor);
-  will-change: transform; }
-  .menuContainer .strokeNamesContainer {
-    z-index: 50; }
-  .menuContainer .fillNamesContainer, .menuContainer .strokeNamesContainer {
+  pointer-events: none; }
+  .menuContainer .contentContainer {
     width: 100vw;
-    height: 100vh;
+    display: flex;
+    z-index: 10; }
+    .menuContainer .contentContainer .columnStepBloc {
+      width: 25vw; }
+    .menuContainer .contentContainer .imagesContainer {
+      width: 50vw;
+      padding: calc((100vh - (50vw / 1.78)) / 2) 0 calc((100vh - (50vw / 1.78)) / 2) 0; }
+      .menuContainer .contentContainer .imagesContainer .image {
+        height: calc(50vw / 1.78);
+        width: 100%; }
+        .menuContainer .contentContainer .imagesContainer .image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; }
+      .menuContainer .contentContainer .imagesContainer .stepBloc {
+        width: 100%;
+        height: 100px; }
+  .menuContainer .blackBlocs {
+    width: 100vw;
+    height: 100%;
+    display: flex;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
+    z-index: 30; }
+    .menuContainer .blackBlocs .borderColumn {
+      width: 25vw;
+      background: var(--backgroundColor); }
+    .menuContainer .blackBlocs .centerColumn {
+      width: 50vw;
+      padding: calc((100vh - (50vw / 1.78)) / 2) 0 calc((100vh - (50vw / 1.78)) / 2) 0; }
+      .menuContainer .blackBlocs .centerColumn .imageSpot {
+        width: 50vw;
+        height: calc(50vw / 1.78); }
+      .menuContainer .blackBlocs .centerColumn .stepBloc {
+        width: 100%;
+        height: 100px;
+        background: var(--backgroundColor); }
+  .menuContainer .nameContainer {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #00000000;
-    pointer-events: none; }
-    .menuContainer .fillNamesContainer .names, .menuContainer .strokeNamesContainer .names {
-      position: relative; }
-      .menuContainer .fillNamesContainer .names span.nameSpanContainer, .menuContainer .strokeNamesContainer .names span.nameSpanContainer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        font-family: 'Montserrat Bold';
-        font-size: 7.5vw;
-        white-space: nowrap;
-        display: flex; }
-        .menuContainer .fillNamesContainer .names span.nameSpanContainer span, .menuContainer .strokeNamesContainer .names span.nameSpanContainer span {
-          margin: 2px;
-          white-space: pre;
-          will-change: transform opacity; }
-      .menuContainer .fillNamesContainer .names .fill, .menuContainer .strokeNamesContainer .names .fill {
-        color: white;
-        z-index: 10; }
-      .menuContainer .fillNamesContainer .names .stroke, .menuContainer .strokeNamesContainer .names .stroke {
-        color: rgba(0, 0, 0, 0);
-        -webkit-text-stroke: 1.5px white; }
-  .menuContainer .leftBorder, .menuContainer .rightBorder {
-    width: 27.5vw;
-    background-color: var(--backgroundColor);
+    position: fixed;
+    top: 0;
+    left: 0; }
+    .menuContainer .nameContainer span {
+      font-family: 'Montserrat Bold';
+      font-size: 7.65vw;
+      letter-spacing: 3px; }
+  .menuContainer .fillNameContainer {
+    z-index: 20; }
+    .menuContainer .fillNameContainer span {
+      color: white; }
+  .menuContainer .strokeNameContainer {
     z-index: 40; }
-  .menuContainer .centerContainer {
-    width: 45vw;
-    height: auto; }
-    .menuContainer .centerContainer a {
-      cursor: none; }
-      .menuContainer .centerContainer a img {
-        width: 100%;
-        margin-bottom: -5px;
-        z-index: -5; }
-    .menuContainer .centerContainer .blackBloc {
-      position: relative;
-      background-color: var(--backgroundColor);
-      z-index: 40; }
+    .menuContainer .strokeNameContainer span {
+      color: rgba(0, 0, 0, 0);
+      -webkit-text-stroke: 2px white;
+      pointer-events: auto; }

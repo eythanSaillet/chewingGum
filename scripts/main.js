@@ -1,145 +1,70 @@
-function lerp (start, end, ratio)
-{
-	return start * (1 - ratio) + ratio * end
+// Set cursor target
+let target = []
+for (const _element of document.querySelectorAll('.headerContainer a')) {
+	target.push(_element)
 }
+target.push(document.querySelector('.menuContainer .strokeNameContainer span'))
+cursor.setTarget(target)
 
-let names
+// Get config.json
+let config = null
+window
+	.fetch('../scripts/config.json')
+	.then((_response) => _response.json())
+	.then((_config) => {
+		config = _config
+		menu.setup()
+	})
 
-let smoothScroll = 
-{
-	// DOM
-	$body : document.querySelector('body'),
-	$content : document.querySelector('.menuContainer'),
-	$img : document.querySelector('.centerContainer img'),
-	$blackBlocs : document.querySelectorAll('.blackBloc'),
-	$fillNamesContainer : document.querySelector('.fillNamesContainer'),
-	$strokeNamesContainer : document.querySelector('.strokeNamesContainer'),
+// Set resize event
+let windowSize = { width: window.innerWidth, height: window.innerHeight }
+let menuImageHeight = windowSize.width / 2 / 1.78
+function getDomSizeOnResize() {
+	// Window
+	windowSize.width = window.innerWidth
+	windowSize.height = window.innerHeight
+	// Menu image height
+	menuImageHeight = windowSize.width / 2 / 1.78
+}
+window.addEventListener('resize', () => {
+	getDomSizeOnResize()
+})
 
-	// VALUES
-	imgHeight : null,
-	contentHeight : null,
-	contentMarginTop : null,
-	contentMarginBottom : null,
-	scrollValue : null,
-	scrollValueWithLerp : null,
+// Names menu
+let menu = {
+	$fillName: document.querySelector('.menuContainer .fillNameContainer span'),
+	$strokeName: document.querySelector('.menuContainer .strokeNameContainer span'),
 
-	// PARAMETERS
-	sizeBetweenImagesRatio : 0.2,
-	scrollSpeedRatio : 2,
+	actualName: null,
+	stepBlocSize: document.querySelector('.contentContainer .imagesContainer .stepBloc').getBoundingClientRect().height,
 
-	setup()
-	{
-		this.setContentSize()
-		this.setScrollEvent()
-		this.setLerpInterval()
-		this.setResizeEvent()
+	setup() {
+		// Display the correct name on the loading of the page
+		this.displayCorrectName()
 
-		names = [new Name('Yannick Saillet', 0), new Name('Christophe Rihet', 1), new Name('Eleonore Wismes', 2), new Name('Mathieu Juric', 3), new Name('Odieux Boby', 4)]
-		setNamesScrollEvent()
-
-		// Setup cursor style event on director images and header
-		cursor.setTarget([...document.querySelectorAll('.centerContainer img'), ...document.querySelectorAll(('.headerContainer a'))])
-	},
-
-	setContentSize()
-	{
-		this.imgHeight = document.querySelector('.centerContainer img').getBoundingClientRect().height
-
-		// SETTING MARGINS, AND SIZES OF BLACKBLOCS TO PUT IMAGES AT THE CENTER OF THE VIEW
-		this.contentMarginTop = (window.innerHeight - this.imgHeight) * 0.5
-		this.contentMarginBottom = (window.innerHeight - this.imgHeight) * 0.5
-		this.$content.style.marginTop = `${this.contentMarginTop}px`
-		this.$content.style.marginBottom = `${this.contentMarginBottom}px`
-		
-		for (const _element of this.$blackBlocs)
-		{
-			_element.style.height = `${(window.innerHeight - this.imgHeight) * this.sizeBetweenImagesRatio}px`
-		}
-
-
-		// MAKE THE BODY AS LONG AS THE CONTENT TO PERMIT THE SCROLL
-		this.contentHeight = this.$content.getBoundingClientRect().height
-		this.$body.style.height = `${(this.contentHeight + this.contentMarginTop + this.contentMarginBottom - window.innerHeight) * this.scrollSpeedRatio + window.innerHeight}px`
-	},
-
-	setScrollEvent()
-	{
-		// GET THE VALUE OF THE SCROLL
-		window.addEventListener('scroll', (_mouse) =>
-		{
-			this.scrollValue = window.pageYOffset
+		// On scroll : actualize the name
+		window.addEventListener('scroll', () => {
+			this.displayCorrectName()
 		})
 
-		// SCROLL TOP WHEN REFRESHING
-		window.onbeforeunload = function ()
-		{
-			window.scrollTo(0, 0)
+		this.setupRedirectEvent()
+	},
+
+	displayCorrectName() {
+		// Display the correct name according to the scroll and from the config and
+		let name = Math.ceil(window.scrollY / (menuImageHeight + this.stepBlocSize) - 0.5)
+		if (name != this.actualName) {
+			this.actualName = name
+			this.$fillName.innerHTML = config[this.actualName].name
+			this.$strokeName.innerHTML = config[this.actualName].name
 		}
 	},
 
-	setLerpInterval()
-	{
-		setInterval(() =>
-		{
-			// SCROLL
-			// TRANSLATING BY THE SCROLL VALUE AFTER APPLY A LERP EFFECT
-			this.scrollValueWithLerp = lerp(this.scrollValueWithLerp, this.scrollValue, 0.2)
-			this.$content.style.transform = `translateY(${Math.round(-this.scrollValueWithLerp / this.scrollSpeedRatio)}px)`
-			
-			// TRANSLATING NAMES TO SIMULATE A POSITION FIXED
-			this.$fillNamesContainer.style.transform = `translateY(${Math.round(this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop)}px)`
-			this.$strokeNamesContainer.style.transform = `translateY(${Math.round(this.scrollValueWithLerp / this.scrollSpeedRatio - this.contentMarginTop)}px)`
-		}, 1000 / 60)
-	},
-
-	setResizeEvent()
-	{
-		// UPDATE SYSTEM WHEN WINDOW RESIZE FOR RESPONSIVE
-		window.addEventListener('resize', () =>
-		{
-			// SETUP PAGE CONTENT SIZE
-			this.setContentSize()
-			// SETUP NAMES POS
-			for (const _name of names)
-			{
-				_name.resizeAdapt()
-			}
+	setupRedirectEvent() {
+		// Redirect to the correct director page when clicking on the name
+		this.$strokeName.addEventListener('click', () => {
+			console.log(config[this.actualName], this.actualName)
+			window.location.href = `pages/director.html#${config[this.actualName].index}`
 		})
-	}
+	},
 }
-
-// LAUCH THE BUILD OF THE PAGE WHEN THE IMAGES ARE LOADED
-let imagesLoader =
-{
-	$images : document.querySelectorAll('.centerContainer img'),
-
-	imagesUrl :
-	[
-		'assets/images/print_3_min-min.jpeg',
-		'assets/images/print_4_min-min.jpeg',
-		'assets/images/print_2_min-min.jpeg',
-		'assets/images/print_1_min-min.jpeg',
-		'assets/images/print_5_min-min.jpeg'
-	],
-
-	counter : 0,
-
-	load()
-	{
-		for (const _key in this.imagesUrl)
-		{
-			let imageObject = new Image()
-			imageObject.onload = () =>
-			{
-				this.counter++
-				this.$images[_key].src = imageObject.src
-				if (this.counter == this.imagesUrl.length)
-				{
-					smoothScroll.setup()
-				}
-			}
-			imageObject.src = this.imagesUrl[_key]
-		}
-	}
-}
-imagesLoader.load()
