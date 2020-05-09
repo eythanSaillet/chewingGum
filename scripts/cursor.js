@@ -87,9 +87,10 @@ let cursor = {
 		let cursorTempPos = { x: null, y: null }
 
 		// Video overlay controls zones
-		const $leftZone = document.querySelector('.videoOverlay .controls .zones .left')
-		const $centerZone = document.querySelector('.videoOverlay .controls .zones .center')
-		const $rightZone = document.querySelector('.videoOverlay .controls .zones .right')
+		const $exitButton = document.querySelector('.videoOverlay .controls .exitButton')
+		const $leftZone = document.querySelector('.videoOverlay .controls .left')
+		const $rightZone = document.querySelector('.videoOverlay .controls .right')
+		const $timeBarZone = document.querySelector('.videoOverlay .timeBarContainer')
 
 		// Cursor animation on video overlay
 
@@ -117,8 +118,9 @@ let cursor = {
 				videoSupport.overlayIsOpen == true
 			) {
 				cursorIsAfk = true
-				gsap.to(videoSupport.$timeBar, 0.7, { opacity: 0 })
+				gsap.to(videoSupport.$timeBarContainer, 0.7, { opacity: 0 })
 				gsap.to(this.$cursor, 0.7, { opacity: 0 })
+				gsap.to(videoSupport.$exitButton, 0.7, { opacity: 0 })
 			}
 			cursorTempPos.x = this.position.x
 			cursorTempPos.y = this.position.y
@@ -128,26 +130,31 @@ let cursor = {
 			// Make appear the time bar and the cursor if it is moving
 			if (cursorIsAfk == true) {
 				cursorIsAfk = false
-				gsap.to(videoSupport.$timeBar, 0.7, { opacity: 1 })
+				gsap.to(videoSupport.$timeBarContainer, 0.7, { opacity: 1 })
 				gsap.to(this.$cursor, 0.7, { opacity: 1 })
+				gsap.to(videoSupport.$exitButton, 0.7, { opacity: 1 })
 			}
 		})
 
 		// Play arrow cursor animation on control zones
-		$leftZone.addEventListener('mouseenter', () => {
-			this.displayCross.reverse(0.3)
-			this.rightCrossMode.reverse()
-			this.leftCrossMode.play()
-		})
-		$centerZone.addEventListener('mouseenter', () => {
+		$exitButton.addEventListener('mouseenter', () => {
 			this.rightCrossMode.reverse()
 			this.leftCrossMode.reverse()
-			this.displayCross.play()
 		})
-		$rightZone.addEventListener('mouseenter', () => {
-			this.displayCross.reverse(0.3)
+		// $leftZone.addEventListener('mouseenter', () => {
+		// 	// this.displayCross.reverse(0.3)
+		// 	this.rightCrossMode.reverse()
+		// 	this.leftCrossMode.play()
+		// })
+		// $rightZone.addEventListener('mouseenter', () => {
+		// 	// this.displayCross.reverse(0.3)
+		// 	this.leftCrossMode.reverse()
+		// 	this.rightCrossMode.play()
+		// })
+		$timeBarZone.addEventListener('mouseenter', () => {
+			this.rightCrossMode.reverse()
 			this.leftCrossMode.reverse()
-			this.rightCrossMode.play()
+			// this.displayCross.play()
 		})
 	},
 }

@@ -25,6 +25,8 @@ window
 				cursor.setTarget([
 					...document.querySelectorAll('.works .videoThumbnail img'),
 					...document.querySelectorAll('.headerContainer a'),
+					document.querySelector('.videoOverlay .controls .exitButton'),
+					document.querySelector('.videoOverlay .timeBarContainer'),
 				])
 
 				// Setup video support
@@ -235,17 +237,18 @@ let videoSupport = {
 	$videoOverlay: document.querySelector('.videoOverlay'),
 	$video: document.querySelector('.videoOverlay video'),
 	$videoThumbnails: null,
-	$timeBar: document.querySelector('.videoOverlay .timeBar'),
-	$timeBarIndex: document.querySelector('.videoOverlay .timeBar .indexBar'),
+	$timeBarContainer: document.querySelector('.videoOverlay .timeBarContainer'),
+	$timeBarIndexLine: document.querySelector('.videoOverlay .timeBar .timeBarLine .indexLine'),
+	$timeBarIndexCircle: document.querySelector('.videoOverlay .timeBar .indexCircle'),
 	$crossCursor: document.querySelector('.cursorContainer .cross'),
 
-	$quitZone: document.querySelector('.videoOverlay .controls .zones .center'),
+	$exitButton: document.querySelector('.videoOverlay .controls .exitButton'),
 	controlZones: [
 		document.querySelector('.videoOverlay .controls .zones .left'),
 		document.querySelector('.videoOverlay .controls .zones .right'),
 	],
-	// $leftControlZone: document.querySelector('.videoOverlay .controls .zones .left'),
-	// $righControltZone: document.querySelector('.videoOverlay .controls .zones .right'),
+	$leftControlZone: document.querySelector('.videoOverlay .controls .left'),
+	$righControltZone: document.querySelector('.videoOverlay .controls .right'),
 
 	overlayIsOpen: false,
 	timeBarIndexUpdateInterval: null,
@@ -256,7 +259,7 @@ let videoSupport = {
 
 		this.setupEnterEvent()
 		this.setupQuitEvent()
-		this.setupControlZonesEvent()
+		// this.setupControlZonesEvent()
 	},
 
 	setupEnterEvent() {
@@ -272,8 +275,8 @@ let videoSupport = {
 				this.setupControlBarUpdate()
 
 				// Display the cross cursor and hide basic cursor
-				cursor.displayCross.play()
-				gsap.to(cursor.$dot, 0.2, { opacity: 0 })
+				// cursor.displayCross.play()
+				// gsap.to(cursor.$dot, 0.2, { opacity: 0 })
 
 				// Play the video
 				this.$video.volume = 0
@@ -284,14 +287,14 @@ let videoSupport = {
 	},
 
 	setupQuitEvent() {
-		this.$quitZone.addEventListener('click', () => {
+		this.$exitButton.addEventListener('click', () => {
 			// Remove the overlay then clear the time bar
 			this.overlayIsOpen = false
 			gsap.to(this.$videoOverlay, 0.5, {
 				opacity: 0,
 				pointerEvents: 'none',
 				onComplete: () => {
-					this.$timeBarIndex.style.transform = `translateX(-100%)`
+					this.$timeBarIndexLine.style.transform = `translateX(-100%)`
 				},
 			})
 			this.clearControlBarUpdate()
@@ -311,21 +314,41 @@ let videoSupport = {
 		})
 	},
 
-	setupControlZonesEvent() {
-		// When clicking on left or right control zone move back or forward in the time of the video
-		for (const _zone of this.controlZones) {
-			_zone.addEventListener('click', () => {
-				this.$video.currentTime += 0.1 * this.$video.duration * parseInt(_zone.getAttribute('data'))
-			})
-		}
-	},
+	// setupControlZonesEvent() {
+	// 	// When clicking on left or right control zone move back or forward in the time of the video
+	// 	for (const _zone of this.controlZones) {
+	// 		_zone.addEventListener('click', () => {})
+	// 	}
+	// },
 
 	setupControlBarUpdate() {
 		// Setup an interval that update the time bar
+		let barSize = this.$timeBarIndexLine.getBoundingClientRect().width
+
 		this.timeBarIndexUpdateInterval = setInterval(() => {
+			// Update line index
 			let videoState = (this.$video.currentTime / this.$video.duration) * 100
-			this.$timeBarIndex.style.transform = `translateX(${-100 + videoState}%)`
+			this.$timeBarIndexLine.style.transform = `translateX(${-100 + videoState}%)`
+			// Update circle index
+			this.$timeBarIndexCircle.style.transform = `translate(calc(-50% - 1.5px + ${
+				(barSize / 100) * videoState
+			}px), calc(-50% - 1.5px))`
 		}, 100)
+
+		// Set event that controls time on click
+		this.$timeBarContainer.addEventListener('click', (_event) => {
+			// Calculate new time
+			let newTime = _event.offsetX / this.$timeBarContainer.getBoundingClientRect().width
+
+			// Apply it on video and timeBar
+			this.$video.currentTime = this.$video.duration * newTime
+			// Line
+			this.$timeBarIndexLine.style.transform = `translateX(${-100 + newTime * 100}%)`
+			// Circle
+			this.$timeBarIndexCircle.style.transform = `translate(calc(-50% - 1.5px + ${
+				(barSize / 100) * newTime * 100
+			}px), calc(-50% - 1.5px))`
+		})
 	},
 
 	// Clear the interval when the user quit the video overlay
