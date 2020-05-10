@@ -96,7 +96,7 @@ let cursor = {
 				videoSupport.overlayIsOpen == true
 			) {
 				cursorIsAfk = true
-				gsap.to(videoSupport.$timeBarContainer, 0.7, { opacity: 0 })
+				gsap.to(videoSupport.$controls, 0.7, { opacity: 0 })
 				gsap.to(this.$cursor, 0.7, { opacity: 0 })
 				gsap.to(videoSupport.$exitButton, 0.7, { opacity: 0 })
 			}
@@ -108,7 +108,7 @@ let cursor = {
 			// Make appear the time bar and the cursor if it is moving
 			if (cursorIsAfk == true) {
 				cursorIsAfk = false
-				gsap.to(videoSupport.$timeBarContainer, 0.7, { opacity: 1 })
+				gsap.to(videoSupport.$controls, 0.7, { opacity: 1 })
 				gsap.to(this.$cursor, 0.7, { opacity: 1 })
 				gsap.to(videoSupport.$exitButton, 0.7, { opacity: 1 })
 			}

@@ -3,7 +3,6 @@ body {
 	margin: 0;
 	background: var(--backgroundColor);
 	cursor: none;
-	// user-select: none;
 	overflow-x: hidden;
 }
 
@@ -185,8 +184,9 @@ body {
 		height: 15vh;
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		.timeBarContainer {
-			width: 75%;
+			width: 80%;
 			height: 50%;
 			display: flex;
 			justify-content: center;
@@ -219,7 +219,7 @@ body {
 			}
 		}
 		.volumeBarContainer {
-			width: 25%;
+			width: 20%;
 			height: 50%;
 			display: flex;
 			align-items: center;
@@ -227,36 +227,44 @@ body {
 			.volumeIcon {
 				img {
 					width: 15px;
-					margin: 4px 10px 0 20px;
+					margin: 4px 15px 0 20px;
+					user-select: none;
+					pointer-events: none;
 				}
 			}
 			.volumeBar {
-				width: 70%;
+				width: 60%;
 				height: 50%;
+				position: relative;
 				display: flex;
 				flex-direction: row-reverse;
 				justify-content: flex-end;
 				align-items: center;
 				border-radius: 3px;
 				.volumeBarLine {
-					width: 80%;
+					width: 100%;
 					height: 3px;
 					overflow: hidden;
 					background: rgb(54, 54, 54);
 					border-radius: 3px;
+					pointer-events: none;
 					.indexLine {
 						width: 100%;
 						height: 100%;
 						background: white;
-						transform: translateX(-50%);
+						// transform: translateX(-50%);
 					}
 				}
 				.indexCircle {
 					width: 10px;
 					height: 10px;
+					position: absolute;
+					top: 50%;
+					left: 0;
 					background: white;
 					border-radius: 50%;
-					transform: translateX(100px);
+					transform: translate(-50%, -50%);
+					pointer-events: none;
 				}
 			}
 		}

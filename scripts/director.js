@@ -26,7 +26,8 @@ window
 					...document.querySelectorAll('.works .videoThumbnail img'),
 					...document.querySelectorAll('.headerContainer a'),
 					document.querySelector('.videoOverlay .video .exitButton'),
-					document.querySelector('.videoOverlay .timeBarContainer'),
+					document.querySelector('.videoOverlay .controls .timeBarContainer'),
+					document.querySelector('.videoOverlay .controls .volumeBarContainer .volumeBar'),
 				])
 
 				// Setup video support
@@ -45,7 +46,9 @@ let windowSizes = {
 
 	setResizeEvent() {
 		window.addEventListener('resize', () => {
-			;(this.width = window.innerWidth), (this.height = window.innerHeight)
+			this.width = window.innerWidth
+			this.height = window.innerHeight
+			videoSupport.calculateDomSize()
 		})
 	},
 }
@@ -237,9 +240,22 @@ let videoSupport = {
 	$videoOverlay: document.querySelector('.videoOverlay'),
 	$video: document.querySelector('.videoOverlay video'),
 	$videoThumbnails: null,
+
+	$controls: document.querySelector('.videoOverlay .controls'),
+
 	$timeBarContainer: document.querySelector('.videoOverlay .timeBarContainer'),
+	timeBarContainerWidth: null,
 	$timeBarIndexLine: document.querySelector('.videoOverlay .timeBar .timeBarLine .indexLine'),
+	timeBarWidth: null,
 	$timeBarIndexCircle: document.querySelector('.videoOverlay .timeBar .indexCircle'),
+
+	$volumeBar: document.querySelector('.videoOverlay .controls .volumeBarContainer .volumeBar'),
+	$volumeBarIndexLine: document.querySelector('.videoOverlay .controls .volumeBarContainer .volumeBar .volumeBarLine .indexLine'),
+	volumeBarWidth: null,
+	$volumeBarIndexCircle: document.querySelector('.videoOverlay .controls .volumeBarContainer .volumeBar .indexCircle'),
+	$volumeIcon: document.querySelector('.videoOverlay .controls .volumeBarContainer .volumeIcon'),
+	$volumeIconSVG: document.querySelector('.videoOverlay .controls .volumeBarContainer .volumeIcon img'),
+
 	$crossCursor: document.querySelector('.cursorContainer .cross'),
 
 	$exitButton: document.querySelector('.videoOverlay .video .exitButton'),
@@ -247,8 +263,8 @@ let videoSupport = {
 		document.querySelector('.videoOverlay .controls .zones .left'),
 		document.querySelector('.videoOverlay .controls .zones .right'),
 	],
-	$leftControlZone: document.querySelector('.videoOverlay .controls .left'),
-	$righControltZone: document.querySelector('.videoOverlay .controls .right'),
+
+	volume: 0.5,
 
 	overlayIsOpen: false,
 	timeBarIndexUpdateInterval: null,
@@ -256,9 +272,11 @@ let videoSupport = {
 	setup() {
 		// Get video thumbnails after there creations
 		this.$videoThumbnails = document.querySelectorAll('.works .videoThumbnail img')
-
+		this.calculateDomSize()
 		this.setupEnterEvent()
 		this.setupQuitEvent()
+		this.setVolume(this.volume)
+		this.setupVolumeControl()
 	},
 
 	setupEnterEvent() {
@@ -273,14 +291,10 @@ let videoSupport = {
 				gsap.to(this.$videoOverlay, 0.5, { opacity: 1, pointerEvents: 'auto' })
 				this.setupControlBarUpdate()
 
-				// Display the cross cursor and hide basic cursor
-				// cursor.displayCross.play()
-				// gsap.to(cursor.$dot, 0.2, { opacity: 0 })
-
 				// Play the video
 				this.$video.volume = 0
 				this.$video.play()
-				gsap.to(this.$video, 1, { volume: 1 })
+				gsap.to(this.$video, 1, { volume: this.volume })
 			})
 		}
 	},
@@ -294,16 +308,10 @@ let videoSupport = {
 				pointerEvents: 'none',
 				onComplete: () => {
 					this.$timeBarIndexLine.style.transform = `translateX(-100%)`
-					console.log('hey')
 					this.$timeBarIndexCircle.style.transform = `translate(calc(-50% - 1.5px), calc(-50% - 1.5px))`
 				},
 			})
 			this.clearControlBarUpdate()
-
-			// Redisplay the dot cursor + the cursor in case it was invisible and hide cross cursor
-			gsap.to(cursor.$dot, 0.2, { opacity: 1 })
-			// gsap.to(cursor.$cursor, 0.7, { opacity: 1 })
-			cursor.displayCross.reverse(0.3)
 
 			// Pause the video
 			gsap.to(this.$video, 0.5, {
@@ -316,37 +324,116 @@ let videoSupport = {
 	},
 
 	setupControlBarUpdate() {
-		// Setup an interval that update the time bar
-		let barSize = this.$timeBarIndexLine.getBoundingClientRect().width
+		let isClicking = false
 
+		// Setup an interval that update the time bar
 		this.timeBarIndexUpdateInterval = setInterval(() => {
 			// Update line index
 			let videoState = (this.$video.currentTime / this.$video.duration) * 100
 			this.$timeBarIndexLine.style.transform = `translateX(${-100 + videoState}%)`
 			// Update circle index
 			this.$timeBarIndexCircle.style.transform = `translate(calc(-50% - 1.5px + ${
-				(barSize / 100) * videoState
+				(this.timeBarWidth / 100) * videoState
 			}px), calc(-50% - 1.5px))`
 		}, 100)
 
-		// Set event that controls time on click
-		this.$timeBarContainer.addEventListener('click', (_event) => {
-			// Calculate new time
-			let newTime = _event.offsetX / this.$timeBarContainer.getBoundingClientRect().width
-
-			// Apply it on video and timeBar
-			this.$video.currentTime = this.$video.duration * newTime
-			// Line
-			this.$timeBarIndexLine.style.transform = `translateX(${-100 + newTime * 100}%)`
-			// Circle
-			this.$timeBarIndexCircle.style.transform = `translate(calc(-50% - 1.5px + ${
-				(barSize / 100) * newTime * 100
-			}px), calc(-50% - 1.5px))`
+		// On mouse move update time bar if the mouse is down
+		this.$timeBarContainer.addEventListener('mousedown', (_event) => {
+			isClicking = true
+			this.updateTimeBar(_event)
 		})
+		this.$timeBarContainer.addEventListener('mouseup', () => {
+			isClicking = false
+		})
+		this.$timeBarContainer.addEventListener('mouseleave', () => {
+			isClicking = false
+		})
+		this.$timeBarContainer.addEventListener('mousemove', (_event) => {
+			if (isClicking) {
+				this.updateTimeBar(_event)
+			}
+		})
+	},
+
+	// Update time bar according to mouse position on the bar
+	updateTimeBar(_event) {
+		// Calculate new time
+		let newTime = _event.offsetX / this.timeBarContainerWidth
+
+		// Apply it on video and timeBar
+		this.$video.currentTime = this.$video.duration * newTime
+		// Line
+		this.$timeBarIndexLine.style.transform = `translateX(${-100 + newTime * 100}%)`
+		// Circle
+		this.$timeBarIndexCircle.style.transform = `translate(calc(-50% + ${
+			(this.timeBarWidth / 100) * newTime * 100
+		}px), calc(-50% - 1.5px))`
 	},
 
 	// Clear the interval when the user quit the video overlay
 	clearControlBarUpdate() {
 		clearInterval(this.timeBarIndexUpdateInterval)
+	},
+
+	setupVolumeControl() {
+		let isClicking = false
+
+		// Update volume bar on move when the mouse is down
+		this.$volumeBar.addEventListener('mousedown', (_event) => {
+			isClicking = true
+			this.updateVolumeBar(_event)
+		})
+		this.$volumeBar.addEventListener('mouseup', () => {
+			isClicking = false
+		})
+		this.$volumeBar.addEventListener('mouseleave', () => {
+			isClicking = false
+		})
+
+		this.$volumeBar.addEventListener('mousemove', (_event) => {
+			if (isClicking) {
+				this.updateVolumeBar(_event)
+			}
+		})
+	},
+
+	// Update volume bar according to mouse position on the bar
+	updateVolumeBar(_event) {
+		this.volume = _event.offsetX / this.volumeBarWidth
+
+		// Update video volume
+		if (this.volume <= 1 && this.volume >= 0) {
+			this.$video.volume = this.volume
+		}
+
+		// Display volume icon with the correct number of bar
+		if (this.volume < 0.05) {
+			this.$volumeIconSVG.setAttribute('src', '../assets/images/volumeState3.svg')
+		} else if (this.volume < 0.3) {
+			this.$volumeIconSVG.setAttribute('src', '../assets/images/volumeState2.svg')
+		} else if (this.volume < 0.7) {
+			this.$volumeIconSVG.setAttribute('src', '../assets/images/volumeState1.svg')
+		} else {
+			this.$volumeIconSVG.setAttribute('src', '../assets/images/volume.svg')
+		}
+
+		// Udpate dom volume bar
+		this.$volumeBarIndexLine.style.transform = `translateX(${this.volume * 100 - 100}%)`
+		this.$volumeBarIndexCircle.style.transform = `translate(calc(-50% + ${_event.offsetX}px), -50%)`
+	},
+
+	setVolume(_volume) {
+		// Update video volume
+		this.$video.volume = _volume
+
+		// Udpate dom volume bar
+		this.$volumeBarIndexLine.style.transform = `translateX(${_volume * 100 - 100}%)`
+		this.$volumeBarIndexCircle.style.transform = `translate(calc(-50% + ${this.volumeBarWidth * _volume}px), -50%)`
+	},
+
+	calculateDomSize() {
+		this.timeBarWidth = this.$timeBarIndexLine.getBoundingClientRect().width
+		this.timeBarContainerWidth = this.$timeBarContainer.getBoundingClientRect().width
+		this.volumeBarWidth = this.$volumeBarIndexLine.getBoundingClientRect().width
 	},
 }
