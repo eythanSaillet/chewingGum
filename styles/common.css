@@ -16,7 +16,7 @@
     width: 5px;
     height: 5px;
     position: absolute;
-    background-color: white;
+    background: white;
     border-radius: 50%;
     border: solid white 1px;
     transform: translate(calc(-50%), calc(-50%)); }
@@ -30,7 +30,7 @@
     .cursorContainer .rightArrow div {
       width: 35px;
       height: 7px;
-      background-color: white;
+      background: white;
       position: absolute;
       top: 0;
       right: 0; }

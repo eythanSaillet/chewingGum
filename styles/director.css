@@ -1,7 +1,7 @@
 body {
   position: relative;
   margin: 0;
-  background-color: var(--backgroundColor);
+  background: var(--backgroundColor);
   cursor: none;
   overflow-x: hidden; }
 
@@ -39,7 +39,7 @@ body {
       .nameContainer .scrollerContainer .scroller .scrollerBar {
         width: 100%;
         height: 100%;
-        background-color: white; }
+        background: white; }
     .nameContainer .scrollerContainer .text {
       color: white;
       font-size: 10px;
@@ -89,7 +89,7 @@ body {
   .works section .blackBloc {
     width: 50%;
     height: calc(100% - 30vw);
-    background-color: var(--backgroundColor);
+    background: var(--backgroundColor);
     z-index: 10; }
   .works section .videoThumbnail {
     opacity: 0;
@@ -115,7 +115,7 @@ body {
   align-items: center;
   opacity: 0;
   pointer-events: none;
-  background-color: #000; }
+  background: #000; }
   .videoOverlay .video {
     width: 100vw;
     height: 85vh;
@@ -150,30 +150,70 @@ body {
       .videoOverlay .video .videoContainer video {
         width: 100%;
         height: 100%; }
-  .videoOverlay .timeBarContainer {
+  .videoOverlay .controls {
     width: 80vw;
     height: 15vh;
     display: flex;
-    justify-content: center;
     align-items: center; }
-    .videoOverlay .timeBarContainer .timeBar {
-      width: 100%;
-      height: 3px;
-      background: #363636;
-      pointer-events: none; }
-      .videoOverlay .timeBarContainer .timeBar .timeBarLine {
+    .videoOverlay .controls .timeBarContainer {
+      width: 75%;
+      height: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .videoOverlay .controls .timeBarContainer .timeBar {
         width: 100%;
         height: 3px;
-        overflow: hidden;
+        background: #363636;
+        pointer-events: none;
         border-radius: 3px; }
-        .videoOverlay .timeBarContainer .timeBar .timeBarLine .indexLine {
+        .videoOverlay .controls .timeBarContainer .timeBar .timeBarLine {
           width: 100%;
-          height: 3px;
+          height: 100%;
+          overflow: hidden;
+          border-radius: 3px; }
+          .videoOverlay .controls .timeBarContainer .timeBar .timeBarLine .indexLine {
+            width: 100%;
+            height: 100%;
+            background: white;
+            transform: translate(-100%); }
+        .videoOverlay .controls .timeBarContainer .timeBar .indexCircle {
+          width: 10px;
+          height: 10px;
           background: white;
-          transform: translate(-100%); }
-      .videoOverlay .timeBarContainer .timeBar .indexCircle {
-        width: 10px;
-        height: 10px;
-        background: white;
-        border-radius: 50%;
-        transform: translate(calc(-50% - 1.5px), calc(-50% - 1.5px)); }
+          border-radius: 50%;
+          transform: translate(calc(-50% - 1.5px), calc(-50% - 1.5px)); }
+    .videoOverlay .controls .volumeBarContainer {
+      width: 25%;
+      height: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; }
+      .videoOverlay .controls .volumeBarContainer .volumeIcon img {
+        width: 15px;
+        margin: 4px 10px 0 20px; }
+      .videoOverlay .controls .volumeBarContainer .volumeBar {
+        width: 70%;
+        height: 50%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        border-radius: 3px; }
+        .videoOverlay .controls .volumeBarContainer .volumeBar .volumeBarLine {
+          width: 80%;
+          height: 3px;
+          overflow: hidden;
+          background: #363636;
+          border-radius: 3px; }
+          .videoOverlay .controls .volumeBarContainer .volumeBar .volumeBarLine .indexLine {
+            width: 100%;
+            height: 100%;
+            background: white;
+            transform: translateX(-50%); }
+        .videoOverlay .controls .volumeBarContainer .volumeBar .indexCircle {
+          width: 10px;
+          height: 10px;
+          background: white;
+          border-radius: 50%;
+          transform: translateX(100px); }
