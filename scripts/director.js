@@ -25,7 +25,7 @@ window
 				cursor.setTarget([
 					...document.querySelectorAll('.works .videoThumbnail img'),
 					...document.querySelectorAll('.headerContainer a'),
-					document.querySelector('.videoOverlay .controls .exitButton'),
+					document.querySelector('.videoOverlay .video .exitButton'),
 					document.querySelector('.videoOverlay .timeBarContainer'),
 				])
 
@@ -33,7 +33,7 @@ window
 				videoSupport.setup()
 
 				// Setup cursor effect on video
-				cursor.setupCursorEffectOnVideo()
+				cursor.setupCursorAfkEffectOnVideo()
 			}
 		}
 	})
@@ -242,7 +242,7 @@ let videoSupport = {
 	$timeBarIndexCircle: document.querySelector('.videoOverlay .timeBar .indexCircle'),
 	$crossCursor: document.querySelector('.cursorContainer .cross'),
 
-	$exitButton: document.querySelector('.videoOverlay .controls .exitButton'),
+	$exitButton: document.querySelector('.videoOverlay .video .exitButton'),
 	controlZones: [
 		document.querySelector('.videoOverlay .controls .zones .left'),
 		document.querySelector('.videoOverlay .controls .zones .right'),
@@ -259,7 +259,6 @@ let videoSupport = {
 
 		this.setupEnterEvent()
 		this.setupQuitEvent()
-		// this.setupControlZonesEvent()
 	},
 
 	setupEnterEvent() {
@@ -295,6 +294,8 @@ let videoSupport = {
 				pointerEvents: 'none',
 				onComplete: () => {
 					this.$timeBarIndexLine.style.transform = `translateX(-100%)`
+					console.log('hey')
+					this.$timeBarIndexCircle.style.transform = `translate(calc(-50% - 1.5px), calc(-50% - 1.5px))`
 				},
 			})
 			this.clearControlBarUpdate()
@@ -313,13 +314,6 @@ let videoSupport = {
 			})
 		})
 	},
-
-	// setupControlZonesEvent() {
-	// 	// When clicking on left or right control zone move back or forward in the time of the video
-	// 	for (const _zone of this.controlZones) {
-	// 		_zone.addEventListener('click', () => {})
-	// 	}
-	// },
 
 	setupControlBarUpdate() {
 		// Setup an interval that update the time bar

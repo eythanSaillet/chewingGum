@@ -82,31 +82,9 @@ let cursor = {
 		this.targetHoverTimeLine.to(this.$dot, 0.3, { width: 30, height: 30 })
 	},
 
-	setupCursorEffectOnVideo() {
+	setupCursorAfkEffectOnVideo() {
 		let cursorIsAfk = false
 		let cursorTempPos = { x: null, y: null }
-
-		// Video overlay controls zones
-		const $exitButton = document.querySelector('.videoOverlay .controls .exitButton')
-		const $leftZone = document.querySelector('.videoOverlay .controls .left')
-		const $rightZone = document.querySelector('.videoOverlay .controls .right')
-		const $timeBarZone = document.querySelector('.videoOverlay .timeBarContainer')
-
-		// Cursor animation on video overlay
-
-		// Display cross
-		this.displayCross = gsap.timeline({ paused: true, defaultEase: Power2.easeOut })
-		this.displayCross.to(this.$cross, 0, { opacity: 1 })
-		this.displayCross.to(this.$crossA, 0.5, { scaleX: 1 })
-		this.displayCross.to(this.$crossB, 0.5, { scaleX: 1 }, '-=0.5')
-		// Left cross mode
-		this.leftCrossMode = gsap.timeline({ paused: true })
-		this.leftCrossMode.to(this.$leftArrowA, 0.4, { scaleX: 1 })
-		this.leftCrossMode.to(this.$leftArrowB, 0.4, { scaleX: 1 }, '-=0.4')
-		// Right cross mode
-		this.rightCrossMode = gsap.timeline({ paused: true })
-		this.rightCrossMode.to(this.$rightArrowA, 0.4, { scaleX: 1 })
-		this.rightCrossMode.to(this.$rightArrowB, 0.4, { scaleX: 1 }, '-=0.4')
 
 		// Test with an interval if the user move the cursor
 		window.setInterval(() => {
@@ -134,27 +112,6 @@ let cursor = {
 				gsap.to(this.$cursor, 0.7, { opacity: 1 })
 				gsap.to(videoSupport.$exitButton, 0.7, { opacity: 1 })
 			}
-		})
-
-		// Play arrow cursor animation on control zones
-		$exitButton.addEventListener('mouseenter', () => {
-			this.rightCrossMode.reverse()
-			this.leftCrossMode.reverse()
-		})
-		// $leftZone.addEventListener('mouseenter', () => {
-		// 	// this.displayCross.reverse(0.3)
-		// 	this.rightCrossMode.reverse()
-		// 	this.leftCrossMode.play()
-		// })
-		// $rightZone.addEventListener('mouseenter', () => {
-		// 	// this.displayCross.reverse(0.3)
-		// 	this.leftCrossMode.reverse()
-		// 	this.rightCrossMode.play()
-		// })
-		$timeBarZone.addEventListener('mouseenter', () => {
-			this.rightCrossMode.reverse()
-			this.leftCrossMode.reverse()
-			// this.displayCross.play()
 		})
 	},
 }
