@@ -214,6 +214,9 @@ let scroller = {
 	$scrollerContainer: document.querySelector('.nameContainer .scrollerContainer'),
 	$scrollerBar: document.querySelector('.nameContainer .scrollerContainer .scroller .scrollerBar'),
 
+	scrollBlockValue: null,
+	scrollBlockEvent: null,
+
 	setup() {
 		this.setupAnimation()
 		this.setupVanishEffect()
@@ -232,6 +235,19 @@ let scroller = {
 				? gsap.to(this.$scrollerContainer, 0.5, { opacity: 1 })
 				: gsap.to(this.$scrollerContainer, 0.5, { opacity: 0 })
 		})
+	},
+
+	scrollTo() {
+		window.scrollTo(0, scroller.scrollBlockValue)
+	},
+
+	blockScroll() {
+		this.scrollBlockValue = window.pageYOffset
+		this.scrollBlockEvent = window.addEventListener('scroll', this.scrollTo)
+	},
+
+	unblockScroll() {
+		this.scrollBlockEvent = window.removeEventListener('scroll', this.scrollTo)
 	},
 }
 scroller.setup()
@@ -284,6 +300,9 @@ let videoSupport = {
 		// For each video thumbnail lauch the corresponding video
 		for (const _image of this.$videoThumbnails) {
 			_image.addEventListener('click', () => {
+				// Block the scroll on main page
+				scroller.blockScroll()
+
 				// Set the correct film's src
 				this.$video.src = director.films[_image.getAttribute('data')].filmUrl
 
@@ -302,6 +321,9 @@ let videoSupport = {
 
 	setupQuitEvent() {
 		this.$exitButton.addEventListener('click', () => {
+			// Unblock the scroll on main page
+			scroller.unblockScroll()
+
 			// Remove the overlay then clear the time bar
 			this.overlayIsOpen = false
 			gsap.to(this.$videoOverlay, 0.5, {
@@ -447,7 +469,6 @@ let videoSupport = {
 			if (this.overlayIsOpen) {
 				switch (_event.code) {
 					case 'Space':
-						console.log(this.$video.paused)
 						if (this.$video.paused) {
 							this.$video.play()
 						} else {
