@@ -277,6 +277,7 @@ let videoSupport = {
 		this.setupQuitEvent()
 		this.setVolume(this.volume)
 		this.setupVolumeControl()
+		this.setupKeyboardControls()
 	},
 
 	setupEnterEvent() {
@@ -435,5 +436,32 @@ let videoSupport = {
 		this.timeBarWidth = this.$timeBarIndexLine.getBoundingClientRect().width
 		this.timeBarContainerWidth = this.$timeBarContainer.getBoundingClientRect().width
 		this.volumeBarWidth = this.$volumeBarIndexLine.getBoundingClientRect().width
+		// Actualize volume bar position
+		this.setVolume(this.volume)
+	},
+
+	setupKeyboardControls() {
+		// Setup keyboard shortcuts to pause and navigate in the video
+		window.addEventListener('keydown', (_event) => {
+			// Only trigger it if the video overlay is open
+			if (this.overlayIsOpen) {
+				switch (_event.code) {
+					case 'Space':
+						console.log(this.$video.paused)
+						if (this.$video.paused) {
+							this.$video.play()
+						} else {
+							this.$video.pause()
+						}
+						break
+					case 'ArrowRight':
+						this.$video.currentTime += this.$video.duration / 10
+						break
+					case 'ArrowLeft':
+						this.$video.currentTime -= this.$video.duration / 10
+						break
+				}
+			}
+		})
 	},
 }
