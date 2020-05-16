@@ -86,7 +86,7 @@ body {
 			transform: translate(0, -50%);
 			pointer-events: none;
 			.title {
-				font-size: 4.7vw;
+				font-size: 4.5vw;
 				font-family: 'Montserrat Bold';
 			}
 			.artistName {
@@ -112,8 +112,10 @@ body {
 		.videoThumbnail {
 			opacity: 0;
 			will-change: opacity translate;
-			width: 50%;
+			width: 45vw;
+			height: calc(45vw / 1.77);
 			overflow: hidden;
+			object-fit: cover;
 			img {
 				width: 100%;
 				margin-bottom: -4px;

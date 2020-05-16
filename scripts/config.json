@@ -6,20 +6,56 @@
 			{
 				"title": "TOURNENT LES VIOLONS",
 				"artistName": "JEAN-JACQUES GOLDMAN",
-				"imageUrl": "../assets/images/print_3_min-min.jpeg",
+				"imageUrl": "../assets/images/yannickSaillet/tournentlesviolonsJeanjacquesgoldmanThumbnail.jpg",
 				"filmUrl": "../assets/video/yannickSaillet/tournentlesviolonsJeanjacquesgoldman.mp4"
 			},
 			{
 				"title": "À COTÉ DE TOI",
 				"artistName": "LES ENFOIRÉE",
-				"imageUrl": "../assets/images/print_2_min-min.jpeg",
+				"imageUrl": "../assets/images/yannickSaillet/acotedetoiLesenfoireeThumbnail.jpg",
 				"filmUrl": "../assets/video/yannickSaillet/acotedetoiLesenfoiree.mp4"
 			},
 			{
 				"title": "TOUT L'OR DES HOMMES",
 				"artistName": "CELINE DION",
-				"imageUrl": "../assets/images/print_4_min-min.jpeg",
+				"imageUrl": "../assets/images/yannickSaillet/toutlordeshommesCelinedionThumbnail.jpg",
 				"filmUrl": "../assets/video/yannickSaillet/toutlordeshommesCelinedion.mp4"
+			},
+			{
+				"title": "CHEZ NOUS",
+				"artistName": "PATRICK FIORI",
+				"imageUrl": "../assets/images/yannickSaillet/cheznousPatrickfioriThumbnail.jpg",
+				"filmUrl": "../assets/video/yannickSaillet/cheznousPatrickfiori.mp4"
+			},
+			{
+				"title": "L'UNJUSTICE",
+				"artistName": "GAROU",
+				"imageUrl": "../assets/images/yannickSaillet/linjusticeGarouThumbnail.jpg",
+				"filmUrl": "../assets/video/yannickSaillet/linjusticeGarou.mp4"
+			},
+			{
+				"title": "DRUGSTAR",
+				"artistName": "INDOCHINE",
+				"imageUrl": "../assets/images/yannickSaillet/drugstarIndochineThumbnail.jpg",
+				"filmUrl": "../assets/video/yannickSaillet/drugstarIndochine.mp4"
+			},
+			{
+				"title": "MILAN MADRID</br>CHICAGO PARIS",
+				"artistName": "JAY JAY JOHANSON",
+				"imageUrl": "../assets/images/yannickSaillet/milanmadridchicagoparisJayjayjohansonThumbnail.jpg",
+				"filmUrl": "../assets/video/yannickSaillet/milanmadridchicagoparisJayjayjohanson.mp4"
+			},
+			{
+				"title": "SEVEN OF SUNDAYS",
+				"artistName": "CURT SMITH",
+				"imageUrl": "../assets/images/yannickSaillet/sevenofsundaysCurtsmithThumbnail.jpg",
+				"filmUrl": "../assets/video/yannickSaillet/sevenofsundaysCurtsmith.mp4"
+			},
+			{
+				"title": "DONT'T GO",
+				"artistName": "NOUVELLE VAGUE",
+				"imageUrl": "../assets/images/yannickSaillet/dontgoNouvellevagueThumbnail.jpg",
+				"filmUrl": "../assets/video/yannickSaillet/dontgoNouvellevague.mp4"
 			}
 		]
 	},

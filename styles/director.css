@@ -74,7 +74,7 @@ body {
     transform: translate(0, -50%);
     pointer-events: none; }
     .works section .info .title {
-      font-size: 4.7vw;
+      font-size: 4.5vw;
       font-family: 'Montserrat Bold'; }
     .works section .info .artistName {
       font-size: 1.2vw;
@@ -94,8 +94,10 @@ body {
   .works section .videoThumbnail {
     opacity: 0;
     will-change: opacity translate;
-    width: 50%;
+    width: 45vw;
+    height: calc(45vw / 1.77);
     overflow: hidden;
+    object-fit: cover;
     z-index: 0; }
     .works section .videoThumbnail img {
       width: 100%;
