@@ -76,9 +76,7 @@ let flashLightEffect = {
 				x: cursor.positionWithLerp.x / window.innerWidth - 0.5,
 				y: (cursor.positionWithLerp.y + window.pageYOffset) / window.innerHeight - 0.5,
 			}
-			this.$flashLight.style.backgroundPosition = `${this.positionRatio.x * windowSizes.width}px ${
-				this.positionRatio.y * windowSizes.height
-			}px`
+			this.$flashLight.style.backgroundPosition = `${this.positionRatio.x * windowSizes.width}px ${this.positionRatio.y * windowSizes.height}px`
 		}
 	},
 }
@@ -140,6 +138,7 @@ let filmsDisplay = {
 			$videoThumbnail.classList.add('videoThumbnail')
 			const $image = document.createElement('img')
 			$image.setAttribute('src', director.films[i].imageUrl)
+			$image.setAttribute('alt', 'Video thumbnail')
 			$image.setAttribute('data', i)
 			$videoThumbnail.appendChild($image)
 
@@ -176,11 +175,7 @@ let filmsDisplay = {
 						opacity: 0,
 						delay: 0.5,
 					})
-					gsap.from(
-						[_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoStroke .artistName')],
-						0.2,
-						{ opacity: 0, delay: 0.7 }
-					)
+					gsap.from([_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoStroke .artistName')], 0.2, { opacity: 0, delay: 0.7 })
 
 					// Animate translate of the infos according to alignement
 					if (_section.dom.classList.contains('alignRight')) {
@@ -188,21 +183,13 @@ let filmsDisplay = {
 							x: '10vw',
 							delay: 0.5,
 						})
-						gsap.from(
-							[_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoFill .artistName')],
-							0.5,
-							{ x: '10vw', delay: 0.7 }
-						)
+						gsap.from([_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoFill .artistName')], 0.5, { x: '10vw', delay: 0.7 })
 					} else if (_section.dom.classList.contains('alignLeft')) {
 						gsap.from([_section.dom.querySelector('.infoStroke .title'), _section.dom.querySelector('.infoFill .title')], 0.5, {
 							x: '-10vw',
 							delay: 0.5,
 						})
-						gsap.from(
-							[_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoFill .artistName')],
-							0.5,
-							{ x: '-10vw', delay: 0.7 }
-						)
+						gsap.from([_section.dom.querySelector('.infoStroke .artistName'), _section.dom.querySelector('.infoFill .artistName')], 0.5, { x: '-10vw', delay: 0.7 })
 					}
 				}
 			}
@@ -231,9 +218,7 @@ let scroller = {
 
 	setupVanishEffect() {
 		window.addEventListener('scroll', () => {
-			window.pageYOffset == 0
-				? gsap.to(this.$scrollerContainer, 0.5, { opacity: 1 })
-				: gsap.to(this.$scrollerContainer, 0.5, { opacity: 0 })
+			window.pageYOffset == 0 ? gsap.to(this.$scrollerContainer, 0.5, { opacity: 1 }) : gsap.to(this.$scrollerContainer, 0.5, { opacity: 0 })
 		})
 	},
 
@@ -275,10 +260,7 @@ let videoSupport = {
 	$crossCursor: document.querySelector('.cursorContainer .cross'),
 
 	$exitButton: document.querySelector('.videoOverlay .video .exitButton'),
-	controlZones: [
-		document.querySelector('.videoOverlay .controls .zones .left'),
-		document.querySelector('.videoOverlay .controls .zones .right'),
-	],
+	controlZones: [document.querySelector('.videoOverlay .controls .zones .left'), document.querySelector('.videoOverlay .controls .zones .right')],
 
 	volume: 0.5,
 
@@ -355,9 +337,7 @@ let videoSupport = {
 			let videoState = (this.$video.currentTime / this.$video.duration) * 100
 			this.$timeBarIndexLine.style.transform = `translateX(${-100 + videoState}%)`
 			// Update circle index
-			this.$timeBarIndexCircle.style.transform = `translate(calc(-50% - 1.5px + ${
-				(this.timeBarWidth / 100) * videoState
-			}px), calc(-50% - 1.5px))`
+			this.$timeBarIndexCircle.style.transform = `translate(calc(-50% - 1.5px + ${(this.timeBarWidth / 100) * videoState}px), calc(-50% - 1.5px))`
 		}, 100)
 
 		// On mouse move update time bar if the mouse is down
@@ -388,9 +368,7 @@ let videoSupport = {
 		// Line
 		this.$timeBarIndexLine.style.transform = `translateX(${-100 + newTime * 100}%)`
 		// Circle
-		this.$timeBarIndexCircle.style.transform = `translate(calc(-50% + ${
-			(this.timeBarWidth / 100) * newTime * 100
-		}px), calc(-50% - 1.5px))`
+		this.$timeBarIndexCircle.style.transform = `translate(calc(-50% + ${(this.timeBarWidth / 100) * newTime * 100}px), calc(-50% - 1.5px))`
 	},
 
 	// Clear the interval when the user quit the video overlay
