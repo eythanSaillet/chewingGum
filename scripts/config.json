@@ -60,80 +60,62 @@
 		]
 	},
 	{
-		"index": "christopheRihet",
-		"name": "CHRISTOPHE RIHET",
-		"films": [
-			{
-				"title": "Nom du film",
-				"artistName": "Nom de l'artistNamee",
-				"imageUrl": "qsqsdqdsqsdqsd",
-				"filmUrl": "qsqsdqdsqsdqsd"
-			},
-			{
-				"title": "Bonjour",
-				"artistName": "mesh",
-				"imageUrl": "ssss",
-				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
-			},
-			{
-				"title": "hello",
-				"artistName": "mesh",
-				"imageUrl": "ssss",
-				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
-			}
-		]
-	},
-	{
-		"index": "eleonoreWismes",
-		"name": "ELEONORE WISMES",
-		"films": [
-			{
-				"title": "Nom du film",
-				"artistName": "Nom de l'artistNamee",
-				"imageUrl": "qsqsdqdsqsdqsd",
-				"filmUrl": "qsqsdqdsqsdqsd"
-			},
-			{
-				"title": "Bonjour",
-				"artistName": "mesh",
-				"imageUrl": "ssss",
-				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
-			},
-			{
-				"title": "hello",
-				"artistName": "mesh",
-				"imageUrl": "ssss",
-				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
-			}
-		]
-	},
-	{
 		"index": "mathieuJuric",
 		"name": "MATHIEU JURIC",
 		"films": [
 			{
-				"title": "Nom du film",
-				"artistName": "Nom de l'artistNamee",
-				"imageUrl": "qsqsdqdsqsdqsd",
-				"filmUrl": "qsqsdqdsqsdqsd"
+				"title": "ADJAKA",
+				"artistName": "YAYA YAOVI",
+				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"filmUrl": "../assets/video/mathieuJuric/adjakaYayayaovi.mp4"
 			},
 			{
-				"title": "Bonjour",
-				"artistName": "mesh",
-				"imageUrl": "ssss",
-				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+				"title": "OVER ME / MOB",
+				"artistName": "THE TOXIC AVENGER",
+				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"filmUrl": "../assets/video/mathieuJuric/overme-mobThetoxicavenger.mp4"
 			},
 			{
-				"title": "hello",
-				"artistName": "mesh",
-				"imageUrl": "ssss",
-				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+				"title": "SKELETONS",
+				"artistName": "TARA MCDONALD",
+				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"filmUrl": "../assets/video/mathieuJuric/skeletonsTaramcdonald.mp4"
+			},
+			{
+				"title": "KIDS",
+				"artistName": "THE TOXIC AVENGER",
+				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"filmUrl": "../assets/video/mathieuJuric/kidsThetoxicavenger.mp4"
+			},
+			{
+				"title": "CHASE II",
+				"artistName": "THE TOXIC AVENGER",
+				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"filmUrl": "../assets/video/mathieuJuric/chassIIThetoxicavenger.mp4"
+			},
+			{
+				"title": "I LOVE YOU",
+				"artistName": "CUENCA",
+				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"filmUrl": "../assets/video/mathieuJuric/iloveyouCuenca.mp4"
+			},
+			{
+				"title": "ERIK HALLEY",
+				"artistName": "THE WATCHERS",
+				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"filmUrl": "../assets/video/mathieuJuric/erikhalleyThewatchers.mp4"
+			},
+			{
+				"title": "DE LA NEIGE",
+				"artistName": "DIAMOND DEUKLO",
+				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"filmUrl": "../assets/video/mathieuJuric/delaneigeDiamonddeuklo.mp4"
 			}
 		]
 	},
 	{
-		"index": "odieuxBoby",
-		"name": "ODIEUX BOBY",
+		"index": "christopheRihet",
+		"name": "CHRISTOPHE RIHET",
 		"films": [
 			{
 				"title": "Nom du film",
