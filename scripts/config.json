@@ -118,22 +118,34 @@
 		"name": "CHRISTOPHE RIHET",
 		"films": [
 			{
-				"title": "Nom du film",
-				"artistName": "Nom de l'artistNamee",
-				"imageUrl": "qsqsdqdsqsdqsd",
-				"filmUrl": "qsqsdqdsqsdqsd"
+				"title": "LOVE THAT GROWS OLD",
+				"artistName": "MAX JURY",
+				"imageUrl": "../assets/images/christopheRihet/lovethatgrowsoldMaxjuryThumbnail.jpg",
+				"filmUrl": "../assets/video/christopheRihet/lovethatgrowsoldMaxjury.mp4"
 			},
 			{
-				"title": "Bonjour",
-				"artistName": "mesh",
-				"imageUrl": "ssss",
-				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+				"title": "WHERE THE WILD ARE",
+				"artistName": "SOUTHERN",
+				"imageUrl": "../assets/images/christopheRihet/wherethewildareSouthernThumbnail.jpg",
+				"filmUrl": "../assets/video/christopheRihet/wherethewildareSouthern.mp4"
 			},
 			{
-				"title": "hello",
-				"artistName": "mesh",
-				"imageUrl": "ssss",
-				"filmUrl": "qsqsdxxxxxqdsqsdqsd"
+				"title": "GREAT AMERICAN NOVEL",
+				"artistName": "MAX JURY",
+				"imageUrl": "../assets/images/christopheRihet/greatamericannovelMaxjuryThumbnail.jpg",
+				"filmUrl": "../assets/video/christopheRihet/greatamericannovelMaxjury.mp4"
+			},
+			{
+				"title": "BLACK METAL",
+				"artistName": "MAX JURY",
+				"imageUrl": "../assets/images/christopheRihet/blackmetalMaxjuryThumbnail.jpg",
+				"filmUrl": "../assets/video/christopheRihet/blackmetalMaxjury.mp4"
+			},
+			{
+				"title": "HOME",
+				"artistName": "MAX JURY",
+				"imageUrl": "../assets/images/christopheRihet/homeMaxjuryThumbnail.jpg",
+				"filmUrl": "../assets/video/christopheRihet/homeMaxjury.mp4"
 			}
 		]
 	}
