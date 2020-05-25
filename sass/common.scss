@@ -17,8 +17,8 @@
 	opacity: 0;
 	mix-blend-mode: difference;
 	.dot {
-		width: 5px;
-		height: 5px;
+		width: 6px;
+		height: 6px;
 		position: absolute;
 		background: white;
 		border-radius: 50%;
@@ -103,11 +103,9 @@
 
 @font-face {
 	font-family: 'Montserrat Bold';
-	src: url('../assets/fonts/montserrat/Montserrat-Bold.woff') format('woff'),
-		url('../assets/fonts/montserrat/Montserrat-Bold.woff2') format('woff2');
+	src: url('../assets/fonts/montserrat/Montserrat-Bold.woff') format('woff'), url('../assets/fonts/montserrat/Montserrat-Bold.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'Montserrat Regular';
-	src: url('../assets/fonts/montserrat/Montserrat-Regular.woff') format('woff'),
-		url('../assets/fonts/montserrat/Montserrat-Regular.woff2') format('woff2');
+	src: url('../assets/fonts/montserrat/Montserrat-Regular.woff') format('woff'), url('../assets/fonts/montserrat/Montserrat-Regular.woff2') format('woff2');
 }

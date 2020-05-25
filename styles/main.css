@@ -7,14 +7,20 @@ body {
 * {
   cursor: none; }
 
+.headerContainer {
+  opacity: 0; }
+
 .menuContainer {
   width: 100vw;
   display: flex;
-  pointer-events: none; }
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0; }
   .menuContainer .contentContainer {
     width: 100vw;
     display: flex;
-    z-index: 10; }
+    z-index: 10;
+    transform: translateY(100vh); }
     .menuContainer .contentContainer .columnStepBloc {
       width: 25vw; }
     .menuContainer .contentContainer .imagesContainer {
@@ -37,7 +43,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 30; }
+    z-index: 30;
+    transform: translateY(100vh); }
     .menuContainer .blackBlocs .borderColumn {
       width: 25vw;
       background: var(--backgroundColor); }
@@ -63,8 +70,13 @@ body {
     .menuContainer .nameContainer span {
       font-family: 'Montserrat Bold';
       font-size: 7.65vw;
-      letter-spacing: 3px; }
+      letter-spacing: 4px; }
+      .menuContainer .nameContainer span span {
+        display: inline-block;
+        opacity: 0;
+        white-space: pre; }
   .menuContainer .fillNameContainer {
+    background: var(--backgroundColor);
     z-index: 20; }
     .menuContainer .fillNameContainer span {
       color: white; }

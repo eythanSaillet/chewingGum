@@ -9,14 +9,22 @@ body {
 	cursor: none;
 }
 
+.headerContainer {
+	opacity: 0;
+}
+
 .menuContainer {
 	width: 100vw;
 	display: flex;
 	pointer-events: none;
+	overflow: hidden;
+	opacity: 0;
 	.contentContainer {
 		width: 100vw;
 		display: flex;
 		z-index: 10;
+		// Display animation
+		transform: translateY(100vh);
 		.columnStepBloc {
 			width: 25vw;
 		}
@@ -46,6 +54,8 @@ body {
 		top: 0;
 		left: 0;
 		z-index: 30;
+		// Display animation
+		transform: translateY(100vh);
 		.borderColumn {
 			width: 25vw;
 			background: var(--backgroundColor);
@@ -76,10 +86,16 @@ body {
 		span {
 			font-family: 'Montserrat Bold';
 			font-size: 7.65vw;
-			letter-spacing: 3px;
+			letter-spacing: 4px;
+			span {
+				display: inline-block;
+				opacity: 0;
+				white-space: pre;
+			}
 		}
 	}
 	.fillNameContainer {
+		background: var(--backgroundColor);
 		z-index: 20;
 		span {
 			color: white;

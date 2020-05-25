@@ -13,8 +13,8 @@
   opacity: 0;
   mix-blend-mode: difference; }
   .cursorContainer .dot {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     position: absolute;
     background: white;
     border-radius: 50%;

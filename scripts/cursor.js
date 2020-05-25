@@ -37,6 +37,9 @@ let cursor = {
 	},
 
 	setGlobalMouseEvent() {
+		window.addEventListener('mouseenter', (_event) => {
+			console.log(_event.clientX)
+		})
 		window.addEventListener('mousemove', (_event) => {
 			// UPDATE MOUSE POS VALUE
 			this.position = { x: _event.clientX, y: _event.clientY }
@@ -89,12 +92,7 @@ let cursor = {
 		// Test with an interval if the user move the cursor
 		window.setInterval(() => {
 			// Make time bar and the cursor disappear if the cusor is afk
-			if (
-				cursorTempPos.x == this.position.x &&
-				cursorTempPos.y == this.position.y &&
-				cursorIsAfk == false &&
-				videoSupport.overlayIsOpen == true
-			) {
+			if (cursorTempPos.x == this.position.x && cursorTempPos.y == this.position.y && cursorIsAfk == false && videoSupport.overlayIsOpen == true) {
 				cursorIsAfk = true
 				gsap.to(videoSupport.$controls, 0.7, { opacity: 0 })
 				gsap.to(this.$cursor, 0.7, { opacity: 0 })

@@ -61,7 +61,6 @@ let flashLightEffect = {
 
 	setup() {
 		cursor.setFlashLightLerpInterval()
-
 		this.setupName()
 	},
 
