@@ -66,49 +66,49 @@
 			{
 				"title": "ADJAKA",
 				"artistName": "YAYA YAOVI",
-				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"imageUrl": "../assets/images/mathieuJuric/adjakaYayayaoviThumbnail.jpg",
 				"filmUrl": "../assets/video/mathieuJuric/adjakaYayayaovi.mp4"
 			},
 			{
 				"title": "OVER ME / MOB",
 				"artistName": "THE TOXIC AVENGER",
-				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"imageUrl": "../assets/images/mathieuJuric/overme-mobThetoxicavengerThumbnail.jpg",
 				"filmUrl": "../assets/video/mathieuJuric/overme-mobThetoxicavenger.mp4"
 			},
 			{
 				"title": "SKELETONS",
 				"artistName": "TARA MCDONALD",
-				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"imageUrl": "../assets/images/mathieuJuric/skeletonsTaramcdonaldThumbnail.jpg",
 				"filmUrl": "../assets/video/mathieuJuric/skeletonsTaramcdonald.mp4"
 			},
 			{
 				"title": "KIDS",
 				"artistName": "THE TOXIC AVENGER",
-				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"imageUrl": "../assets/images/mathieuJuric/kidsThetoxicavengerThumbnail.jpg",
 				"filmUrl": "../assets/video/mathieuJuric/kidsThetoxicavenger.mp4"
 			},
 			{
 				"title": "CHASE II",
 				"artistName": "THE TOXIC AVENGER",
-				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"imageUrl": "../assets/images/mathieuJuric/chassIIThetoxicavengerThumbnail.jpg",
 				"filmUrl": "../assets/video/mathieuJuric/chassIIThetoxicavenger.mp4"
 			},
 			{
 				"title": "I LOVE YOU",
 				"artistName": "CUENCA",
-				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"imageUrl": "../assets/images/mathieuJuric/iloveyouCuencaThumbnail.jpg",
 				"filmUrl": "../assets/video/mathieuJuric/iloveyouCuenca.mp4"
 			},
 			{
 				"title": "ERIK HALLEY",
 				"artistName": "THE WATCHERS",
-				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"imageUrl": "../assets/images/mathieuJuric/erikhalleyThewatchersThumbnail.jpg",
 				"filmUrl": "../assets/video/mathieuJuric/erikhalleyThewatchers.mp4"
 			},
 			{
 				"title": "DE LA NEIGE",
 				"artistName": "DIAMOND DEUKLO",
-				"imageUrl": "../assets/images/thumbnail2.jpeg",
+				"imageUrl": "../assets/images/mathieuJuric/delaneigeDiamonddeukloThumbnail.jpg",
 				"filmUrl": "../assets/video/mathieuJuric/delaneigeDiamonddeuklo.mp4"
 			}
 		]
