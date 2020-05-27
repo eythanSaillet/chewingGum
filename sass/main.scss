@@ -1,9 +1,12 @@
+html,
+body {
+	overflow-x: hidden;
+}
 body {
 	margin: 0;
 	background-color: var(--backgroundColor);
 	position: relative;
 	user-select: none;
-	overflow: hidden;
 }
 
 * {
