@@ -3,6 +3,7 @@ body {
 	background-color: var(--backgroundColor);
 	position: relative;
 	user-select: none;
+	overflow: hidden;
 }
 
 * {
