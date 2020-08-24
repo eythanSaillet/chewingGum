@@ -1,15 +1,15 @@
 {
-  "name": "template",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "sass": "node-sass  -rw sass -r -o styles"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "node-sass": "^4.13.1"
-  }
+	"name": "template",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"sass": "node-sass  -rw sass -r -o styles"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"node-sass": "^4.13.1"
+	}
 }

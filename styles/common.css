@@ -66,7 +66,9 @@
     pointer-events: auto;
     cursor: none; }
   .headerContainer .logo img {
-    width: 130px; }
+    width: 110px;
+    filter: invert(1);
+    transform: translateY(15px); }
   .headerContainer .contactButton {
     color: white;
     text-decoration: none;
