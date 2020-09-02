@@ -4,6 +4,12 @@
 		"name": "YANNICK SAILLET",
 		"films": [
 			{
+				"title": "UN AIR DE FAMILLE",
+				"artistName": "PATRICK FIORI",
+				"imageUrl": "../assets/images/yannickSaillet/unAirDeFamillePatrickFioriThumbnail.jpg",
+				"filmUrl": "../assets/video/yannickSaillet/unAirDeFamillePatrickFiori.mp4"
+			},
+			{
 				"title": "TOURNENT LES VIOLONS",
 				"artistName": "JEAN-JACQUES GOLDMAN",
 				"imageUrl": "../assets/images/yannickSaillet/tournentlesviolonsJeanjacquesgoldmanThumbnail.jpg",
